@@ -3,7 +3,7 @@
 ## Easy
 1. Define the following terms: data, database, relational database, and table.
 2. List five key features of SQL Server.
-3. Open SSMS and connect to a SQL Server instance. Take a screenshot of the interface.
+3. What are the different authentication modes available when connecting to SQL Server? (Give at least 2)
 
 ## Medium
 4. Create a new database in SSMS named SchoolDB.
@@ -13,4 +13,4 @@
 ## Hard
 7. Research and explain the different SQL commands: DQL, DML, DDL, DCL, TCL with examples.
 8. Write a query to insert three records into the Students table.
-9. Create a backup of your SchoolDB database and restore it.
+9. Create a backup of your SchoolDB database and restore it. (write its steps to submit)
