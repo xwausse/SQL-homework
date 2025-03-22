@@ -1,6 +1,6 @@
 # Lesson 4: Filtering and Ordering Data
 
-Here are 30 homework tasks for Lesson 4, categorized into easy, medium, and hard levels. These tasks cover:
+Here are 27 homework tasks for Lesson 4, categorized into easy, medium, and hard levels. These tasks cover:
 ✅ Filtering and Ordering Data
 ✅ Using SELECT TOP, OFFSET-FETCH
 ✅ Using ISNULL and COALESCE
@@ -9,11 +9,7 @@ Here are 30 homework tasks for Lesson 4, categorized into easy, medium, and hard
 ✅ LIKE operator
 ✅ Wildcard Characters
 ✅ ANY and ALL Operators
-
-
-
 ________________________________________
-
 ## 🟢 Easy-Level Tasks (10)
 1. Write a query to select the top 5 employees from the Employees table.
 2. Use SELECT DISTINCT to select unique ProductName values from the Products table.
