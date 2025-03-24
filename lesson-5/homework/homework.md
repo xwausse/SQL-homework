@@ -347,3 +347,53 @@ INSERT INTO Invoices (InvoiceID, CustomerID, InvoiceDate, TotalAmount) VALUES
 (39, 39, '2023-04-02', 550.00),
 (40, 40, '2023-04-04', 600.00);
 
+CREATE TABLE OutOfStock (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(100),
+    Price DECIMAL(10, 2),
+    Category VARCHAR(50),
+    StockQuantity INT
+);
+
+
+INSERT INTO OutOfStock VALUES
+(1, 'Gaming Console', 500.00, 'Electronics', 0),
+(2, 'Smartwatch', 250.00, 'Electronics', 0),
+(3, 'Wireless Earbuds', 150.00, 'Electronics', 0),
+(4, 'Projector', 700.00, 'Electronics', 0),
+(5, 'Mechanical Keyboard', 120.00, 'Accessories', 0),
+(6, 'Wireless Mouse', 45.00, 'Accessories', 0),
+(7, 'Office Chair', 250.00, 'Furniture', 0),
+(8, 'Standing Desk', 400.00, 'Furniture', 0),
+(9, 'Marker Set', 20.00, 'Stationery', 0),
+(10, 'Sketchbook', 35.00, 'Stationery', 0),
+(11, 'Scanner', 220.00, 'Electronics', 0),
+(12, 'Drone', 800.00, 'Electronics', 0),
+(13, 'Power Drill', 90.00, 'Tools', 0),
+(14, 'Sweater', 55.00, 'Clothing', 0),
+(15, 'Shorts', 30.00, 'Clothing', 0),
+(16, 'Raincoat', 75.00, 'Clothing', 0),
+(17, 'Sandals', 40.00, 'Clothing', 0),
+(18, 'Gloves', 15.00, 'Accessories', 0),
+(19, 'Necklace', 120.00, 'Accessories', 0),
+(20, 'Sunglasses', 80.00, 'Accessories', 0),
+(21, 'Bedside Lamp', 45.00, 'Furniture', 0),
+(22, 'Bookshelf', 150.00, 'Furniture', 0),
+(23, 'Dictionary', 25.00, 'Stationery', 0),
+(24, 'Wall Clock', 60.00, 'Furniture', 0),
+(25, 'Thermos', 35.00, 'Accessories', 0),
+(26, 'Backpack', 60.00, 'Accessories', 0),
+(27, 'Recliner', 550.00, 'Furniture', 0),
+(28, 'Freezer', 750.00, 'Electronics', 0),
+(29, 'Induction Cooktop', 300.00, 'Electronics', 0),
+(30, 'Oven', 600.00, 'Electronics', 0),
+(31, 'Humidifier', 90.00, 'Electronics', 0),
+(32, 'Vacuum Cleaner', 250.00, 'Electronics', 0),
+(33, 'Electric Kettle', 45.00, 'Electronics', 0),
+(34, 'Smart Light Bulb', 30.00, 'Accessories', 0),
+(35, 'Water Purifier', 120.00, 'Electronics', 0),
+(36, 'Popcorn Maker', 50.00, 'Electronics', 0),
+(37, 'Rice Cooker', 70.00, 'Electronics', 0),
+(38, 'Food Processor', 90.00, 'Electronics', 0),
+(39, 'Deep Fryer', 80.00, 'Electronics', 0),
+(40, 'Robot Vacuum', 500.00, 'Electronics', 0);
