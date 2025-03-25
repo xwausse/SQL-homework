@@ -1,7 +1,11 @@
+lesson-6 homework: practice
+
+Tasks should be solved using SQL Server
+
 ## Puzzle 1: Finding Distinct Values
 Question: Explain at least two ways to find distinct values based on two columns.
 
-Kirish ma’lumotlari (`InputTbl`):
+Input table (`InputTbl`):
 
 | col1 | col2 |
 |------|------|
@@ -13,7 +17,7 @@ Kirish ma’lumotlari (`InputTbl`):
 | m    | n    |
 | n    | m    |
 
-Chiqish natijasi (`OutputTbl`):
+Result should be like this:
 
 | col1 | col2 |
 |------|------|
@@ -21,39 +25,23 @@ Chiqish natijasi (`OutputTbl`):
 | c    | d    |
 | m    | n    |
 
----
-
-## Puzzle 2: Counting 'a' for Different Types
-Question: Count occurrences of 'a' in columns Value1, Value2, and Value3 for different `Typ`s.
-
-### Table Schema:
-CREATE TABLE GroupbyMultipleColumns (
-    ID INT,
-    Typ VARCHAR(1),
-    Value1 VARCHAR(1),
-    Value2 VARCHAR(1),
-    Value3 VARCHAR(1)
+CREATE TABLE InputTbl (
+    col1 VARCHAR(10),
+    col2 VARCHAR(10)
 );
+    INSERT INTO InputTbl (col1, col2) VALUES 
+('a', 'b'),
+('a', 'b'),
+('b', 'a'),
+('c', 'd'),
+('c', 'd'),
+('m', 'n'),
+('n', 'm');
 
-### Sample Data:
-INSERT INTO GroupbyMultipleColumns(ID, Typ, Value1, Value2, Value3)
-VALUES
-    (1, 'I', 'a', 'b', ''),
-    (2, 'O', 'a', 'd', 'f'),
-    (3, 'I', 'd', 'b', ''),
-    (4, 'O', 'g', 'l', ''),
-    (5, 'I', 'z', 'g', 'a'),
-    (6, 'I', 'z', 'g', 'a');
-
-Expected Output:
-| Typ | Counts |
-|-----|--------|
-| I   | 3      |
-| O   | 1      |
 
 ---
 
-## Puzzle 3: Removing Rows with All Zeroes
+## Puzzle 2: Removing Rows with All Zeroes
 Question: If all the columns have zero values, then don’t show that row. In this case, we have to remove the 5th row while selecting data.
 
 ### Table Schema:
@@ -76,75 +64,42 @@ VALUES
 
 ---
 
-## Puzzle 4: Finding Duplicate Values
-Question: Find values that appear more than once in the table.
+## Puzzle 3: Find those with odd ids
 
-### Table Schema:
-CREATE TABLE TESTDuplicateCount (
-    ID INT,
-    EmpName VARCHAR(100),
-    EmpDate DATETIME
-);
+create table section1(id int, name varchar(20))
+insert into section1 values (1, 'Been'),
+       (2, 'Roma'),
+       (3, 'Steven'),
+       (4, 'Paulo'),
+       (5, 'Genryh'),
+       (6, 'Bruno'),
+       (7, 'Fred'),
+       (8, 'Andro')
 
-### Sample Data:
-INSERT INTO TESTDuplicateCount(ID,EmpName,EmpDate) 
-VALUES
-    (1,'Pawan','2014-01-05'),
-    (2,'Pawan','2014-03-05'), 
-    (3,'Pawan','2014-02-05'), 
-    (4,'Manisha','2014-07-05'), 
-    (5,'Sharlee','2014-09-05'), 
-    (6,'Barry','2014-02-05'), 
-    (7,'Jyoti','2014-04-05'), 
-    (8,'Jyoti','2014-05-05');
+## Puzzle 4: Person with the smallest id (use the table in puzzle 3)
 
 ---
 
-## Puzzle 5: Counting Fruits per Person
-Question: Count the occurrences of each fruit per person.
-
-### Table Schema:
-CREATE TABLE FruitCount (
-    Name VARCHAR(20),
-    Fruit VARCHAR(25)
-);
-
-### Sample Data:
-INSERT INTO FruitCount(Name, Fruit) 
-VALUES
-    ('Neeraj', 'MANGO'),
-    ('Neeraj', 'MANGO'),
-    ('Neeraj', 'MANGO'),
-    ('Neeraj', 'APPLE'),
-    ('Neeraj', 'ORANGE'),
-    ('Neeraj', 'LICHI'),
-    ('Neeraj', 'LICHI'),
-    ('Neeraj', 'LICHI'),
-    ('Isha', 'MANGO'),
-    ('Isha', 'MANGO'),
-    ('Isha', 'APPLE'),
-    ('Isha', 'ORANGE'),
-    ('Isha', 'LICHI'),
-    ('Gopal', 'MANGO'),
-    ('Gopal', 'MANGO'),
-    ('Gopal', 'APPLE'),
-    ('Gopal', 'APPLE'),
-    ('Gopal', 'APPLE'),
-    ('Gopal', 'ORANGE'),
-    ('Gopal', 'LICHI'),
-    ('Mayank', 'MANGO'),
-    ('Mayank', 'MANGO'),
-    ('Mayank', 'APPLE'),
-    ('Mayank', 'APPLE'),
-    ('Mayank', 'ORANGE'),
-    ('Mayank', 'LICHI');
-
-Expected Output:
-| Name  | MangoCount | APPLECount | LICHICount | ORANGECount |
-|-------|-----------|------------|------------|-------------|
-| Gopal | 2         | 3          | 1          | 1           |
-| Isha  | 2         | 1          | 1          | 1           |
-| Mayank| 2         | 2          | 1          | 1           |
-| Neeraj| 3         | 1          | 3          | 1           |
+## Puzzle 5: Person with the highest id (use the table in puzzle 3)
 
 ---
+
+## Puzzle 6: People whose name starts with b (use the table in puzzle 3)
+
+---
+
+## Puzle 7: Write a query to return only the rows where the code contains the literal underscore _ (not as a wildcard).
+
+CREATE TABLE ProductCodes (
+    Code VARCHAR(20)
+);
+
+INSERT INTO ProductCodes (Code) VALUES
+('X-123'),
+('X_456'),
+('X#789'),
+('X-001'),
+('X%202'),
+('X_ABC'),
+('X#DEF'),
+('X-999');
