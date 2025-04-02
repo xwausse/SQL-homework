@@ -1,9 +1,6 @@
 # lesson-8 Practice
 
-Notes before doing the tasks:
-Tasks should be solved using SQL Server.
-It does not matter the solutions are Uppercase or lowercase, which means case insensitive.
-Using alies names does not matter in scoring your work.
+Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. It does not matter whether we close queries with ; or not
 
 ##  Easy-Level Tasks 
 1. Using Products table, find the total number of products available in each category.
