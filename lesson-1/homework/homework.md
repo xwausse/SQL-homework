@@ -1,5 +1,7 @@
 # Lesson 1: Introduction to SQL Server and SSMS
 
+Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. It does not matter whether we close queries with ; or not
+
 ## Easy
 1. Define the following terms: data, database, relational database, and table.
 2. List five key features of SQL Server.
