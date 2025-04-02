@@ -1,5 +1,6 @@
 # Lesson 2: DDL and DML Commands
 
+Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. It does not matter whether we close queries with ; or not
 ---
 
 ### **Basic-Level Tasks (10)**  
