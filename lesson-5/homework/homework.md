@@ -5,6 +5,8 @@ All the Tasks should be solved using/in MSSQL-SERVER.
 ✅ UNION, UNION ALL, INTERSECT, EXCEPT
 ✅ Creating Conditional Columns with CASE and IIF
 ✅ Using IF, WHILE
+
+Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. It does not matter whether we close queries with ; or not
 ________________________________________
 
 ##  Easy-Level Tasks 
