@@ -8,7 +8,8 @@ Here are 30 homework tasks for Lesson 3, categorized into easy, medium, and hard
 ✅ Unique Key, Primary Key, Foreign Key, Check Constraint
 ✅ Differences between UNIQUE KEY and PRIMARY KEY
 
-________________________________________
+Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. It does not matter whether we close queries with ; or not
+______________________________________
 
 ## 🟢 Easy-Level Tasks (10)
 1. Define and explain the purpose of BULK INSERT in SQL Server.
