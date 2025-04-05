@@ -24,7 +24,7 @@ ________________________________________
 9. Write a query that returns the difference between the Products and Products_Discounted tables using EXCEPT.
 10. Create a conditional column using IIF that shows 'Expensive' if the Price is greater than 1000, and 'Affordable' if less, from Products table.
 11. Write a query to find employees in the Employees table who have either Age < 25 or Salary > 60000.
-12. Use IF statement to update the salary of an employee based on their department, increase by 10% if they work in 'HR' or EmployeeID = 5
+12. Update the salary of an employee based on their department, increase by 10% if they work in 'HR' or EmployeeID = 5
 ________________________________________
 
 ##  Hard-Level Tasks 
@@ -32,7 +32,7 @@ ________________________________________
 14. Write a query that uses CASE to assign 'Top Tier' if SaleAmount > 500, 'Mid Tier' if SaleAmount BETWEEN 200 AND 500, and 'Low Tier' otherwise. (From Sales table)
 15. Use EXCEPT to find customers' ID who have placed orders but do not have a corresponding record in the Invoices table.
 16. Write a query that uses a CASE statement to determine the discount percentage based on the quantity purchased. Use orders table. Result set should show  customerid, quantity and discount percentage. The discount should be applied as follows:
-        More than 1 item: 3% 
+        1 item: 3% 
         Between 1 and 3 items : 5% 
         Otherwise: 7% 
 
