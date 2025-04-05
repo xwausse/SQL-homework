@@ -71,31 +71,31 @@ students are scored based on what their query returns(does it fulfill the requir
 
 ## 🔴 **Hard-Level Tasks (9)**
 
-20. **Using the `Employees` table**, write a query to find employees whose salary is greater than the average salary of all employees.  
+19. **Using the `Employees` table**, write a query to find employees whose salary is greater than the average salary of all employees.  
    🔁 *Expected Output:* `EmployeeName`, `Salary`
 
-21. **Using the `Orders` and `Payments` tables**, write a query to list all orders placed before 2020 that have no corresponding payment.  
+20. **Using the `Orders` and `Payments` tables**, write a query to list all orders placed before 2020 that have no corresponding payment.  
    🔁 *Expected Output:* `OrderID`, `OrderDate`
 
-22. **Using the `Products` and `Categories` tables**, write a query to return products that do not have a matching category.  
+21. **Using the `Products` and `Categories` tables**, write a query to return products that do not have a matching category.  
    🔁 *Expected Output:* `ProductID`, `ProductName`
 
-23. **Using the `Employees` table**, write a query to find employees who report to the same manager and earn more than 60000.  
+22. **Using the `Employees` table**, write a query to find employees who report to the same manager and earn more than 60000.  
    🔁 *Expected Output:* `Employee1`, `Employee2`, `ManagerID`, `Salary`
 
-24. **Using the `Employees` and `Departments` tables**, write a query to return employees who work in departments whose name starts with the letter 'M'.  
+23. **Using the `Employees` and `Departments` tables**, write a query to return employees who work in departments whose name starts with the letter 'M'.  
    🔁 *Expected Output:* `EmployeeName`, `DepartmentName`
 
-25. **Using the `Products` and `Sales` tables**, write a query to list sales where the amount is greater than 500, including product names.  
+24. **Using the `Products` and `Sales` tables**, write a query to list sales where the amount is greater than 500, including product names.  
    🔁 *Expected Output:* `SaleID`, `ProductName`, `SaleAmount`
 
-26. **Using the `Students`, `Courses`, and `Enrollments` tables**, write a query to find students who have **not** enrolled in the course 'Math 101'.  
+25. **Using the `Students`, `Courses`, and `Enrollments` tables**, write a query to find students who have **not** enrolled in the course 'Math 101'.  
    🔁 *Expected Output:* `StudentID`, `StudentName`
 
-27. **Using the `Orders` and `Payments` tables**, write a query to return orders that are missing payment details.  
+26. **Using the `Orders` and `Payments` tables**, write a query to return orders that are missing payment details.  
    🔁 *Expected Output:* `OrderID`, `OrderDate`, `PaymentID`
 
-28. **Using the `Products` and `Categories` tables**, write a query to list products that belong to either the 'Electronics' or 'Furniture' category.  
+27. **Using the `Products` and `Categories` tables**, write a query to list products that belong to either the 'Electronics' or 'Furniture' category.  
    🔁 *Expected Output:* `ProductID`, `ProductName`, `CategoryName`
 
 ---
