@@ -34,7 +34,7 @@ Notes before doing the tasks: Tasks should be solved using SQL Server. It does n
 
 ---
 
-## 🟠 Medium-Level Tasks (7)
+## 🟠 Medium-Level Tasks (6)
 
 8. **Return**: `CustomerName`, `OrderID`, `OrderTotal`  
    **Task**: Show the customers who have placed an order where the total amount is greater than 500.  
@@ -52,15 +52,11 @@ Notes before doing the tasks: Tasks should be solved using SQL Server. It does n
     **Task**: Show the employees who work in the HR department and earn a salary greater than 50000.  
     **Tables Used**: `Employees`, `Departments`
 
-12. **Return**: `CustomerName`, `MostRecentOrderDate`, `OrderID`  
-    **Task**: Display each customer along with their most recent order, including those who haven't ordered anything.  
-    **Tables Used**: `Customers`, `Orders` (as a derived table)
-
-13. **Return**: `ProductName`, `SaleDate`, `StockQuantity`  
+12. **Return**: `ProductName`, `SaleDate`, `StockQuantity`  
     **Task**: List the products that were sold in 2023 and had more than 50 units in stock at the time.  
     **Tables Used**: `Products`, `Sales`
 
-14. **Return**: `EmployeeName`, `DepartmentName`, `HireDate`  
+13. **Return**: `EmployeeName`, `DepartmentName`, `HireDate`  
     **Task**: Show employees who either work in the Sales department or were hired after 2020.  
     **Tables Used**: `Employees`, `Departments`
 
@@ -68,31 +64,31 @@ Notes before doing the tasks: Tasks should be solved using SQL Server. It does n
 
 ## 🔴 Hard-Level Tasks (7)
 
-15. **Return**: `CustomerName`, `OrderID`, `Address`, `OrderDate`  
+14. **Return**: `CustomerName`, `OrderID`, `Address`, `OrderDate`  
     **Task**: List all orders made by customers in the USA whose address starts with 4 digits.  
     **Tables Used**: `Customers`, `Orders`
 
-16. **Return**: `ProductName`, `Category`, `SaleAmount`  
+15. **Return**: `ProductName`, `Category`, `SaleAmount`  
     **Task**: Display product sales for items in the Electronics category or where the sale amount exceeded 350.  
     **Tables Used**: `Products`, `Sales`
 
-17. **Return**: `CategoryName`, `ProductCount`  
+16. **Return**: `CategoryName`, `ProductCount`  
     **Task**: Show the number of products available in each category.  
     **Tables Used**: `Products` (as a derived table), `Categories`
 
-18. **Return**: `CustomerName`, `City`, `OrderID`, `Amount`  
+17. **Return**: `CustomerName`, `City`, `OrderID`, `Amount`  
     **Task**: List orders where the customer is from Los Angeles and the order amount is greater than 300.  
     **Tables Used**: `Customers`, `Orders`
 
-19. **Return**: `EmployeeName`, `DepartmentName`  
+18. **Return**: `EmployeeName`, `DepartmentName`  
     **Task**: Display employees who are in the HR or Finance department, or whose name contains at least 4 vowels.  
     **Tables Used**: `Employees`, `Departments`
 
-20. **Return**: `ProductName`, `QuantitySold`, `Price`  
+19. **Return**: `ProductName`, `QuantitySold`, `Price`  
     **Task**: List products that had a sales quantity above 100 and a price above 500.  
     **Tables Used**: `Sales`, `Products`
 
-21. **Return**: `EmployeeName`, `DepartmentName`, `Salary`  
+20. **Return**: `EmployeeName`, `DepartmentName`, `Salary`  
     **Task**: Show employees who are in the Sales or Marketing department and have a salary above 60000.  
     **Tables Used**: `Employees`, `Departments`
 
