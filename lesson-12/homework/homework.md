@@ -1,5 +1,7 @@
 lesson-12 Practice
 
+You can find tsql2012 database in here: https://gist.github.com/alejotima/cac70484db23834591b142ad07e79e67
+
 Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. Students are scored based on what their query returns(does it fulfill the requirments). One way of solution is enough if it is true, other ways might be suggested but should not affect the score.
 
 1. Combine Two Tables
