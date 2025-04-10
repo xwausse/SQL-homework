@@ -5,6 +5,7 @@ This document contains a collection of SQL homework tasks divided into three dif
 ---
 
 Easy Tasks 
+
 1.Create a numbers table using a recursive query.
 
 2.Beginning at 1, this script uses a recursive statement to double the number for each record
@@ -27,6 +28,7 @@ Easy Tasks
 
 
 Medium Tasks
+
 1.This script uses recursion to calculate factorials
 
 2.This script uses recursion to calculate Fibonacci numbers
@@ -49,6 +51,7 @@ Medium Tasks
 
 
 Difficult Tasks
+
 1.Create a numbers table that shows all numbers 1 through n and their order gradually increasing by the next number in the sequence.(Example:n=5 | 1, 12, 123, 1234, 12345)
 
 2.Write a query using a derived table to find the employees who have made the most sales in the last 6 months.(Employees,Sales)
