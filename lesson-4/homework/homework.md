@@ -10,7 +10,7 @@ Here are 27 homework tasks for Lesson 4, categorized into easy, medium, and hard
 ✅ Wildcard Characters
 ✅ ANY and ALL Operators
 
-Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. It does not matter whether we close queries with ; or not
+Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. Students are scored based on what their query returns(does it fulfill the requirments). One way of solution is enough if it is true, other ways might be suggested but should not affect the score.
 ________________________________________
 ## 🟢 Easy-Level Tasks (10)
 1. Write a query to select the top 5 employees from the Employees table.
