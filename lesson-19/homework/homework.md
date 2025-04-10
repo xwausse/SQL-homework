@@ -1,78 +1,200 @@
-# SQL Homework Tasks: Window Functions and Ranking
+--Lesson 19 SUBQUERIES, EXISTS
 
-This document contains SQL homework tasks focusing on window functions (such as ROW_NUMBER, RANK, DENSE_RANK, NTILE, LEAD, and LAG) and cumulative calculations. The tasks are divided into three difficulty levels: **Easy**, **Medium**, and **Difficult**.
+Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. Students are scored based on what their query returns(does it fulfill the requirments). One way of solution is enough if it is true, other ways might be suggested but should not affect the score.
 
----
 
-## Easy Tasks (20)
+CREATE TABLE #Employees (
+    EmployeeID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    DepartmentID INT,
+    Salary DECIMAL(10, 2),
+    HireDate DATE
+);
 
-1. Write a query to assign a row number to each employee in the **Employees** table ordered by their Salary.
-2. Create a query to rank all products based on their Price in descending order.
-3. Use the **DENSE_RANK()** function to rank employees by Salary in the **Employees** table.
-4. Write a query to display the next (lead) salary for each employee in the same department using the **LEAD()** function.
-5. Use **ROW_NUMBER()** to assign a unique number to each order in the **Orders** table.
-6. Create a query using **RANK()** to identify the highest and second-highest salaries in the **Employees** table.
-7. Write a query to show the previous (lagged) salary for each employee in the **Employees** table using the **LAG()** function.
-8. Use **NTILE(4)** to divide employees into 4 groups based on their Salary.
-9. Write a query to partition employees by **DepartmentID** and assign a row number within each department.
-10. Use **DENSE_RANK()** to rank products by Price in ascending order.
-11. Write a query to calculate the moving average of Price in the **Products** table using window functions.
-12. Use the **LEAD()** function to display the salary of the next employee for each row in the **Employees** table.
-13. Create a query to compute the cumulative sum of **SalesAmount** in the **Sales** table.
-14. Use **ROW_NUMBER()** to identify the top 5 most expensive products in the **Products** table.
-15. Write a query to partition the **Orders** table by **CustomerID** and calculate the total **OrderAmount** per customer.
-16. Use **RANK()** to rank orders in the **Orders** table based on their **OrderAmount**.
-17. Write a query to compute the percentage contribution of **SalesAmount** by **ProductCategory** in the **Sales** table.
-18. Use the **LEAD()** function to retrieve the next order date for each order in the **Orders** table.
-19. Write a query using **NTILE(3)** to divide employees into 3 groups based on their Age.
-20. Use **ROW_NUMBER()** to list the most recently hired employees from the **Employees** table.
+INSERT INTO #Employees (EmployeeID, FirstName, LastName, DepartmentID, Salary, HireDate)
+VALUES
+(1, 'John', 'Doe', 1, 60000, '2020-01-15'),
+(2, 'Jane', 'Smith', 2, 70000, '2019-03-22'),
+(3, 'Emily', 'Johnson', 1, 65000, '2021-05-18'),
+(4, 'Michael', 'Williams', 3, 80000, '2018-06-30'),
+(5, 'Chris', 'Jones', 2, 72000, '2022-02-11'),
+(6, 'Katie', 'Brown', 3, 61000, '2020-12-01'),
+(7, 'Sarah', 'Davis', 1, 58000, '2023-01-25'),
+(8, 'David', 'Miller', 2, 75000, '2017-04-17'),
+(9, 'Laura', 'Wilson', 3, 69000, '2019-08-08'),
+(10, 'Mark', 'Moore', 1, 62000, '2022-03-05'),
+(11, 'Lisa', 'Taylor', 2, 73000, '2018-09-10'),
+(12, 'James', 'Anderson', 3, 72000, '2021-07-15'),
+(13, 'Nancy', 'Thomas', 1, 64000, '2020-05-30'),
+(14, 'Robert', 'Jackson', 2, 68000, '2019-11-20'),
+(15, 'Patricia', 'White', 3, 69000, '2018-10-01'),
+(16, 'Charles', 'Harris', 1, 55000, '2023-02-28'),
+(17, 'Jessica', 'Martinez', 2, 70000, '2021-06-20'),
+(18, 'Daniel', 'Thompson', 3, 67000, '2017-07-14'),
+(19, 'Matthew', 'Garcia', 1, 64000, '2022-04-25'),
+(20, 'Danielle', 'Martinez', 2, 71000, '2020-03-12'),
+(21, 'Paul', 'Robinson', 3, 78000, '2018-05-03'),
+(22, 'Michelle', 'Clark', 1, 50000, '2023-03-10'),
+(23, 'Joseph', 'Rodriguez', 2, 74000, '2021-02-09'),
+(24, 'Angela', 'Lewis', 3, 66000, '2017-08-14'),
+(25, 'Thomas', 'Lee', 1, 73000, '2022-01-19'),
+(26, 'Rebecca', 'Walker', 2, 79000, '2019-12-12'),
+(27, 'Scott', 'Hall', 3, 72000, '2022-06-11'),
+(28, 'Betty', 'Allen', 1, 52000, '2023-01-28'),
+(29, 'Andrew', 'Young', 2, 66000, '2021-05-15'),
+(30, 'Arthur', 'Hernandez', 3, 71000, '2018-09-22'),
+(31, 'Brittany', 'King', 1, 64000, '2020-10-05'),
+(32, 'Jacqueline', 'Wright', 2, 70000, '2019-11-29'),
+(33, 'Kelly', 'Scott', 3, 64000, '2019-08-16'),
+(34, 'Gary', 'Torres', 1, 68000, '2020-07-13'),
+(35, 'Sara', 'Nguyen', 2, 71000, '2021-04-24'),
+(36, 'Albert', 'Hernandez', 3, 75000, '2019-06-20'),
+(37, 'Samantha', 'Carter', 1, 49000, '2023-01-15'),
+(38, 'Steve', 'Mitchell', 2, 77000, '2018-12-01'),
+(39, 'Brandon', 'Perez', 3, 71000, '2020-09-11'),
+(40, 'Deborah', 'Roberts', 1, 56000, '2019-10-22'),
+(41, 'Laura', 'Turner', 2, 64000, '2021-05-04'),
+(42, 'Philip', 'Phillips', 3, 69000, '2018-08-30'),
+(43, 'Tina', 'Campbell', 1, 62000, '2020-11-07'),
+(44, 'Greg', 'Parker', 2, 68000, '2022-03-14'),
+(45, 'Dennis', 'Evans', 3, 71000, '2021-01-01'),
+(46, 'Rose', 'Edwards', 1, 74000, '2020-09-05'),
+(47, 'Rachel', 'Collins', 2, 78000, '2018-06-01'),
+(48, 'Jordan', 'Stewart', 3, 70000, '2021-07-20'),
+(49, 'Christine', 'Sanchez', 1, 61000, '2019-02-18'),
+(50, 'Carlos', 'Morris', 2, 90000, '2022-05-27');
 
----
+CREATE TABLE #Departments (
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName VARCHAR(50),
+    Location VARCHAR(50)
+);
 
-## Medium Tasks (20)
+INSERT INTO #Departments (DepartmentID, DepartmentName, Location)
+VALUES
+(1, 'Sales', 'New York'),
+(2, 'Engineering', 'San Francisco'),
+(3, 'Marketing', 'Chicago'),
+(4, 'Purchasing', 'Los Angeles'),
+(5, 'Finance', 'Miami');
 
-1. Write a query to compute the cumulative average salary of employees, ordered by Salary.
-2. Use **RANK()** to rank products by their total sales while handling ties appropriately.
-3. Create a query to retrieve the previous order's date for each order in the **Orders** table using the **LAG()** function.
-4. Write a query to calculate the moving sum of Price for products with a window frame of 3 rows.
-5. Use **NTILE(4)** to assign employees to four salary ranges and display each employee's salary range.
-6. Write a query to partition the **Sales** table by **ProductID** and calculate the total **SalesAmount** per product.
-7. Use **DENSE_RANK()** to rank products by **StockQuantity** without gaps in the ranking.
-8. Create a query using **ROW_NUMBER()** to identify the second highest salary in each department.
-9. Write a query to calculate the running total of sales for each product in the **Sales** table.
-10. Use **LEAD()** to display the **SalesAmount** of the next row for each employee’s sale in the **Sales** table.
-11. Use **RANK()** to determine the highest earners within each department.
-12. Write a query to partition employees by **DepartmentID** and rank them by salary.
-13. Use **NTILE(5)** to divide products into five groups based on their Price.
-14. Write a query to calculate the difference between each employee's salary and the highest salary in their department.
-15. Use **LAG()** to display the previous product's **SalesAmount** for each sale.
-16. Write a query to calculate the cumulative sum of **OrderAmount** for each customer in the **Orders** table.
-17. Use **ROW_NUMBER()** to identify the 3rd most recent order for each customer in the **Orders** table.
-18. Write a query to partition employees by **DepartmentID** and rank them by their HireDate within each department.
-19. Use **DENSE_RANK()** to find the 3rd highest Salary in each department from the **Employees** table.
-20. Create a query using **LEAD()** to calculate the difference in **OrderDate** between consecutive orders.
+/*
+1. Retrieve Employees with Salary Greater than Average Salary
 
----
+2. Write a query to check if there are any employees in Department 1 using the EXISTS clause
 
-## Difficult Tasks (20)
+3. Write a query to return employees who work at the same department with Rachel Collins
 
-1. Write a query using **RANK()** to rank products by their sales (handling ties) but exclude the top 10% of products by sales.
-2. Use **ROW_NUMBER()** to list employees with over 5 years of service, ordered by their HireDate.
-3. Write a query using **NTILE(10)** to divide employees into 10 groups based on Salary and display each employee's group number.
-4. Use the **LEAD()** function to calculate the next **SalesAmount** for each sale by an employee and compare it with the current sale.
-5. Write a query to partition products by **CategoryID** and compute the average Price for each category.
-6. Use **RANK()** to determine the top 3 most-sold products and display their rankings, including handling ties.
-7. Create a query using **ROW_NUMBER()** to list the top 5 highest-paid employees from each department.
-8. Write a query to compute the moving average of sales over a 5-day window using both **LEAD()** and **LAG()** functions.
-9. Use **DENSE_RANK()** to find the products with the top 5 highest sales figures, ensuring no gaps in the ranking.
-10. Write a query using **NTILE(4)** to partition orders by **OrderAmount** into four quartiles and display the quartile for each order.
-11. Use **ROW_NUMBER()** to assign a unique sequence to each order in the **Orders** table and display the rank within each **CustomerID**.
-12. Write a query to partition employees by **DepartmentID** and calculate the total number of employees in each department.
-13. Use **RANK()** to list the top 3 highest salaries and the bottom 3 salaries within each department.
-14. Create a query using **LAG()** to calculate the percentage change in **SalesAmount** from the previous sale for each employee.
-15. Write a query to compute both the cumulative sum and cumulative average of sales for each product in the **Sales** table.
-16. Use **NTILE(3)** to rank employees by Age and display the distribution of age groups across the company.
-17. Write a query using **ROW_NUMBER()** to identify the top 10 employees with the highest sales, sorted by **SalesAmount**.
-18. Use **LEAD()** to calculate the difference between each product's Price and the Price of the subsequent product in the **Products** table.
-19. Create a query using **DENSE_RANK()** to rank employees based on a performance score and generate a performance report.
-20. Write a query using both **LAG()** and **LEAD()** to determine the difference in **SalesAmount** for each product relative to the previous and next orders in the **Orders** table.
+4. Retrieve employees who were hired after the last hired person for the department 2
+
+5. Find all employees whose salary is higher than the average salary of their respective department
+
+6. Write a query to get the count of employees in each department using a subquery. Return the result right after each employee
+
+7. Find the person who gets the minimum salary
+
+8. Find all employees who work in departments where the average salary is greater than $65,000
+
+9. List employees who were hired in the last 3 years from the last hire_date
+
+10. If there is anyone earning more than or equal to $80000, return all employees from that department
+
+11. Return the employees who earn the most in each department
+
+12. Get the names of the latest hired employee in each deparmtent. Return Departmentname, Firstname, Lastname, and hire date
+
+13. Find the average salary for employees in each department based on its location. Return the Location, DepartmentName, and AverageSalary
+
+14. Check if there is anyone who gets the same as the average salary. If so, return everyone from that department
+
+15. List all departments that have fewer employees than the overall average number of employees per department.
+
+16. Retrieve the names of employees who do not work in the department with the highest average salary.
+
+17. Create a query that returns the names of departments that do have employees using the EXISTS clause
+
+18. Return departments which have more seniors than juniors. 
+Juniors are those who have work experience less than 3 years, seniors more than 3 years. 
+Consider the latest hire_date to calculate the years of experience
+
+19. Return employees of the department with the most number of people
+
+20. For each department, find the difference between the highest and lowest salaries
+*/
+
+CREATE TABLE Projects (
+    ProjectID INT PRIMARY KEY,
+    ProjectName VARCHAR(100),
+    StartDate DATE,
+    EndDate DATE,
+    Budget DECIMAL(10, 2)
+);
+
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    HireDate DATE,
+    Salary DECIMAL(10, 2)
+);
+
+CREATE TABLE EmployeeProject (
+    EmployeeProjectID INT PRIMARY KEY,
+    EmployeeID INT,
+    ProjectID INT,
+    Role VARCHAR(50),
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID),
+    FOREIGN KEY (ProjectID) REFERENCES Projects(ProjectID)
+);
+
+
+INSERT INTO Projects (ProjectID, ProjectName, StartDate, EndDate, Budget) VALUES
+(1, 'Project Alpha', '2020-01-01', '2020-12-31', 100000),
+(2, 'Project Beta', '2021-01-01', '2021-12-31', 150000),
+(3, 'Project Gamma', '2022-01-01', '2022-12-31', 200000),
+(4, 'Project Delta', '2021-06-01', '2022-05-31', 250000),
+(5, 'Project Epsilon', '2023-01-01', '2023-12-31', 300000);
+
+
+INSERT INTO Employees (EmployeeID, FirstName, LastName, HireDate, Salary) VALUES 
+(1, 'John', 'Doe', '2019-01-15', 80000),
+(2, 'Jane', 'Smith', '2018-03-22', 95000),
+(3, 'Emily', 'Johnson', '2021-05-18', 70000),
+(4, 'Michael', 'Williams', '2020-06-30', 60000),
+(5, 'Chris', 'Jones', '2022-02-11', 85000),
+(6, 'Sarah', 'Davis', '2020-12-01', 75000),
+(7, 'David', 'Miller', '2019-04-17', 90000),
+(8, 'Laura', 'Wilson', '2021-08-08', 70000),
+(9, 'Robert', 'Clark', '2021-01-01', 72000),
+(10, 'Michelle', 'Lee', '2022-05-01', 88000);
+
+
+INSERT INTO EmployeeProject (EmployeeProjectID, EmployeeID, ProjectID, Role) VALUES
+(1, 1, 1, 'Lead'),
+(2, 2, 1, 'Member'),
+(3, 3, 2, 'Lead'),
+(4, 4, 2, 'Member'),
+(5, 5, 3, 'Member'),
+(6, 6, 3, 'Lead'),
+(7, 7, 4, 'Member'),
+(8, 8, 4, 'Member'),
+(9, 9, 5, 'Lead'),
+(10, 10, 5, 'Member');
+/*
+21. Find all project names that have no employees assigned as leads. Return the ProjectName.
+
+22. Retrieve names of employees who earn more than the average salary of all employees 
+involved in the projects they are working on. Return FirstName, LastName, Salary
+
+23. List all projects where there is only one member is assigned
+
+24. Find the project with the highest budget and show the difference of it with other projects
+
+25. Identify projects where the total salary of employees assigned as leads 
+exceeds the average salary of all lead employees across all projects
+*/
+
+
+
+
