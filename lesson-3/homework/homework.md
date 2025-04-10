@@ -2,13 +2,13 @@
 
 Here are 30 homework tasks for Lesson 3, categorized into easy, medium, and hard levels. These tasks cover:
 
-✅ Importing Data (BULK INSERT, Excel, Text, XML, JSON)
-✅ Exporting Data (Excel, Text, XML, JSON)
+✅ Importing Data (BULK INSERT, Excel, Text)
+✅ Exporting Data (Excel, Text)
 ✅ Comments, Identity column, NULL/NOT NULL values
 ✅ Unique Key, Primary Key, Foreign Key, Check Constraint
 ✅ Differences between UNIQUE KEY and PRIMARY KEY
 
-Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. It does not matter whether we close queries with ; or not
+Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. Students are scored based on what their query returns(does it fulfill the requirments). One way of solution is enough if it is true, other ways might be suggested but should not affect the score.
 ______________________________________
 
 ## 🟢 Easy-Level Tasks (10)
