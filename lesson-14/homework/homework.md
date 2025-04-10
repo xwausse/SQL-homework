@@ -4,75 +4,226 @@ This document contains a collection of SQL homework tasks divided into three dif
 
 ---
 
-## Easy Tasks (20)
+Easy Tasks 
+1.Create a numbers table using a recursive query.
 
-1. Write a query to find the total sales per employee using a derived table.
-2. Create a CTE to find the average salary of employees.
-3. Write a query using a derived table to find the highest sales for each product.
-4. Use a CTE to get the names of employees who have made more than 5 sales.
-5. Create a derived table that lists the top 5 customers by total purchase amount.
-6. Write a query using a CTE to find all products with sales greater than $500.
-7. Use a derived table to get the total number of orders for each customer.
-8. Create a CTE to find employees with salaries above the average salary.
-9. Write a query to find the total number of products sold using a derived table.
-10. Use a CTE to find the names of employees who have not made any sales.
-11. Write a query using a derived table to calculate the total revenue for each region.
-12. Use a CTE to get the employees who worked for more than 5 years.
-13. Create a query using a derived table to find customers who made more than 3 orders.
-14. Write a query using a CTE to find employees with the highest sales in a specific department.
-15. Use a derived table to calculate the average order value for each customer.
-16. Write a query using a CTE to find the number of employees in each department.
-17. Use a derived table to find the top-selling products in the last quarter.
-18. Write a query using a CTE to list employees who have sales higher than $1000.
-19. Create a derived table to find the number of orders made by each customer.
-20. Write a query using a CTE to find the total sales per employee for the last month.
+2.Beginning at 1, this script uses a recursive statement to double the number for each record
 
----
+3.Write a query to find the total sales per employee using a derived table.(Sales, Employees)
 
-## Medium Tasks (20)
+4.Create a CTE to find the average salary of employees.(Employees)
 
-1. Write a query using a CTE to calculate the running total of sales for each employee.
-2. Use a recursive CTE to generate a sequence of numbers from 1 to 10.
-3. Write a query using a derived table to calculate the average sales per region.
-4. Create a CTE to rank employees based on their total sales.
-5. Use a derived table to find the top 5 employees by the number of orders made.
-6. Write a query using a recursive CTE to list all employees reporting to a specific manager.
-7. Use a CTE to calculate the sales difference between the current month and the previous month.
-8. Create a derived table to find the employees who have made the highest sales in each department.
-9. Write a recursive CTE to find all the ancestors of an employee in a hierarchical organization.
-10. Use a CTE to find employees who have not sold anything in the last year.
-11. Write a query using a derived table to calculate the total sales per region and year.
-12. Use a recursive CTE to calculate the factorial of a number.
-13. Write a query using a derived table to find customers with more than 10 orders.
-14. Create a recursive CTE to traverse a product category hierarchy.
-15. Use a CTE to rank products based on total sales in the last year.
-16. Write a query using a derived table to find the sales per product category.
-17. Use a CTE to find the employees who achieved the highest sales growth compared to last year.
-18. Create a derived table to find employees with sales over $5000 in each quarter.
-19. Write a recursive CTE to list all descendants of a product in a product category tree.
-20. Use a derived table to find the top 3 employees by total sales amount in the last month.
+5.Write a query using a derived table to find the highest sales for each product.(Sales, Products)
 
----
+6.Use a CTE to get the names of employees who have made more than 5 sales.(Sales, Employees)
 
-## Difficult Tasks (20)
+7.Write a query using a CTE to find all products with sales greater than $500.(Sales, Products)
 
-1. Write a recursive CTE to generate the Fibonacci sequence up to the 20th term.
-2. Use a CTE to calculate the cumulative sales of employees over the past year.
-3. Write a recursive CTE to find all subordinates of a manager in a hierarchical company structure.
-4. Create a query using a derived table to find employees with sales above the company average for each region.
-5. Write a recursive CTE to calculate the depth of a product in a multi-level product hierarchy.
-6. Create a complex query that uses both a CTE and a derived table to calculate sales totals for each department and product.
-7. Use a recursive CTE to list all direct and indirect reports of a specific manager.
-8. Write a query using a derived table to find the employees who have made the most sales in the last 6 months.
-9. Create a recursive CTE to calculate the total cost of an order, including taxes and discounts.
-10. Use a CTE to find the employees with the largest sales growth rate over the past year.
-11. Write a recursive CTE to calculate the total number of sales for each employee over all years.
-12. Create a query using both a CTE and a derived table to find the highest-selling product and the employee who sold it.
-13. Write a recursive CTE to calculate all the generations of an organization’s hierarchy.
-14. Use a CTE to find all employees who made sales greater than the average of their department’s sales.
-15. Create a derived table to find the average sales per employee by region, considering only employees who made sales.
-16. Write a recursive CTE to identify employees with a direct or indirect report relationship to a specific manager.
-17. Use a CTE to calculate the average number of products sold by each employee in the last year.
-18. Write a query using both a derived table and a CTE to analyze sales performance by employee and product category.
-19. Use a recursive CTE to list all departments reporting to a specific parent department in a multi-level organizational structure.
-20. Write a recursive CTE to calculate the number of levels in a product category hierarchy, where each category can have subcategories.
+8.Create a CTE to find employees with salaries above the average salary.(Employees)
+
+9.Write a query to find the total number of products sold using a derived table.(Sales, Products)
+
+10.Use a CTE to find the names of employees who have not made any sales.(Sales, Employees)
+
+
+Medium Tasks
+1.This script uses recursion to calculate factorials
+
+2.This script uses recursion to calculate Fibonacci numbers
+
+3.This script uses recursion to split a string into rows of substrings for each character in the string.(Example)
+
+4.Create a CTE to rank employees based on their total sales.(Employees, Sales)
+
+5.Write a query using a derived table to find the top 5 employees by the number of orders made.(Employees, Sales)
+
+6.Use a CTE to calculate the sales difference between the current month and the previous month.(Sales)
+
+7.Write a query using a derived table to find the sales per product category.(Sales, Products)
+
+8.Use a CTE to rank products based on total sales in the last year.(Sales, Products)
+
+9.Create a derived table to find employees with sales over $5000 in each quarter.(Sales, Employees)
+
+10.Use a derived table to find the top 3 employees by total sales amount in the last month.(Sales, Employees)
+
+
+Difficult Tasks
+1.Create a numbers table that shows all numbers 1 through n and their order gradually increasing by the next number in the sequence.(Example:n=5 | 1, 12, 123, 1234, 12345)
+
+2.Write a query using a derived table to find the employees who have made the most sales in the last 6 months.(Employees,Sales)
+
+3.This script uses recursion to display a running total where the sum cannot go higher than 10 or lower than 0.(Numbers)
+
+4.Given a table of employee shifts, and another table of their activities, merge the two tables and write an SQL statement that produces the desired output. If an employee is scheduled and does not have an activity planned, label the time frame as “Work”. (Schedule,Activity)
+
+5.Create a complex query that uses both a CTE and a derived table to calculate sales totals for each department and product.(Employees, Sales, Products, Departments)
+
+
+
+
+
+/*CREATE TABLE Schedule
+(
+ScheduleID  CHAR(1) PRIMARY KEY,
+StartTime   DATETIME NOT NULL,
+EndTime     DATETIME NOT NULL
+);
+GO
+
+CREATE TABLE Activity
+(
+ScheduleID    CHAR(1) REFERENCES Schedule (ScheduleID),
+ActivityName  VARCHAR(100),
+StartTime     DATETIME,
+EndTime       DATETIME,
+PRIMARY KEY (ScheduleID, ActivityName, StartTime, EndTime)
+);
+GO
+
+INSERT INTO Schedule (ScheduleID, StartTime, EndTime) VALUES
+('A',CAST('2021-10-01 10:00:00' AS DATETIME),CAST('2021-10-01 15:00:00' AS DATETIME)),
+('B',CAST('2021-10-01 10:15:00' AS DATETIME),CAST('2021-10-01 12:15:00' AS DATETIME));
+GO
+
+INSERT INTO Activity (ScheduleID, ActivityName, StartTime, EndTime) VALUES
+('A','Meeting',CAST('2021-10-01 10:00:00' AS DATETIME),CAST('2021-10-01 10:30:00' AS DATETIME)),
+('A','Break',CAST('2021-10-01 12:00:00' AS DATETIME),CAST('2021-10-01 12:30:00' AS DATETIME)),
+('A','Meeting',CAST('2021-10-01 13:00:00' AS DATETIME),CAST('2021-10-01 13:30:00' AS DATETIME)),
+('B','Break',CAST('2021-10-01 11:00:00'AS DATETIME),CAST('2021-10-01 11:15:00' AS DATETIME));
+
+CREATE TABLE Numbers
+(
+Id         INTEGER,
+StepNumber INTEGER,
+[Count]    INTEGER
+);
+GO
+
+INSERT INTO Numbers VALUES
+ (1,1,1) 
+,(1,2,-2)
+,(1,3,-1)
+,(1,4,12)
+,(1,5,-2)
+,(2,1,7)
+,(2,2,-3);
+GO
+
+CREATE TABLE Example
+(
+Id       INTEGER IDENTITY(1,1) PRIMARY KEY,
+String VARCHAR(30) NOT NULL
+);
+GO
+
+INSERT INTO Example VALUES('123456789'),('abcdefghi');
+GO
+
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    DepartmentID INT,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Salary DECIMAL(10, 2)
+);
+
+INSERT INTO Employees (EmployeeID, DepartmentID, FirstName, LastName, Salary) VALUES
+(1, 1, 'John', 'Doe', 60000.00),
+(2, 1, 'Jane', 'Smith', 65000.00),
+(3, 2, 'James', 'Brown', 70000.00),
+(4, 3, 'Mary', 'Johnson', 75000.00),
+(5, 4, 'Linda', 'Williams', 80000.00),
+(6, 2, 'Michael', 'Jones', 85000.00),
+(7, 1, 'Robert', 'Miller', 55000.00),
+(8, 3, 'Patricia', 'Davis', 72000.00),
+(9, 4, 'Jennifer', 'García', 77000.00),
+(10, 1, 'William', 'Martínez', 69000.00);
+
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY,
+    DepartmentName VARCHAR(50)
+);
+
+INSERT INTO Departments (DepartmentID, DepartmentName) VALUES
+(1, 'HR'),
+(2, 'Sales'),
+(3, 'Marketing'),
+(4, 'Finance'),
+(5, 'IT'),
+(6, 'Operations'),
+(7, 'Customer Service'),
+(8, 'R&D'),
+(9, 'Legal'),
+(10, 'Logistics');
+
+CREATE TABLE Sales (
+    SalesID INT PRIMARY KEY,
+    EmployeeID INT,
+    ProductID INT,
+    SalesAmount DECIMAL(10, 2),
+    SaleDate DATE
+);
+
+INSERT INTO Sales (SalesID, EmployeeID, ProductID, SalesAmount, SaleDate) VALUES
+(1, 1, 1, 1500.00, '2025-01-01'),
+(2, 2, 2, 2000.00, '2025-01-02'),
+(3, 3, 3, 1200.00, '2025-01-03'),
+(4, 4, 4, 1800.00, '2025-01-04'),
+(5, 5, 5, 2200.00, '2025-01-05'),
+(6, 6, 6, 1400.00, '2025-01-06'),
+(7, 7, 1, 2500.00, '2025-01-07'),
+(8, 8, 2, 1700.00, '2025-01-08'),
+(9, 9, 3, 1600.00, '2025-01-09'),
+(10, 10, 4, 1900.00, '2025-01-10'),
+(11, 1, 5, 2100.00, '2025-01-11'),
+(12, 2, 6, 1300.00, '2025-01-12'),
+(13, 3, 1, 2000.00, '2025-01-13'),
+(14, 4, 2, 1800.00, '2025-01-14'),
+(15, 5, 3, 1500.00, '2025-01-15'),
+(16, 6, 4, 2200.00, '2025-01-16'),
+(17, 7, 5, 1700.00, '2025-01-17'),
+(18, 8, 6, 1600.00, '2025-01-18'),
+(19, 9, 1, 2500.00, '2025-01-19'),
+(20, 10, 2, 1800.00, '2025-01-20'),
+(21, 1, 3, 1400.00, '2025-01-21'),
+(22, 2, 4, 1900.00, '2025-01-22'),
+(23, 3, 5, 2100.00, '2025-01-23'),
+(24, 4, 6, 1600.00, '2025-01-24'),
+(25, 5, 1, 1500.00, '2025-01-25'),
+(26, 6, 2, 2000.00, '2025-01-26'),
+(27, 7, 3, 2200.00, '2025-01-27'),
+(28, 8, 4, 1300.00, '2025-01-28'),
+(29, 9, 5, 2500.00, '2025-01-29'),
+(30, 10, 6, 1800.00, '2025-01-30'),
+(31, 1, 1, 2100.00, '2025-02-01'),
+(32, 2, 2, 1700.00, '2025-02-02'),
+(33, 3, 3, 1600.00, '2025-02-03'),
+(34, 4, 4, 1900.00, '2025-02-04'),
+(35, 5, 5, 2000.00, '2025-02-05'),
+(36, 6, 6, 2200.00, '2025-02-06'),
+(37, 7, 1, 2300.00, '2025-02-07'),
+(38, 8, 2, 1750.00, '2025-02-08'),
+(39, 9, 3, 1650.00, '2025-02-09'),
+(40, 10, 4, 1950.00, '2025-02-10');
+
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    CategoryID INT,
+    ProductName VARCHAR(100),
+    Price DECIMAL(10, 2)
+);
+
+INSERT INTO Products (ProductID, CategoryID, ProductName, Price) VALUES
+(1, 1, 'Laptop', 1000.00),
+(2, 1, 'Smartphone', 800.00),
+(3, 2, 'Tablet', 500.00),
+(4, 2, 'Monitor', 300.00),
+(5, 3, 'Headphones', 150.00),
+(6, 3, 'Mouse', 25.00),
+(7, 4, 'Keyboard', 50.00),
+(8, 4, 'Speaker', 200.00),
+(9, 5, 'Smartwatch', 250.00),
+(10, 5, 'Camera', 700.00);
+
+
