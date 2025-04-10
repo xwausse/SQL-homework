@@ -5,39 +5,69 @@ Notes before doing the tasks: Tasks should be solved using SQL Server. It does n
 --Easy Tasks
 
 1.You need to write a query that outputs "100-Steven King", meaning emp_id + first_name + last_name in that format using employees table.
+
 2.Update the portion of the phone_number in the employees table, within the phone number the substring '124' will be replaced by '999'
+
 3.That displays the first name and the length of the first name for all employees whose name starts with the letters 'A', 'J' or 'M'. Give each column an appropriate label. Sort the results by the employees' first names.(Employees)
+
 4.Write an SQL query to find the total salary for each manager ID.(Employees table)
+
 5.Write a query to retrieve the year and the highest value from the columns Max1, Max2, and Max3 for each row in the TestMax table
+
 6.Find me odd numbered movies description is not boring.(cinema)
+
 7.You have to sort data based on the Id but Id with 0 should always be the last row. Now the question is can you do that with a single order by column.(SingleOrder)
+
 8.Write an SQL query to select the first non-null value from a set of columns. If the first column is null, move to the next, and so on. If all columns are null, return null.(person)
+
 9.Find the employees who have been with the company for more than 10 years, but less than 15 years. Display their Employee ID, First Name, Last Name, Hire Date, and the Years of Service (calculated as the number of years between the current date and the hire date, rounded to two decimal places).(Employees)
+
 10.Find the employees who have a salary greater than the average salary of their respective department.(Employees)
+
 
 --Medium Tasks
 1.Write an SQL query that separates the uppercase letters, lowercase letters, numbers, and other characters from the given string 'tf56sd#%OqH' into separate columns.
+
 2.split column FullName into 3 part ( Firstname, Middlename, and Lastname).(Students Table)
+
 3.For every customer that had a delivery to California, provide a result set of the customer orders that were delivered to Texas. (Orders Table)
+
 4.Write an SQL query to transform a table where each product has a total quantity into a new table where each row represents a single unit of that product.For example, if A and B, it should be A,B and B,A.(Ungroup)
+
 5.Write an SQL statement that can group concatenate the following values.(DMLTable)
+
 6.Write an SQL query to determine the Employment Stage for each employee based on their HIRE_DATE. The stages are defined as follows:
+
 If the employee has worked for less than 1 year → 'New Hire'
+
 If the employee has worked for 1 to 5 years → 'Junior'
+
 If the employee has worked for 5 to 10 years → 'Mid-Level'
+
 If the employee has worked for 10 to 20 years → 'Senior'
+
 If the employee has worked for more than 20 years → 'Veteran'(Employees)
+
 7.Find the employees who have a salary greater than the average salary of their respective department(Employees)
+
 8.Find all employees whose names (concatenated first and last) contain the letter "a" and whose salary is divisible by 5(Employees)
+
 9.The total number of employees in each department and the percentage of those employees who have been with the company for more than 3 years(Employees)
+
 10.Write an SQL statement that determines the most and least experienced Spaceman ID by their job description.(Personal)
+
 
 --Difficult Tasks
 1.Write an SQL query that replaces each row with the sum of its value and the previous row's value. (Students table)
+
 2.Given the following hierarchical table, write an SQL statement that determines the level of depth each employee has from the president. (Employee table)
+
 3.You are given the following table, which contains a VARCHAR column that contains mathematical equations. Sum the equations and provide the answers in the output.(Equations)
+
 4.Given the following dataset, find the students that share the same birthday.(Student Table)
+
 5.You have a table with two players (Player A and Player B) and their scores. If a pair of players have multiple entries, aggregate their scores into a single row for each unique pair of players. Write an SQL query to calculate the total score for each unique player pair(PlayerScores)
+
 
 
 
