@@ -194,7 +194,3 @@ involved in the projects they are working on. Return FirstName, LastName, Salary
 25. Identify projects where the total salary of employees assigned as leads 
 exceeds the average salary of all lead employees across all projects
 */
-
-
-
-
