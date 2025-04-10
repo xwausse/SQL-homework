@@ -1,78 +1,295 @@
-# SQL Homework Tasks: Window Functions & Cumulative Calculations
+--Lesson 20 PRACTICE
 
-This document contains SQL homework tasks focusing on window functions and cumulative calculations. The tasks are divided into three difficulty levels: **Easy**, **Medium**, and **Difficult**. Some table and column names have been adjusted to provide variety.
+CREATE TABLE #Sales (
+    SaleID INT PRIMARY KEY IDENTITY(1,1),
+    CustomerName VARCHAR(100),
+    Product VARCHAR(100),
+    Quantity INT,
+    Price DECIMAL(10,2),
+    SaleDate DATE
+);
 
----
 
-## Easy Tasks (20)
+INSERT INTO #Sales (CustomerName, Product, Quantity, Price, SaleDate) VALUES
+('Alice', 'Laptop', 1, 1200.00, '2024-01-15'),
+('Bob', 'Smartphone', 2, 800.00, '2024-02-10'),
+('Charlie', 'Tablet', 1, 500.00, '2024-02-20'),
+('David', 'Laptop', 1, 1300.00, '2024-03-05'),
+('Eve', 'Smartphone', 3, 750.00, '2024-03-12'),
+('Frank', 'Headphones', 2, 100.00, '2024-04-08'),
+('Grace', 'Smartwatch', 1, 300.00, '2024-04-25'),
+('Hannah', 'Tablet', 2, 480.00, '2024-05-05'),
+('Isaac', 'Laptop', 1, 1250.00, '2024-05-15'),
+('Jack', 'Smartphone', 1, 820.00, '2024-06-01');
 
-1. Write a query to calculate the running total of `SalesAmount` for each product in the **Sales** table, ordered by `SaleDate`.
-2. Use the `SUM()` aggregate window function to calculate the cumulative sum of `Amount` for each customer in the **Orders** table.
-3. Write a query to find the running total of `OrderAmount` in the **Orders** table, partitioned by `CustomerID`.
-4. Use the `AVG()` window function to calculate the average sales amount up to the current row for each product in the **Sales** table.
-5. Write a query to rank each order’s `OrderAmount` using the `RANK()` window function.
-6. Use the `LEAD()` function to retrieve the next row's `Amount` for each product in the **Sales** table.
-7. Write a query to calculate the total sales for each customer in the **Orders** table using the `SUM()` function as a window function.
-8. Use the `COUNT()` function to determine the number of orders placed up to the current row in the **Orders** table.
-9. Write a query to partition the **Sales** table by `ProductCategory` and calculate the running total of `SalesAmount` for each category.
-10. Use `ROW_NUMBER()` to assign a unique rank to each order in the **Orders** table, ordered by `OrderDate`.
-11. Write a query using `LAG()` to find the `OrderAmount` from the previous row for each order in the **Orders** table.
-12. Use `NTILE(4)` to divide products in the **Products** table into 4 equal groups based on `Price`.
-13. Write a query using `SUM()` to calculate the cumulative total of sales for each salesperson in the **Sales** table.
-14. Use `DENSE_RANK()` to rank the products in the **Products** table based on `StockQuantity`.
-15. Write a query to compute the difference between the current and next `OrderAmount` in the **Orders** table using `LEAD()`.
-16. Use `RANK()` to assign a rank to products in the **Products** table, ordered by `Price`.
-17. Write a query using `AVG()` to calculate the average order amount for each customer in the **Orders** table.
-18. Use `ROW_NUMBER()` to assign a unique row number to each employee in the **Employees** table, ordered by `Salary`.
-19. Write a query to partition the **Sales** table by `StoreID` and calculate the cumulative sum of `SalesAmount` for each store.
-20. Use `LAG()` to find the previous order's `OrderAmount` in the **Orders** table.
+/*
+1. Find customers who purchased at least one item in March 2024 using EXISTS
 
----
+2. Find the product with the highest total sales revenue using a subquery.
 
-## Medium Tasks (20)
+3. Find the second highest sale amount using a subquery
 
-1. Write a query using `SUM()` to calculate the cumulative sum of `SalesAmount` for each employee in the **Sales** table.
-2. Use `LEAD()` to calculate the difference in `OrderAmount` between the current row and the next row in the **Orders** table.
-3. Write a query to find the top 5 products based on `SalesAmount` using `ROW_NUMBER()` in the **Sales** table.
-4. Use `RANK()` to determine the products with the top 10 sales in the **Products** table, ordered by `SalesAmount`.
-5. Write a query using `COUNT()` to calculate the number of orders per product in the **Sales** table.
-6. Write a query using `SUM()` to calculate the running total of `SalesAmount` for each `ProductCategory`.
-7. Use `DENSE_RANK()` to rank employees in the **Employees** table by `Salary` within each `DepartmentID`.
-8. Write a query to calculate the moving average of `SalesAmount` for each product in the **Sales** table.
-9. Use `NTILE(3)` to divide products in the **Products** table into 3 groups based on their `Price`.
-10. Write a query using `LAG()` to find the previous `SalesAmount` for each employee’s sale.
-11. Write a query to compute the cumulative sum of `SalesAmount` for each salesperson, ordered by `SaleDate`.
-12. Use `LEAD()` to retrieve the `SalesAmount` of the next sale for each product in the **Sales** table.
-13. Write a query to calculate the moving sum of `SalesAmount` for each product in the **Products** table using a window function.
-14. Use `RANK()` to identify the employees with the top 3 salaries in the **Employees** table.
-15. Write a query using `AVG()` to calculate the average order amount for each customer in the **Orders** table.
-16. Use `ROW_NUMBER()` to assign a unique row number to orders in the **Orders** table, ordered by `OrderDate`.
-17. Write a query using `SUM()` to calculate the running total of `SalesAmount` for each employee in the **Sales** table, partitioned by `DepartmentID`.
-18. Use `NTILE(5)` to divide the employees in the **Employees** table into 5 equal groups based on their `Salary`.
-19. Write a query to calculate both the cumulative sum of `SalesAmount` and the total sales for each product in the **Sales** table.
-20. Use `DENSE_RANK()` to identify the products with the top 5 highest `SalesAmount` in the **Sales** table.
+4. Find the total quantity of products sold per month using a subquery
 
----
+5. Find customers who bought same products as another customer using EXISTS
+*/
 
-## Difficult Tasks (20)
+--Question 6. 
 
-1. Write a query using `SUM()` to calculate the running total of `SalesAmount` for each product and store in the **Sales** table.
-2. Use `LEAD()` to calculate the percentage change in `OrderAmount` between the current and next row in the **Orders** table.
-3. Write a query using `ROW_NUMBER()` to return the top 3 products by `SalesAmount`, ensuring ties are handled appropriately.
-4. Use `RANK()` to assign a rank to each employee in the **Employees** table based on `Salary`, partitioned by `DepartmentID`.
-5. Write a query to find the top 10% of orders in the **Orders** table based on `OrderAmount` using the `NTILE()` function.
-6. Use `LAG()` to calculate the change in `SalesAmount` between the previous and current sale for each product in the **Sales** table.
-7. Write a query to compute the cumulative average of `SalesAmount` for each product, ordered by `SaleDate`.
-8. Use `DENSE_RANK()` to identify the products with the top 5 highest `SalesAmount` in the **Products** table, ignoring ties.
-9. Write a query to partition the **Sales** table by `ProductCategory` and calculate the running total of `SalesAmount` for each category.
-10. Use both `LEAD()` and `LAG()` together to find the difference in `OrderAmount` between the previous and next rows in the **Orders** table.
-11. Write a query using `SUM()` to calculate the cumulative total of `SalesAmount` for each salesperson, ordered by `SaleDate`.
-12. Use `NTILE(10)` to divide the products in the **Products** table into 10 groups based on `Price`.
-13. Write a query to compute the moving average of `OrderAmount` in the **Orders** table using `AVG()` and an appropriate window frame.
-14. Use `ROW_NUMBER()` to rank employees by `Salary` within each department in the **Employees** table.
-15. Write a query using `COUNT()` to calculate the number of orders per customer in the **Orders** table.
-16. Use `RANK()` to identify the products with the top 3 highest sales numbers in the **Sales** table, considering ties.
-17. Write a query to compute the cumulative sales total for each employee and product in the **Sales** table.
-18. Use `DENSE_RANK()` to identify the employees with the highest sales within each department in the **Sales** table.
-19. Write a query to partition the **Sales** table by `StoreID` and calculate the cumulative total of `SalesAmount` for each store.
-20. Use `LAG()` to calculate the difference in `SalesAmount` for each product between the previous and current sale in the **Sales** table.
+create table Fruits(Name varchar(50), Fruit varchar(50))
+insert into Fruits values ('Francesko', 'Apple'), ('Francesko', 'Apple'), ('Francesko', 'Apple'), ('Francesko', 'Orange'),
+							('Francesko', 'Banana'), ('Francesko', 'Orange'), ('Li', 'Apple'), 
+							('Li', 'Orange'), ('Li', 'Apple'), ('Li', 'Banana'), ('Mario', 'Apple'), ('Mario', 'Apple'), 
+							('Mario', 'Apple'), ('Mario', 'Banana'), ('Mario', 'Banana'), 
+							('Mario', 'Orange')
+-- Return how many fruits does each person have in individual fruit level
+
+--Expected Output
+/*
+Name		Apple	Orange	Banana
+Francesko	3		2		1
+Li			2		1		1
+Mario		3		1		2
+*/
+
+--Question 7. 
+create table Family(ParentId int, ChildID int)
+insert into Family values (1, 2), (2, 3), (3, 4)
+
+--Return older people in the family with younger ones
+
+--1 Oldest person in the family --grandfather
+--2 Father
+--3 Son
+--4 Grandson
+
+/*
+Expected output
+1 2
+1 3
+1 4
+2 3
+2 4
+3 4
+*/
+
+--Question 8. 
+
+
+CREATE TABLE #Orders
+(
+CustomerID     INTEGER,
+OrderID        INTEGER,
+DeliveryState  VARCHAR(100) NOT NULL,
+Amount         MONEY NOT NULL,
+PRIMARY KEY (CustomerID, OrderID)
+);
+GO
+
+INSERT INTO #Orders (CustomerID, OrderID, DeliveryState, Amount) VALUES
+(1001,1,'CA',340),(1001,2,'TX',950),(1001,3,'TX',670),
+(1001,4,'TX',860),(2002,5,'WA',320),(3003,6,'CA',650),
+(3003,7,'CA',830),(4004,8,'TX',120);
+GO
+
+/*
+Write an SQL statement given the following requirements.
+For every customer that had a delivery to California, provide a result set of the customer orders that
+were delivered to Texas*/
+
+--Question 9.
+
+create table #residents(resid int identity, fullname varchar(50), address varchar(100))
+
+insert into #residents values 
+('Dragan', 'city=Bratislava country=Slovakia name=Dragan age=45'),
+('Diogo', 'city=Lisboa country=Portugal age=26'),
+('Celine', 'city=Marseille country=France name=Celine age=21'),
+('Theo', 'city=Milan country=Italy age=28'),
+('Rajabboy', 'city=Tashkent country=Uzbekistan age=22')
+
+-- Insert the names of residents if they are missing
+
+--Question 10
+
+CREATE TABLE #Routes
+(
+RouteID        INTEGER NOT NULL,
+DepartureCity  VARCHAR(30) NOT NULL,
+ArrivalCity    VARCHAR(30) NOT NULL,
+Cost           MONEY NOT NULL,
+PRIMARY KEY (DepartureCity, ArrivalCity)
+);
+GO
+
+INSERT INTO #Routes (RouteID, DepartureCity, ArrivalCity, Cost) VALUES
+(1,'Tashkent','Samarkand',100),
+(2,'Samarkand','Bukhoro',200),
+(3,'Bukhoro','Khorezm',300),
+(4,'Samarkand','Khorezm',400),
+(5,'Tashkent','Jizzakh',100),
+(6,'Jizzakh','Samarkand',50);
+GO
+
+--Write a query to return the route to reach from Tashkent to Khorezm. The result should include the cheapest
+--and the most expensive routes
+
+/*
+Expected Output
+Tashkent - Samarkand - Khorezm   500
+Tashkent - Samarkand - Bukhoro - Khorezm  600
+*/
+
+--Question 11
+
+CREATE TABLE #RankingPuzzle
+(
+     ID INT
+    ,Vals VARCHAR(10)
+)
+GO
+ 
+INSERT INTO #RankingPuzzle VALUES
+(1,'Product'),
+(2,'a'),
+(3,'a'),
+(4,'a'),
+(5,'a'),
+(6,'Product'),
+(7,'b'),
+(8,'b'),
+(9,'Product'),
+(10,'c')
+GO
+
+--Rank products based on their order of insertion.
+
+--Question 12 
+
+CREATE TABLE #Consecutives
+(
+     Id VARCHAR(5)  
+    ,Vals INT /* Value can be 0 or 1 */
+)
+GO
+ 
+INSERT INTO #Consecutives VALUES
+('a', 1),
+('a', 0),
+('a', 1),
+('a', 1),
+('a', 1),
+('a', 0),
+('b', 1),
+('b', 1),
+('b', 0),
+('b', 1),
+('b', 0)
+GO
+
+--You have to return Ids, what number of the letter would be next if inserted, 
+--the maximum length of the consecutive occurence of the same digit
+
+--Question 13
+CREATE TABLE #EmployeeSales (
+    EmployeeID INT PRIMARY KEY IDENTITY(1,1),
+    EmployeeName VARCHAR(100),
+    Department VARCHAR(50),
+    SalesAmount DECIMAL(10,2),
+    SalesMonth INT,
+    SalesYear INT
+);
+
+-- Insert Sample Data
+INSERT INTO #EmployeeSales (EmployeeName, Department, SalesAmount, SalesMonth, SalesYear) VALUES
+('Alice', 'Electronics', 5000, 1, 2024),
+('Bob', 'Electronics', 7000, 1, 2024),
+('Charlie', 'Furniture', 3000, 1, 2024),
+('David', 'Furniture', 4500, 1, 2024),
+('Eve', 'Clothing', 6000, 1, 2024),
+('Frank', 'Electronics', 8000, 2, 2024),
+('Grace', 'Furniture', 3200, 2, 2024),
+('Hannah', 'Clothing', 7200, 2, 2024),
+('Isaac', 'Electronics', 9100, 3, 2024),
+('Jack', 'Furniture', 5300, 3, 2024),
+('Kevin', 'Clothing', 6800, 3, 2024),
+('Laura', 'Electronics', 6500, 4, 2024),
+('Mia', 'Furniture', 4000, 4, 2024),
+('Nathan', 'Clothing', 7800, 4, 2024);
+
+--Find employees whose sales were higher than the average sales in their department
+
+--14. Find employees who had the highest sales in any given month using EXISTS
+
+--15. Find employees who made sales in every month using NOT EXISTS
+-- Insert Sample Data
+
+CREATE TABLE Products (
+    ProductID   INT PRIMARY KEY,
+    Name        VARCHAR(50),
+    Category    VARCHAR(50),
+    Price       DECIMAL(10,2),
+    Stock       INT
+);
+
+INSERT INTO Products (ProductID, Name, Category, Price, Stock) VALUES
+(1, 'Laptop', 'Electronics', 1200.00, 15),
+(2, 'Smartphone', 'Electronics', 800.00, 30),
+(3, 'Tablet', 'Electronics', 500.00, 25),
+(4, 'Headphones', 'Accessories', 150.00, 50),
+(5, 'Keyboard', 'Accessories', 100.00, 40),
+(6, 'Monitor', 'Electronics', 300.00, 20),
+(7, 'Mouse', 'Accessories', 50.00, 60),
+(8, 'Chair', 'Furniture', 200.00, 10),
+(9, 'Desk', 'Furniture', 400.00, 5),
+(10, 'Printer', 'Office Supplies', 250.00, 12),
+(11, 'Scanner', 'Office Supplies', 180.00, 8),
+(12, 'Notebook', 'Stationery', 10.00, 100),
+(13, 'Pen', 'Stationery', 2.00, 500),
+(14, 'Backpack', 'Accessories', 80.00, 30),
+(15, 'Lamp', 'Furniture', 60.00, 25);
+
+-- 16. Retrieve the names of products that are more expensive than the average price of all products.
+
+-- 17. Find the products that have a stock count lower than the highest stock count.
+
+-- 18. Get the names of products that belong to the same category as 'Laptop'.
+
+-- 19. Retrieve products whose price is greater than the lowest price in the Electronics category.
+
+-- 20. Find the products that have a higher price than the average price of their respective category.
+
+CREATE TABLE Orders (
+    OrderID    INT PRIMARY KEY,
+    ProductID  INT,
+    Quantity   INT,
+    OrderDate  DATE,
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+
+INSERT INTO Orders (OrderID, ProductID, Quantity, OrderDate) VALUES
+(1, 1, 2, '2024-03-01'),
+(2, 3, 5, '2024-03-05'),
+(3, 2, 3, '2024-03-07'),
+(4, 5, 4, '2024-03-10'),
+(5, 8, 1, '2024-03-12'),
+(6, 10, 2, '2024-03-15'),
+(7, 12, 10, '2024-03-18'),
+(8, 7, 6, '2024-03-20'),
+(9, 6, 2, '2024-03-22'),
+(10, 4, 3, '2024-03-25'),
+(11, 9, 2, '2024-03-28'),
+(12, 11, 1, '2024-03-30'),
+(13, 14, 4, '2024-04-02'),
+(14, 15, 5, '2024-04-05'),
+(15, 13, 20, '2024-04-08');
+
+-- 21. Find the products that have been ordered at least once.
+
+-- 22. Retrieve the names of products that have been ordered more than the average quantity ordered.
+
+-- 23. Find the products that have never been ordered.
+
+-- 24. Retrieve the product with the highest total quantity ordered.
+
+-- 25. Find the products that have been ordered more times than the average number of orders placed.
