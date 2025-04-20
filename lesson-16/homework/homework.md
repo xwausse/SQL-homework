@@ -6,27 +6,47 @@ Notes before doing the tasks: Tasks should be solved using SQL Server. It does n
 1. Write an SQL Statement to de-group the following data.
 
 ---------------------
+
 |Product  |Quantity|
+
 ---------------------
+
 |Pencil    |  3  |
+
 |Eraser    |  4  |
+
 |Notebook  |  2  |
+
 ---------------------
 
 Expected Output:
+
 ---------------------
+
 |Product  |Quantity|
+
 ---------------------
+
 |Pencil    |  1  |
+
 |Pencil    |  1  |
+
 |Pencil    |  1  |
+
 |Eraser    |  1  |
+
 |Eraser    |  1  |
+
 |Eraser    |  1  |
+
 |Eraser    |  1  |
+
 |Notebook  |  1  |
+
 |Notebook  |  1  |
+
 ---------------------
+
 
 DROP TABLE IF EXISTS Grouped;
 CREATE TABLE Grouped
