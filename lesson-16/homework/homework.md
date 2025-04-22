@@ -278,6 +278,10 @@ INSERT INTO Employee VALUES
 ## Task 9: Office Lottery Winnings
 
 **Tables: `WinningNumbers`, `Tickets`**
+**9. You are part of an office lottery pool where you keep a table of the winning lottery numbers along with 
+a table of each ticket’s chosen numbers.  If a ticket has some but not all the winning numbers, you win 
+$10.  If a ticket has all the winning numbers, you win $100.    Calculate the total winnings for today’s 
+drawing.**
 
 ```sql
 -- Winning Numbers
