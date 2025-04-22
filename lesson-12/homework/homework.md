@@ -9,11 +9,17 @@ Notes before doing the tasks: Tasks should be solved using SQL Server. It does n
 Table: Person
 
 +-------------+---------+
+
 | Column Name | Type    |
+
 +-------------+---------+
+
 | personId    | int     |
+
 | lastName    | varchar |
+
 | firstName   | varchar |
+
 +-------------+---------+
 
 personId is the primary key (column with unique values) for this table.
@@ -23,13 +29,21 @@ This table contains information about the ID of some persons and their first and
 Table: Address
 
 +-------------+---------+
+
 | Column Name | Type    |
+
 +-------------+---------+
+
 | addressId   | int     |
+
 | personId    | int     |
+
 | city        | varchar |
+
 | state       | varchar |
+
 +-------------+---------+
+
 addressId is the primary key (column with unique values) for this table.
 Each row of this table contains information about the city and state of one person with ID = PersonId.
  
@@ -43,26 +57,47 @@ The result format is in the following example.
 
 Input: 
 Person table:
+
 +----------+----------+-----------+
+
 | personId | lastName | firstName |
+
 +----------+----------+-----------+
+
 | 1        | Wang     | Allen     |
+
 | 2        | Alice    | Bob       |
+
 +----------+----------+-----------+
+
 Address table:
+
 +-----------+----------+---------------+------------+
+
 | addressId | personId | city          | state      |
+
 +-----------+----------+---------------+------------+
+
 | 1         | 2        | New York City | New York   |
+
 | 2         | 3        | Leetcode      | California |
+
 +-----------+----------+---------------+------------+
+
 Output: 
+
 +-----------+----------+---------------+----------+
+
 | firstName | lastName | city          | state    |
+
 +-----------+----------+---------------+----------+
+
 | Allen     | Wang     | Null          | Null     |
+
 | Bob       | Alice    | New York City | New York |
+
 +-----------+----------+---------------+----------+
+
 
 Explanation: 
 There is no address in the address table for the personId = 1 so we return null in their city and state.
@@ -89,18 +124,25 @@ insert into Address (addressId, personId, city, state) values ('2', '3', 'Leetco
 Table: Employee
 
 +-------------+---------+
+
 | Column Name | Type    |
+
 +-------------+---------+
+
 | id          | int     |
+
 | name        | varchar |
+
 | salary      | int     |
+
 | managerId   | int     |
+
 +-------------+---------+
+
 id is the primary key (column with unique values) for this table.
 Each row of this table indicates the ID of an employee, their name, salary, and the ID of their manager.
  
 -----------------------------------------------------
-
 
 Write a solution to find the employees who earn more than their managers.
 
@@ -108,25 +150,39 @@ Return the result table in any order.
 
 The result format is in the following example.
 
- 
 -----------------------------------------------------
 
 Input: 
 Employee table:
+
 +----+-------+--------+-----------+
+
 | id | name  | salary | managerId |
+
 +----+-------+--------+-----------+
+
 | 1  | Joe   | 70000  | 3         |
+
 | 2  | Henry | 80000  | 4         |
+
 | 3  | Sam   | 60000  | Null      |
+
 | 4  | Max   | 90000  | Null      |
+
 +----+-------+--------+-----------+
+
 Output: 
+
 +----------+
+
 | Employee |
+
 +----------+
+
 | Joe      |
+
 +----------+
+
 Explanation: Joe is the only employee who earns more than his manager.
 
 
@@ -142,11 +198,17 @@ insert into Employee (id, name, salary, managerId) values ('4', 'Max', '90000', 
 3.Duplicate Emails
 
 +-------------+---------+
+
 | Column Name | Type    |
+
 +-------------+---------+
+
 | id          | int     |
+
 | email       | varchar |
+
 +-------------+---------+
+
 
 id is the primary key (column with unique values) for this table.
 Each row of this table contains an email. The emails will not contain uppercase letters.
@@ -163,19 +225,33 @@ The result format is in the following example.
 -----------------------------------------------------
 Input: 
 Person table:
+
 +----+---------+
+
 | id | email   |
+
 +----+---------+
+
 | 1  | a@b.com |
+
 | 2  | c@d.com |
+
 | 3  | a@b.com |
+
 +----+---------+
+
 Output: 
+
 +---------+
+
 | Email   |
+
 +---------+
+
 | a@b.com |
+
 +---------+
+
 Explanation: a@b.com is repeated two times.
 
 
@@ -196,11 +272,17 @@ insert into Person (id, email) values ('3', 'a@b.com')
 Table: Person
 
 +-------------+---------+
+
 | Column Name | Type    |
+
 +-------------+---------+
+
 | id          | int     |
+
 | email       | varchar |
+
 +-------------+---------+
+
 id is the primary key (column with unique values) for this table.
 Each row of this table contains an email. The emails will not contain uppercase letters.
  
@@ -220,21 +302,36 @@ The result format is in the following example.
 -----------------------------------------------------
 
 Input: 
+
 Person table:
 +----+------------------+
+
 | id | email            |
+
 +----+------------------+
+
 | 1  | john@example.com |
+
 | 2  | bob@example.com  |
+
 | 3  | john@example.com |
+
 +----+------------------+
+
 Output: 
+
 +----+------------------+
+
 | id | email            |
+
 +----+------------------+
+
 | 1  | john@example.com |
+
 | 2  | bob@example.com  |
+
 +----+------------------+
+
 Explanation: john@example.com is repeated two times. We keep the row with the smallest Id = 1.
 
 
@@ -319,18 +416,31 @@ GO
 
 
 Expected Output.
+
 -----------------------------
+
 | Item Cart 1 | Item Cart 2 |  
+
 |-------------|-------------|  
-| Sugar       | Sugar       |  
+
+| Sugar       | Sugar       | 
+
 | Bread       | Bread       |  
+
 | Juice       |             |  
+
 | Soda        |             |  
-| Flour       |             |  
+
+| Flour       |             |
+
 |             | Butter      |  
+
 |             | Cheese      |  
+
 |             | Fruit       |  
+
 -----------------------------
+
 
 
 
@@ -345,27 +455,47 @@ Resultga yutgan jamoaning nomi chiqsin agar durrang bo''lsa 'Draw' so''zi chiqsi
 
 Input:
 ---------------------------------------
-| MatchID | Match             | Score |  
+
+| MatchID | Match             | Score | 
+
 |---------|-------------------|-------|  
+
 |    1    | Italy-Spain       |  2:0  |  
+
 |    2    | Spain-France      |  2:1  |  
+
 |    3    | France-Belgium    |  0:0  |  
+
 |    4    | Belgium-Spain     |  2:2  |  
+
 |    5    | Belgium-Italy     |  0:3  |  
+
 |    6    | Italy-France      |  2:0  |
+
 ---------------------------------------
+
 
 Expected Output:
 ------------------------------------------------
+
 | MatchID | Match             | Score | Result |  
-|---------|-------------------|-------|--------|  
-|    1    | Italy-Spain       |  2:0  | Italy  |  
-|    2    | Spain-France      |  2:1  | Spain  |  
-|    3    | France-Belgium    |  0:0  | Draw   |  
-|    4    | Belgium-Spain     |  2:2  | Draw   |  
+
+|---------|-------------------|-------|--------| 
+
+|    1    | Italy-Spain       |  2:0  | Italy  | 
+
+|    2    | Spain-France      |  2:1  | Spain  | 
+
+|    3    | France-Belgium    |  0:0  | Draw   | 
+
+|    4    | Belgium-Spain     |  2:2  | Draw   | 
+
 |    5    | Belgium-Italy     |  0:3  | Italy  |  
+
 |    6    | Italy-France      |  2:0  | Italy  | 
+
 ------------------------------------------------
+
 
 create table match1 (MatchID int, Match varchar(30), Score varchar(5))
 insert into match1 values 
@@ -386,11 +516,17 @@ insert into match1 values
 Table: Customers
 
 +-------------+---------+
+
 | Column Name | Type    |
+
 +-------------+---------+
+
 | id          | int     |
+
 | name        | varchar |
+
 +-------------+---------+
+
 id is the primary key (column with unique values) for this table.
 Each row of this table indicates the ID and name of a customer.
  
@@ -398,11 +534,17 @@ Each row of this table indicates the ID and name of a customer.
 Table: Orders
 
 +-------------+------+
+
 | Column Name | Type |
+
 +-------------+------+
+
 | id          | int  |
+
 | customerId  | int  |
+
 +-------------+------+
+
 id is the primary key (column with unique values) for this table.
 customerId is a foreign key (reference columns) of the ID from the Customers table.
 Each row of this table indicates the ID of an order and the ID of the customer who ordered it.
@@ -422,28 +564,49 @@ The result format is in the following example.
 Input: 
 Customers table:
 +----+-------+
+
 | id | name  |
+
 +----+-------+
+
 | 1  | Joe   |
+
 | 2  | Henry |
+
 | 3  | Sam   |
+
 | 4  | Max   |
+
 +----+-------+
+
 Orders table:
+
 +----+------------+
+
 | id | customerId |
+
 +----+------------+
+
 | 1  | 3          |
+
 | 2  | 1          |
+
 +----+------------+
+
 
 
 Output: 
+
 +-----------+
+
 | Customers |
+
 +-----------+
+
 | Henry     |
+
 | Max       |
+
 +-----------+
 
 
@@ -471,23 +634,36 @@ insert into Orders (id, customerId) values ('2', '1')
 
 Table: Students
 
+
 +---------------+---------+
+
 | Column Name   | Type    |
+
 +---------------+---------+
+
 | student_id    | int     |
+
 | student_name  | varchar |
+
 +---------------+---------+
+
 student_id is the primary key (column with unique values) for this table.
 Each row of this table contains the ID and the name of one student in the school.
  
 
 Table: Subjects
 
+
 +--------------+---------+
+
 | Column Name  | Type    |
+
 +--------------+---------+
+
 | subject_name | varchar |
+
 +--------------+---------+
+
 
 subject_name is the primary key (column with unique values) for this table.
 Each row of this table contains the name of one subject in the school.
@@ -495,12 +671,19 @@ Each row of this table contains the name of one subject in the school.
 
 Table: Examinations
 
+
 +--------------+---------+
+
 | Column Name  | Type    |
+
 +--------------+---------+
+
 | student_id   | int     |
+
 | subject_name | varchar |
+
 +--------------+---------+
+
 
 There is no primary key (column with unique values) for this table. It may contain duplicates.
 Each student from the Students table takes every course from the Subjects table.
@@ -520,58 +703,108 @@ The result format is in the following example.
 
 Input: 
 Students table:
+
 +------------+--------------+
+
 | student_id | student_name |
+
 +------------+--------------+
+
 | 1          | Alice        |
+
 | 2          | Bob          |
+
 | 13         | John         |
+
 | 6          | Alex         |
+
 +------------+--------------+
+
 
 Subjects table:
+
 +--------------+
+
 | subject_name |
+
 +--------------+
+
 | Math         |
+
 | Physics      |
+
 | Programming  |
+
 +--------------+
+
 
 Examinations table:
-+------------+--------------+
-| student_id | subject_name |
-+------------+--------------+
-| 1          | Math         |
-| 1          | Physics      |
-| 1          | Programming  |
-| 2          | Programming  |
-| 1          | Physics      |
-| 1          | Math         |
-| 13         | Math         |
-| 13         | Programming  |
-| 13         | Physics      |
-| 2          | Math         |
-| 1          | Math         |
+
 +------------+--------------+
 
+| student_id | subject_name |
+
++------------+--------------+
+
+| 1          | Math         |
+
+| 1          | Physics      |
+
+| 1          | Programming  |
+
+| 2          | Programming  |
+
+| 1          | Physics      |
+
+| 1          | Math         |
+
+| 13         | Math         |
+
+| 13         | Programming  |
+
+| 13         | Physics      |
+
+| 2          | Math         |
+
+| 1          | Math         |
+
++------------+--------------+
+
+
 Output: 
+
 +------------+--------------+--------------+----------------+
+
 | student_id | student_name | subject_name | attended_exams |
+
 +------------+--------------+--------------+----------------+
+
 | 1          | Alice        | Math         | 3              |
+
 | 1          | Alice        | Physics      | 2              |
+
 | 1          | Alice        | Programming  | 1              |
+
 | 2          | Bob          | Math         | 1              |
+
 | 2          | Bob          | Physics      | 0              |
+
 | 2          | Bob          | Programming  | 1              |
+
 | 6          | Alex         | Math         | 0              |
+
 | 6          | Alex         | Physics      | 0              |
+
 | 6          | Alex         | Programming  | 0              |
+
 | 13         | John         | Math         | 1              |
+
 | 13         | John         | Physics      | 1              |
+
 | 13         | John         | Programming  | 1              |
+
 +------------+--------------+--------------+----------------+
+
 
 -----------------------------------------------------
 
