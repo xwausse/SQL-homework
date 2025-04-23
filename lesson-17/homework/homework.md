@@ -1,78 +1,339 @@
-# SQL Homework Tasks: Subqueries Challenge
+📘 Lesson-17: View, temp table, variable, functions
+Notes Before Doing the Tasks
+✅ All tasks must be solved using SQL Server.
+🔠 Case sensitivity (uppercase or lowercase) does not affect scoring.
+✏️ Use of alias names is allowed and does not affect the result.
+🧠 Only the correctness of the result matters — any correct solution is accepted.
 
-This document contains SQL homework tasks focusing on subqueries, divided into three difficulty levels. In these tasks, some table names and column identifiers have been altered (e.g., Products → Items, Employees → Staff, Orders → Purchases, OrderDetails → PurchaseDetails, Departments → Divisions, Customers → Clients) to provide a different flavor and avoid typical naming conventions.
+----
 
----
+You're working in a database for a Retail Sales System. The database contains the following tables:
 
-## Easy Tasks (20)
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(100),
+    Category VARCHAR(50),
+    Price DECIMAL(10,2)
+);
 
-1. Write a simple subquery to list all items in the **Items** table where the price is greater than the average price of all items.
-2. Create a query using an independent subquery to find staff members who have worked in a division that employs more than 10 people.
-3. Write a query that uses a correlated subquery to list all staff members whose salary exceeds the average salary in their respective division.
-4. Use a subquery to find all clients who have made a purchase in the **Purchases** table.
-5. Write a query that uses the **EXISTS** operator to retrieve all purchases that include at least one detail in the **PurchaseDetails** table.
-6. Create a subquery to list all items that have been sold more than 100 times according to the **PurchaseDetails** table.
-7. Use a subquery to list all staff members who earn more than the overall company’s average salary.
-8. Write a subquery to find all vendors that supply items with a price below $50.
-9. Use a subquery to determine the maximum item price in the **Items** table.
-10. Write a query using an independent subquery to find the highest total purchase value in the **Purchases** table.
-11. Write a subquery to list clients who have never made a purchase.
-12. Use a subquery to list all items that belong to the category "Electronics."
-13. Write a subquery to list all purchases that were made after a specified date.
-14. Create a subquery to calculate the total number of items sold in a particular purchase.
-15. Write a query to list staff members who have been employed for more than 5 years.
-16. Use a correlated subquery to list staff members who earn more than the average salary in their division.
-17. Write a query using the **EXISTS** operator to list purchases that include an item from the **Items** table.
-18. Create a subquery to find clients who have made a purchase within the last 30 days.
-19. Write a query using a subquery to identify the oldest item in the **Items** table.
-20. Write a query to list staff members who are not assigned to any division.
+CREATE TABLE Sales (
+    SaleID INT PRIMARY KEY,
+    ProductID INT,
+    Quantity INT,
+    SaleDate DATE,
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
 
----
+INSERT INTO Products (ProductID, ProductName, Category, Price)
+VALUES
+(1, 'Samsung Galaxy S23', 'Electronics', 899.99),
+(2, 'Apple iPhone 14', 'Electronics', 999.99),
+(3, 'Sony WH-1000XM5 Headphones', 'Electronics', 349.99),
+(4, 'Dell XPS 13 Laptop', 'Electronics', 1249.99),
+(5, 'Organic Eggs (12 pack)', 'Groceries', 3.49),
+(6, 'Whole Milk (1 gallon)', 'Groceries', 2.99),
+(7, 'Alpen Cereal (500g)', 'Groceries', 4.75),
+(8, 'Extra Virgin Olive Oil (1L)', 'Groceries', 8.99),
+(9, 'Mens Cotton T-Shirt', 'Clothing', 12.99),
+(10, 'Womens Jeans - Blue', 'Clothing', 39.99),
+(11, 'Unisex Hoodie - Grey', 'Clothing', 29.99),
+(12, 'Running Shoes - Black', 'Clothing', 59.95),
+(13, 'Ceramic Dinner Plate Set (6 pcs)', 'Home & Kitchen', 24.99),
+(14, 'Electric Kettle - 1.7L', 'Home & Kitchen', 34.90),
+(15, 'Non-stick Frying Pan - 28cm', 'Home & Kitchen', 18.50),
+(16, 'Atomic Habits - James Clear', 'Books', 15.20),
+(17, 'Deep Work - Cal Newport', 'Books', 14.35),
+(18, 'Rich Dad Poor Dad - Robert Kiyosaki', 'Books', 11.99),
+(19, 'LEGO City Police Set', 'Toys', 49.99),
+(20, 'Rubiks Cube 3x3', 'Toys', 7.99);
 
-## Medium Tasks (20)
+INSERT INTO Sales (SaleID, ProductID, Quantity, SaleDate)
+VALUES
+(1, 1, 2, '2025-04-01'),
+(2, 1, 1, '2025-04-05'),
+(3, 2, 1, '2025-04-10'),
+(4, 2, 2, '2025-04-15'),
+(5, 3, 3, '2025-04-18'),
+(6, 3, 1, '2025-04-20'),
+(7, 4, 2, '2025-04-21'),
+(8, 5, 10, '2025-04-22'),
+(9, 6, 5, '2025-04-01'),
+(10, 6, 3, '2025-04-11'),
+(11, 10, 2, '2025-04-08'),
+(12, 12, 1, '2025-04-12'),
+(13, 12, 3, '2025-04-14'),
+(14, 19, 2, '2025-04-05'),
+(15, 20, 4, '2025-04-19'),
+(16, 1, 1, '2025-03-15'),
+(17, 2, 1, '2025-03-10'),
+(18, 5, 5, '2025-02-20'),
+(19, 6, 6, '2025-01-18'),
+(20, 10, 1, '2024-12-25'),
+(21, 1, 1, '2024-04-20');
 
-1. Use a correlated subquery to find all staff who work in the same division as any staff member earning over $100,000.
-2. Write a query to list all staff members who have the highest salary in their division using a subquery.
-3. Create a subquery to list all clients who have made purchases but have never bought an item priced above $200.
-4. Write a query that uses a correlated subquery to find items that have been ordered more frequently than the average item.
-5. Write a subquery to list clients who have placed more than 3 purchases.
-6. Use a subquery to calculate the number of items ordered in the last 30 days by each client.
-7. Create a correlated subquery to list staff whose salary exceeds the average salary of all staff in their division.
-8. Write a query that uses a subquery to list items that have never been ordered.
-9. Create a subquery to list all vendors who supply items priced above the average price of items.
-10. Write a subquery to compute the total sales for each item in the past year.
-11. Write a correlated subquery to list staff members older than the overall average age of the company.
-12. Write a query to list items with a price greater than the average price in the **Items** table.
-13. Use a subquery to find clients who have purchased items from a specific category.
-14. Create a subquery to list all items with a quantity available greater than the average stock level.
-15. Write a correlated subquery to list all staff who work in the same division as those who have received a bonus.
-16. Write a query using a subquery to list staff members with salaries in the top 10% of all staff.
-17. Create a correlated subquery to identify the division that employs the most staff.
-18. Write a subquery to find the purchase with the highest total value.
-19. Use a correlated subquery to list staff who earn more than the average salary of their division and have more than 5 years of service.
-20. Create a query to list clients who have never purchased an item with a price higher than $100.
+1. Create a temporary table named MonthlySales to store the total quantity sold and total revenue for each product in the current month.
 
----
+Return: ProductID, TotalQuantity, TotalRevenue
 
-## Difficult Tasks (20)
+2. Create a view named vw_ProductSalesSummary that returns product info along with total sales quantity across all time.
 
-1. Write a correlated subquery to list all staff who earn more than the average salary in their division, excluding the staff member with the highest salary in that division.
-2. Use a subquery to list items that have been purchased by clients who have placed more than 5 orders.
-3. Create a query to list all staff who are older than the overall average age and earn more than the average company salary.
-4. Use a correlated subquery to list staff who work in a division that has more than 5 staff members earning over $100,000.
-5. Write a subquery to list all items that have not been purchased by any client in the past year.
-6. Create a query to list all clients who have made purchases that include items from at least two different categories.
-7. Write a correlated subquery to list staff who earn more than the average salary of staff in the same job position.
-8. Use a subquery to list items that are in the top 10% by price among all items.
-9. Write a query that uses a correlated subquery to list staff whose salary is in the top 10% within their division.
-10. Create a subquery to list all staff who have not received any bonus in the last 6 months.
-11. Use a correlated subquery to list items that have been ordered more frequently than the average number of orders per item.
-12. Write a subquery to list all clients who made purchases last year for items priced above the average price.
-13. Write a query to identify the division with the highest average salary using a correlated subquery.
-14. Create a subquery to list items that have been purchased by clients who have placed more than 10 orders.
-15. Use a correlated subquery to list staff who work in the division with the highest total sales.
-16. Write a subquery to list staff whose salary is in the top 5% of the entire company.
-17. Write a query to list items that have not been purchased by any client in the past month.
-18. Use a correlated subquery to list staff who work in the same division as staff members with the highest purchase totals.
-19. Create a subquery to list clients who have not made any purchases in the last 6 months and have spent less than $100.
-20. Write a query to list all staff who have been employed for more than 10 years and have made purchases for items worth more than $1,000.
+Return: ProductID, ProductName, Category, TotalQuantitySold
+
+3. Create a function named fn_GetTotalRevenueForProduct(@ProductID INT)
+
+Return: total revenue for the given product ID
+
+4. Create an function fn_GetSalesByCategory(@Category VARCHAR(50))
+
+Return: ProductName, TotalQuantity, TotalRevenue for all products in that category.
+
+Now we will move on with 2 Lateral-thinking puzzles (5 and 6th puzzles). Lateral-thinking puzzles are the ones that can’t be solved by straightforward logic — you have to think outside the box. 🔍🧠
+
+5. You have to create a function that get one argument as input from user and the function should return 'Yes' if the input number is a prime number and 'No' otherwise. You can start it like this:
+
+Create function dbo.fn_IsPrime (@Number INT)
+Returns ...
+
+This is for those who has no idea about prime numbers: A prime number is a number greater than 1 that has only two divisors: 1 and itself(2, 3, 5, 7 and so on).
+
+6. Create a table-valued function named fn_GetNumbersBetween that accepts two integers as input:
+
+@Start INT
+@End INT
+
+The function should return a table with a single column:
+
+Number
+...
+
+It should include all integer values from @Start to @End, inclusive.
+
+7. Write a SQL query to return the Nth highest distinct salary from the Employee table. If there are fewer than N distinct salaries, return NULL. 
+
+NOTE: You have to do some research on Dense_rank window function.
+
+Example 1:
+
+Input: 
+Employee table:
+
++----+--------+
+
+| id | salary |
+
++----+--------+
+
+| 1  | 100    |
+
+| 2  | 200    |
+
+| 3  | 300    |
+
++----+--------+
+
+n = 2
+Output: 
+
++------------------------+
+
+| getNthHighestSalary(2) |
+
++------------------------+
+
+| 200                    |
+
++------------------------+
+
+Example 2:
+
+Input: 
+Employee table:
+
++----+--------+
+
+| id | salary |
+
++----+--------+
+
+| 1  | 100    |
+
++----+--------+
+
+n = 2
+Output:
+
++------------------------+
+
+| getNthHighestSalary(2) |
+
++------------------------+
+
+| null                   |
+
++------------------------+
+
+You can also solve this in Leetcode: https://leetcode.com/problems/nth-highest-salary/description/
+
+8. Write a SQL query to find the person who has the most friends.
+
+Return: Their id, The total number of friends they have
+
+Friendship is mutual. For example, if user A sends a request to user B and it's accepted, both A and B are considered friends with each other. The test case is guaranteed to have only one user with the most friends.
+
+Input: 
+RequestAccepted table:
+
++--------------+-------------+-------------+
+
+| requester_id | accepter_id | accept_date |
+
++--------------+-------------+-------------+
+
+| 1            | 2           | 2016/06/03  |
+
+| 1            | 3           | 2016/06/08  |
+
+| 2            | 3           | 2016/06/08  |
+
+| 3            | 4           | 2016/06/09  |
+
++--------------+-------------+-------------+
+
+Output: 
+
++----+-----+
+
+| id | num |
+
++----+-----+
+
+| 3  | 3   |
+
++----+-----+
+
+Explanation: 
+The person with id 3 is a friend of people 1, 2, and 4, so he has three friends in total, which is the most number than any others.
+
+You can also solve this in Leetcode: https://leetcode.com/problems/friend-requests-ii-who-has-the-most-friends/description/?envType=study-plan-v2&envId=top-sql-50
+
+9. Create a View for Customer Order Summary. 
+
+CREATE TABLE Customers (
+    customer_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    city VARCHAR(50)
+);
+
+CREATE TABLE Orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT FOREIGN KEY REFERENCES Customers(customer_id),
+    order_date DATE,
+    amount DECIMAL(10,2)
+);
+
+-- Customers
+INSERT INTO Customers (customer_id, name, city)
+VALUES
+(1, 'Alice Smith', 'New York'),
+(2, 'Bob Jones', 'Chicago'),
+(3, 'Carol White', 'Los Angeles');
+
+-- Orders
+INSERT INTO Orders (order_id, customer_id, order_date, amount)
+VALUES
+(101, 1, '2024-12-10', 120.00),
+(102, 1, '2024-12-20', 200.00),
+(103, 1, '2024-12-30', 220.00),
+(104, 2, '2025-01-12', 120.00),
+(105, 2, '2025-01-20', 180.00);
+
+Create a view called vw_CustomerOrderSummary that returns a summary of customer orders. The view must contain the following columns:
+
+Column Name | Description
+customer_id | Unique identifier of the customer
+name | Full name of the customer
+total_orders | Total number of orders placed by the customer
+total_amount | Cumulative amount spent across all orders
+last_order_date | Date of the most recent order placed by the customer
+
+10. Write an SQL statement to fill in the missing gaps. You have to write only select statement, no need to modify the table.
+
+-----------------------------------------
+
+|Row Number	|	Workflow	|	Status	|
+
+-----------------------------------------
+
+|	  1		|	  Alpha		|	 Pass	|
+
+|	  2		|				|	 Fail	|
+
+|	  3		|				|	 Fail	|
+
+|	  4		|				|	 Fail	|
+
+|	  5		|	  Bravo		|	 Pass	|
+
+|	  6		|				|	 Fail	|
+
+|	  7		|				|	 Fail	|
+
+|	  8		|				|	 Pass	|
+
+|	  9		|				|	 Pass	|
+
+|	  10	|	 Charlie	|	 Fail	|
+
+|	  11	|				|	 Fail	|
+
+|	  12	|				|	 Fail	|
+
+-----------------------------------------
+
+
+Here is the expected output.
+
+-----------------------------------------
+
+|Row Number	|	Workflow	|	Status	|
+
+-----------------------------------------
+
+|	  1		|	  Alpha		|	 Pass	|
+
+
+|	  2		|	  Alpha		|	 Fail	|
+
+|	  3		|	  Alpha		|	 Fail	|
+
+|	  4		|	  Alpha		|	 Fail	|
+
+|	  5		|	  Bravo		|	 Pass	|
+
+|	  6		|	  Bravo		|	 Fail	|
+
+|	  7		|	  Bravo		|	 Fail	|
+
+|	  8		|	  Bravo		|	 Pass	|
+
+|	  9		|	  Bravo		|	 Pass	|
+
+|	  10	|	 Charlie	|	 Fail	|
+
+|	  11	|	 Charlie	|	 Fail	|
+
+|	  12	|	 Charlie	|	 Fail	|
+
+-----------------------------------------
+
+DROP TABLE IF EXISTS Gaps;
+
+CREATE TABLE Gaps
+(
+RowNumber   INTEGER PRIMARY KEY,
+TestCase    VARCHAR(100) NULL
+);
+
+INSERT INTO Gaps (RowNumber, TestCase) VALUES
+(1,'Alpha'),(2,NULL),(3,NULL),(4,NULL),
+(5,'Bravo'),(6,NULL),(7,'Charlie'),(8,NULL),(9,NULL);
