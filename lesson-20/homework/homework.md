@@ -1,7 +1,13 @@
---Lesson 20 PRACTICE
+# Lesson-20: Practice
 
-Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. Students are scored based on what their query returns(does it fulfill the requirments). One way of solution is enough if it is true, other ways might be suggested but should not affect the score.
+> **Notes before doing the tasks:**
+> - Tasks should be solved using **SQL Server**.
+> - Case insensitivity applies.
+> - Alias names do not affect the score.
+> - Scoring is based on the **correct output**.
+> - One correct solution is sufficient.
 
+```sql
 CREATE TABLE #Sales (
     SaleID INT PRIMARY KEY IDENTITY(1,1),
     CustomerName VARCHAR(100),
@@ -23,28 +29,24 @@ INSERT INTO #Sales (CustomerName, Product, Quantity, Price, SaleDate) VALUES
 ('Hannah', 'Tablet', 2, 480.00, '2024-05-05'),
 ('Isaac', 'Laptop', 1, 1250.00, '2024-05-15'),
 ('Jack', 'Smartphone', 1, 820.00, '2024-06-01');
+```
 
-/*
 1. Find customers who purchased at least one item in March 2024 using EXISTS
-
 2. Find the product with the highest total sales revenue using a subquery.
-
 3. Find the second highest sale amount using a subquery
-
 4. Find the total quantity of products sold per month using a subquery
-
 5. Find customers who bought same products as another customer using EXISTS
-*/
 
---Question 6. 
-
+**Question 6.**
+```sql
 create table Fruits(Name varchar(50), Fruit varchar(50))
 insert into Fruits values ('Francesko', 'Apple'), ('Francesko', 'Apple'), ('Francesko', 'Apple'), ('Francesko', 'Orange'),
 							('Francesko', 'Banana'), ('Francesko', 'Orange'), ('Li', 'Apple'), 
 							('Li', 'Orange'), ('Li', 'Apple'), ('Li', 'Banana'), ('Mario', 'Apple'), ('Mario', 'Apple'), 
 							('Mario', 'Apple'), ('Mario', 'Banana'), ('Mario', 'Banana'), 
 							('Mario', 'Orange')
--- Return how many fruits does each person have in individual fruit level
+```
+## Return how many fruits does each person have in individual fruit level
 
 --Expected Output
 /*
