@@ -1,4 +1,4 @@
-# Lesson-16: View, temp table, variable, functions
+# Lesson-17: View, temp table, variable, functions
 
 > **Notes before doing the tasks:**
 > - Tasks should be solved using **SQL Server**.
