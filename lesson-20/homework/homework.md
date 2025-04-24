@@ -37,8 +37,7 @@ INSERT INTO #Sales (CustomerName, Product, Quantity, Price, SaleDate) VALUES
 # 4. Find the total quantity of products sold per month using a subquery
 # 5. Find customers who bought same products as another customer using EXISTS
 
-**Question 6.**
-# Return how many fruits does each person have in individual fruit level
+# 6. Return how many fruits does each person have in individual fruit level
 
 ```sql
 create table Fruits(Name varchar(50), Fruit varchar(50))
@@ -60,8 +59,7 @@ insert into Fruits values ('Francesko', 'Apple'), ('Francesko', 'Apple'), ('Fran
 +-----------+-------+--------+--------+
 ```
 
-**Question 7.**
-# Return older people in the family with younger ones
+# 7. Return older people in the family with younger ones
 ```sql
 create table Family(ParentId int, ChildID int)
 insert into Family values (1, 2), (2, 3), (3, 4)
@@ -87,9 +85,7 @@ insert into Family values (1, 2), (2, 3), (3, 4)
 
 ```
 
-**Question 8.**
-
-# Write an SQL statement given the following requirements. For every customer that had a delivery to California, provide a result set of the customer orders that were delivered to Texas
+# 8. Write an SQL statement given the following requirements. For every customer that had a delivery to California, provide a result set of the customer orders that were delivered to Texas
 ```sql
 CREATE TABLE #Orders
 (
@@ -108,9 +104,7 @@ INSERT INTO #Orders (CustomerID, OrderID, DeliveryState, Amount) VALUES
 ```
 
 ---
-**Question 9.**
-
-# Insert the names of residents if they are missing
+# 9. Insert the names of residents if they are missing
 
 ```sql
 create table #residents(resid int identity, fullname varchar(50), address varchar(100))
@@ -123,8 +117,7 @@ insert into #residents values
 ('Rajabboy', 'city=Tashkent country=Uzbekistan age=22')
 ```
 ---
-**Question 10**
-# Write a query to return the route to reach from Tashkent to Khorezm. The result should include the cheapest and the most expensive routes
+# 10. Write a query to return the route to reach from Tashkent to Khorezm. The result should include the cheapest and the most expensive routes
 
 ```sql
 CREATE TABLE #Routes
@@ -152,8 +145,7 @@ INSERT INTO #Routes (RouteID, DepartureCity, ArrivalCity, Cost) VALUES
 |Tashkent - Samarkand - Bukhoro - Khorezm | 600 |
 ```
 ---
-**Question 11**
-# Rank products based on their order of insertion.
+# 11. Rank products based on their order of insertion.
 
 ```sql
 CREATE TABLE #RankingPuzzle
@@ -177,8 +169,7 @@ INSERT INTO #RankingPuzzle VALUES
 ```
 
 ---
-**Question 12**
-# You have to return Ids, what number of the letter would be next if inserted, the maximum length of the consecutive occurence of the same digit
+# 12. You have to return Ids, what number of the letter would be next if inserted, the maximum length of the consecutive occurence of the same digit
 
 ```sql
 CREATE TABLE #Consecutives
@@ -202,7 +193,7 @@ INSERT INTO #Consecutives VALUES
 ```
 
 ---
-**Question 13**
+# Question 13
 # Find employees whose sales were higher than the average sales in their department
 
 ```sql
@@ -307,6 +298,6 @@ INSERT INTO Orders (OrderID, ProductID, Quantity, OrderDate) VALUES
 # 23. Find the products that have never been ordered.
 ---
 # 24. Retrieve the product with the highest total quantity ordered.
---=
+---
 # 25. Find the products that have been ordered more times than the average number of orders placed.
 ---
