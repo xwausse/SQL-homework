@@ -235,27 +235,26 @@ VALUES
 ### 10. Write an SQL statement to fill in the missing gaps. You have to write only select statement, no need to modify the table.
 
 ```
-|Row Number	|	Workflow	|	Status	|
-|---------------------------------------|
-|	  1		|	  Alpha		|	 Pass	|
-|	  2		|				|	 Fail	|
-|	  3		|				|	 Fail	|
-|	  4		|				|	 Fail	|
-|	  5		|	  Bravo		|	 Pass	|
-|	  6		|				|	 Fail	|
-|	  7		|				|	 Fail	|
-|	  8		|				|	 Pass	|
-|	  9		|				|	 Pass	|
-|	  10	|	 Charlie	|	 Fail	|
-|	  11	|				|	 Fail	|
-|	  12	|				|	 Fail	|
------------------------------------------
+| RowNumber | Workflow | Status |
+|-------------------------------|
+| 1         | Alpha    | Pass   |
+| 2         |          | Fail   |
+| 3         |          | Fail   |
+| 4         |          | Fail   |
+| 5         | Bravo    | Pass   |
+| 6         |          | Fail   |
+| 7         |          | Fail   |
+| 8         |          | Pass   |
+| 9         |          | Pass   |
+| 10        | Charlie  | Fail   |
+| 11        |          | Fail   |
+| 12        |          | Fail   |
 ```
 
 **Here is the expected output.**
 ```
 | RowNumber | Workflow | Status |
-|--------------------------------|
+|-------------------------------|
 | 1         | Alpha    | Pass   |
 | 2         | Alpha    | Fail   |
 | 3         | Alpha    | Fail   |
