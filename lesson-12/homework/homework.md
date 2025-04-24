@@ -1,4 +1,4 @@
-### Lesson-12: Practice
+# Lesson-12: Practice
 
 **You can find tsql2012 database in here: https://gist.github.com/alejotima/cac70484db23834591b142ad07e79e67**
 
@@ -9,7 +9,7 @@
 > - Scoring is based on the **correct output**.
 > - One correct solution is sufficient.
 
-1. Combine Two Tables
+# 1. Combine Two Tables
 
 **Table: Person**
 ```
@@ -84,7 +84,7 @@ insert into Address (addressId, personId, city, state) values ('2', '3', 'Leetco
 ```
 
 ---
-2. Employees Earning More Than Their Managers
+# 2. Employees Earning More Than Their Managers
 ---
 **Table: Employee**
 ```
@@ -136,7 +136,7 @@ insert into Employee (id, name, salary, managerId) values ('4', 'Max', '90000', 
 
 ---
 
-3. Duplicate Emails
+# 3. Duplicate Emails
 ```
 | Column Name | Type    |
 +-------------+---------+
@@ -187,7 +187,7 @@ insert into Person (id, email) values ('3', 'a@b.com')
 
 ---
 
-4. Delete Duplicate Emails
+# 4. Delete Duplicate Emails
 
 **Table: Person**
 ```
@@ -238,7 +238,7 @@ The result format is in the following example.
 
 ---
 
-5. Find those parents who has only girls.
+# 5. Find those parents who has only girls.
 ```sql
 CREATE TABLE boys (
     Id INT PRIMARY KEY,
@@ -275,12 +275,12 @@ VALUES
 
 ---
 
-6. Total over 50 and least
+# 6. Total over 50 and least
 **Find total Sales amount for the orders which weights more than 50 for each customer along with their least weight.(from TSQL2012 database, Sales.Orders Table)**
 
 ---
 
-7. Carts
+# 7. Carts
 
 **You have the tables below, write a query to get the expected output**
 
@@ -330,7 +330,7 @@ GO
 
 
 
-8. Matches
+# 8. Matches
 
 **Resultga yutgan jamoaning nomi chiqsin agar durrang bo''lsa 'Draw' so''zi chiqsin.(Hisob 10:11 yoki 111:99 bo'lishi ham mumkin :)  )**
 
@@ -373,7 +373,7 @@ insert into match1 values
 ```
 
 ---
-9. Customers Who Never Order
+# 9. Customers Who Never Order
 ---
 
 **Table: Customers**
@@ -453,7 +453,7 @@ insert into Orders (id, customerId) values ('2', '1')
 
 ---
 
-10. Students and Examinations
+# 10. Students and Examinations
 ---
 
 **Table: Students**
