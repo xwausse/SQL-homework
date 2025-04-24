@@ -30,7 +30,7 @@ INSERT INTO Dates VALUES
 
 **Expected Output:**
 ```
-| Id | Dt                       | MonthPrefixedWithZero |
+| Id | Dt                       | MonthPrefixedWithZero  |
 |----|--------------------------|------------------------|
 | 1  | 2018-04-06 11:06:43.020  | 04                     |
 | 2  | 2017-12-06 11:06:43.020  | 12                     |
