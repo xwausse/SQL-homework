@@ -15,7 +15,7 @@ These homework tasks cover the following topics:
 
 # 🟢 Easy-Level Tasks (10)
 
-1. Write a query to find the minimum (MIN) price of a product in the Products table.
+**1. Write a query to find the minimum (MIN) price of a product in the Products table.**
 2. Write a query to find the maximum (MAX) Salary from the Employees table.
 3. Write a query to count the number of rows in the Customers table using COUNT(*).
 4. Write a query to count the number of unique product categories (COUNT(DISTINCT Category)) from the Products table.
