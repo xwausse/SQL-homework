@@ -1,14 +1,11 @@
-📘 Lesson-17: View, temp table, variable, functions
+# Lesson-16: View, temp table, variable, functions
 
-Notes Before Doing the Tasks
-
-✅ All tasks must be solved using SQL Server.
-
-🔠 Case sensitivity (uppercase or lowercase) does not affect scoring.
-
-✏️ Use of alias names is allowed and does not affect the result.
-
-🧠 Only the correctness of the result matters — any correct solution is accepted.
+> **Notes before doing the tasks:**
+> - Tasks should be solved using **SQL Server**.
+> - Case insensitivity applies.
+> - Alias names do not affect the score.
+> - Scoring is based on the **correct output**.
+> - One correct solution is sufficient.
 
 ----
 
