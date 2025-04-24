@@ -122,7 +122,7 @@ INSERT INTO OneColumn VALUES (10), (20), (30), (40), (100);
 ```
 ---
 
-14. **Generate Row Numbers with First as Odd Number in Each Partition**
+14. **Generate row numbers for the given data. The condition is that the first row number for every partition should be odd number.For more details please check the sample input and expected output.**
 
 ```sql
 CREATE TABLE Row_Nums (
@@ -132,6 +132,22 @@ CREATE TABLE Row_Nums (
 INSERT INTO Row_Nums VALUES
 (101,'a'), (102,'b'), (102,'c'), (103,'f'), (103,'e'), (103,'q'), (104,'r'), (105,'p');
 ```
+
+**Sample Input**
+```
+| Id  | Vals |  
+|-----|------|  
+| 101 |    a |  
+| 102 |    b |  
+| 102 |    c |  
+| 103 |    f |  
+| 103 |    e |  
+| 103 |    q |  
+| 104 |    r |  
+| 105 |    p |
+```
+
+
 
 **Expected Output**
 ```
@@ -150,10 +166,10 @@ INSERT INTO Row_Nums VALUES
 
 15. **Find customers who have purchased items from more than one product_category**
 16. **Find Customers with Above-Average Spending in Their Region**
-17. **Rank customers based on total spending in each region (Dense Rank)**
-18. **Calculate the cumulative_sales for each customer_id by order_date**
-19. **Calculate monthly sales growth rate**
-20. **Identify customers whose total_amount is higher than their previous order**
+17. **Rank customers based on their total spending (total_amount) within each region. If multiple customers have the same spending, they should receive the same rank (dense ranking).**
+18. **Calculate the running total (cumulative_sales) of total_amount for each customer_id, ordered by order_date.**
+19. **Calculate the sales growth rate (growth_rate) for each month compared to the previous month.**
+20. **Identify customers whose total_amount is higher than their last order''s total_amount.(Table sales_data)**
 
 ---
 
@@ -161,7 +177,7 @@ INSERT INTO Row_Nums VALUES
 
 21. **Identify Products that prices are above the average product price**
 
-22. **Sum of val1 and val2 at beginning of group**
+22. **In this puzzle you have to find the sum of val1 and val2 for each group and put that value at the beginning of the group in the new column. The challenge here is to do this in a single select. For more details please see the sample input and expected output.**
 
 ```sql
 CREATE TABLE MyData (
@@ -170,6 +186,18 @@ CREATE TABLE MyData (
 INSERT INTO MyData VALUES
 (1,1,30,29), (2,1,19,0), (3,1,11,45), (4,2,0,0), (5,2,100,17);
 ```
+
+**Sample Input**
+```
+| Id  | Grp | Val1 | Val2 |  
+|-----|-----|------|------|  
+|  1  |  1  |   30 |   29 |  
+|  2  |  1  |   19 |    0 |  
+|  3  |  1  |   11 |   45 |  
+|  4  |  2  |    0 |    0 |  
+|  5  |  2  |  100 |   17 |
+```
+
 
 **Expected Output**
 ```
@@ -183,7 +211,7 @@ INSERT INTO MyData VALUES
 ```
 ---
 
-23. **Sum of Cost and Quantity (Grouped Logic)**
+23. **Here you have to sum up the value of the cost column based on the values of Id. For Quantity if values are different then we have to add those values.Please go through the sample input and expected output for details.**
 
 ```sql
 CREATE TABLE TheSumPuzzle (
@@ -191,6 +219,17 @@ CREATE TABLE TheSumPuzzle (
 );
 INSERT INTO TheSumPuzzle VALUES
 (1234,12,164), (1234,13,164), (1235,100,130), (1235,100,135), (1236,12,136);
+```
+
+**Sample Input**
+```
+| Id   | Cost | Quantity |  
+|------|------|----------|  
+| 1234 |   12 |      164 |  
+| 1234 |   13 |      164 |  
+| 1235 |  100 |      130 |  
+| 1235 |  100 |      135 |  
+| 1236 |   12 |      136 | 
 ```
 
 **Expected Output**
@@ -203,7 +242,9 @@ INSERT INTO TheSumPuzzle VALUES
 ```
 ---
 
-24. **Sum of TyZe for Each Z Using Logic Based on Levels**
+24. **You have to write a query that will give us sum of tyze for each Z. Detailed logic is given below**
+## Return only 4 columns
+## Level, TyZe, Result, Results(the last one is for explanation)
 
 ```sql
 CREATE TABLE testSuXVI (
@@ -216,24 +257,26 @@ INSERT INTO testSuXVI VALUES
 
 **Expected Output**
 ```
-| Level | TyZe | Result | Results |
-|--------|-------|--------|---------|
-| 0      | 1     | X      | 0       |
-| 1      | 5     | X      | 0       |
-| 2      | 2     | X      | 0       |
-| 3      | 2     | Z      | 10      |
-| 1      | 8     | X      | 0       |
-| 2      | 6     | Z      | 14      |
-| 1      | 20    | X      | 0       |
-| 2      | 20    | X      | 0       |
-| 3      | 32    | X      | 0       |
-| 4      | 91    | Z      | 152     |
-| 2      | 21    | Z      | 41      |
-| 3      | 30    | Z      | 59      |
+---------------------------------------------------------------
+| Level | TyZe | Result | Results |        Logic for Results  |  
+|-------|------|--------|---------|---------------------------|  
+|     0 |    1 |      X |       0 |                           |  
+|     1 |    5 |      X |       0 |                           |  
+|     2 |    2 |      X |       0 |                           |  
+|     3 |    2 |      Z |      10 |              10		      |  (1+5+2+2)
+|     1 |    8 |      X |       0 |                           |  
+|     1 |    6 |      Z |      14 |              14 		  |  (8+6)
+|     1 |   20 |      X |       0 |                           |  
+|     2 |   9  |      X |       0 |                           |  
+|     3 |   32 |      X |       0 |                           |  
+|     4 |   91 |      Z |     152 |              152	      |  (20+9+32+91)
+|     2 |   21 |      Z |      41 |              41		      |  (21+20)
+|     3 |   30 |      Z |      59 |              59		      |  (30+20+9)
+---------------------------------------------------------------
 ```
 ---
 
-25. **Row Numbers with First as Even in Each Partition**
+25. **In this puzzle you need to generate row numbers for the given data. The condition is that the first row number for every partition should be even number.For more details please check the sample input and expected output.**
 
 **Sample Input**
 ```
@@ -248,6 +291,7 @@ INSERT INTO testSuXVI VALUES
 | 104 | r    |
 | 105 | p    |
 ```
+
 **Expected Output**
 ```
 | Id  | Vals | Changed |
