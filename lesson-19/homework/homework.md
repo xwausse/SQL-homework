@@ -1,8 +1,13 @@
 --Lesson 19 SUBQUERIES, EXISTS
 
-Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. Students are scored based on what their query returns(does it fulfill the requirments). One way of solution is enough if it is true, other ways might be suggested but should not affect the score.
+> **Notes before doing the tasks:**
+> - Tasks should be solved using **SQL Server**.
+> - Case insensitivity applies.
+> - Alias names do not affect the score.
+> - Scoring is based on the **correct output**.
+> - One correct solution is sufficient.
 
-
+```sql
 CREATE TABLE #Employees (
     EmployeeID INT PRIMARY KEY,
     FirstName VARCHAR(50),
@@ -78,8 +83,8 @@ VALUES
 (3, 'Marketing', 'Chicago'),
 (4, 'Purchasing', 'Los Angeles'),
 (5, 'Finance', 'Miami');
+```
 
-/*
 1. Retrieve Employees with Salary Greater than Average Salary
 
 2. Write a query to check if there are any employees in Department 1 using the EXISTS clause
@@ -121,7 +126,7 @@ Consider the latest hire_date to calculate the years of experience
 19. Return employees of the department with the most number of people
 
 20. For each department, find the difference between the highest and lowest salaries
-*/
+```sql
 
 CREATE TABLE Projects (
     ProjectID INT PRIMARY KEY,
@@ -181,7 +186,7 @@ INSERT INTO EmployeeProject (EmployeeProjectID, EmployeeID, ProjectID, Role) VAL
 (8, 8, 4, 'Member'),
 (9, 9, 5, 'Lead'),
 (10, 10, 5, 'Member');
-/*
+```
 21. Find all project names that have no employees assigned as leads. Return the ProjectName.
 
 22. Retrieve names of employees who earn more than the average salary of all employees 
@@ -193,4 +198,3 @@ involved in the projects they are working on. Return FirstName, LastName, Salary
 
 25. Identify projects where the total salary of employees assigned as leads 
 exceeds the average salary of all lead employees across all projects
-*/
