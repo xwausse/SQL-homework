@@ -1,17 +1,22 @@
-Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. Students are scored based on what their query returns(does it fulfill the requirments). One way of solution is enough if it is true, other ways might be suggested but should not affect the score.
+# Lesson-18: Subqueries and Exists
+
+> **Notes before doing the tasks:**
+> - Tasks should be solved using **SQL Server**.
+> - Case insensitivity applies.
+> - Alias names do not affect the score.
+> - Scoring is based on the **correct output**.
+> - One correct solution is sufficient.
 
 
 
-Level 1: Basic Subqueries
+## Level 1: Basic Subqueries
 
-1. Find Employees with Minimum Salary
+# 1. Find Employees with Minimum Salary
 
-Task: Retrieve employees who earn the minimum salary in the company.
+**Task: Retrieve employees who earn the minimum salary in the company.**
+**Tables: employees (columns: id, name, salary)**
 
-Tables: employees (columns: id, name, salary)
-
-DDL and DML:
-
+```sql
 CREATE TABLE employees (
     id INT PRIMARY KEY,
     name VARCHAR(100),
@@ -22,16 +27,13 @@ INSERT INTO employees (id, name, salary) VALUES
 (1, 'Alice', 50000),
 (2, 'Bob', 60000),
 (3, 'Charlie', 50000);
+```
 
+# 2. Find Products Above Average Price
 
-2. Find Products Above Average Price
-
-Task: Retrieve products priced above the average price.
-
-Tables: products (columns: id, product_name, price)
-
-DDL and DML:
-
+**Task: Retrieve products priced above the average price.**
+**Tables: products (columns: id, product_name, price)**
+```sql
 CREATE TABLE products (
     id INT PRIMARY KEY,
     product_name VARCHAR(100),
@@ -43,21 +45,15 @@ INSERT INTO products (id, product_name, price) VALUES
 (2, 'Tablet', 400),
 (3, 'Smartphone', 800),
 (4, 'Monitor', 300);
-
-
-
+```
 ---
 
-Level 2: Nested Subqueries with Conditions
+## Level 2: Nested Subqueries with Conditions
 
-3. Find Employees in Sales Department
-
-Task: Retrieve employees who work in the "Sales" department.
-
-Tables: employees (columns: id, name, department_id), departments (columns: id, department_name)
-
-DDL and DML:
-
+**3. Find Employees in Sales Department**
+**Task: Retrieve employees who work in the "Sales" department.**
+**Tables: employees (columns: id, name, department_id), departments (columns: id, department_name)**
+```sql
 CREATE TABLE departments (
     id INT PRIMARY KEY,
     department_name VARCHAR(100)
@@ -78,16 +74,13 @@ INSERT INTO employees (id, name, department_id) VALUES
 (1, 'David', 1),
 (2, 'Eve', 2),
 (3, 'Frank', 1);
+```
 
+# 4. Find Customers with No Orders
 
-4. Find Customers with No Orders
-
-Task: Retrieve customers who have not placed any orders.
-
-Tables: customers (columns: customer_id, name), orders (columns: order_id, customer_id)
-
-DDL and DML:
-
+**Task: Retrieve customers who have not placed any orders.**
+**Tables: customers (columns: customer_id, name), orders (columns: order_id, customer_id)**
+```sql
 CREATE TABLE customers (
     customer_id INT PRIMARY KEY,
     name VARCHAR(100)
@@ -107,21 +100,16 @@ INSERT INTO customers (customer_id, name) VALUES
 INSERT INTO orders (order_id, customer_id) VALUES
 (1, 1),
 (2, 1);
-
-
-
+```
 ---
 
-Level 3: Aggregation and Grouping in Subqueries
+## Level 3: Aggregation and Grouping in Subqueries
 
-5. Find Products with Max Price in Each Category
+# 5. Find Products with Max Price in Each Category
 
-Task: Retrieve products with the highest price in each category.
-
-Tables: products (columns: id, product_name, price, category_id)
-
-DDL and DML:
-
+**Task: Retrieve products with the highest price in each category.**
+**Tables: products (columns: id, product_name, price, category_id)**
+```sql
 CREATE TABLE products (
     id INT PRIMARY KEY,
     product_name VARCHAR(100),
@@ -134,16 +122,13 @@ INSERT INTO products (id, product_name, price, category_id) VALUES
 (2, 'Laptop', 1500, 1),
 (3, 'Headphones', 200, 2),
 (4, 'Speakers', 300, 2);
+```
 
+# 6. Find Employees in Department with Highest Average Salary
 
-6. Find Employees in Department with Highest Average Salary
-
-Task: Retrieve employees working in the department with the highest average salary.
-
-Tables: employees (columns: id, name, salary, department_id), departments (columns: id, department_name)
-
-DDL and DML:
-
+**Task: Retrieve employees working in the department with the highest average salary.**
+**Tables: employees (columns: id, name, salary, department_id), departments (columns: id, department_name)**
+```sql
 CREATE TABLE departments (
     id INT PRIMARY KEY,
     department_name VARCHAR(100)
@@ -165,21 +150,16 @@ INSERT INTO employees (id, name, salary, department_id) VALUES
 (1, 'Jack', 80000, 1),
 (2, 'Karen', 70000, 1),
 (3, 'Leo', 60000, 2);
-
-
-
+```
 ---
 
-Level 4: Correlated Subqueries
+## Level 4: Correlated Subqueries
 
-7. Find Employees Earning Above Department Average
+# 7. Find Employees Earning Above Department Average
 
-Task: Retrieve employees earning more than the average salary in their department.
-
-Tables: employees (columns: id, name, salary, department_id)
-
-DDL and DML:
-
+**Task: Retrieve employees earning more than the average salary in their department.**
+**Tables: employees (columns: id, name, salary, department_id)**
+```sql
 CREATE TABLE employees (
     id INT PRIMARY KEY,
     name VARCHAR(100),
@@ -192,16 +172,13 @@ INSERT INTO employees (id, name, salary, department_id) VALUES
 (2, 'Nina', 75000, 1),
 (3, 'Olivia', 40000, 2),
 (4, 'Paul', 55000, 2);
+```
 
+# 8. Find Students with Highest Grade per Course
 
-8. Find Students with Highest Grade per Course
-
-Task: Retrieve students who received the highest grade in each course.
-
-Tables: students (columns: student_id, name), grades (columns: student_id, course_id, grade)
-
-DDL and DML:
-
+**Task: Retrieve students who received the highest grade in each course.**
+**Tables: students (columns: student_id, name), grades (columns: student_id, course_id, grade)**
+```sql
 CREATE TABLE students (
     student_id INT PRIMARY KEY,
     name VARCHAR(100)
@@ -224,21 +201,15 @@ INSERT INTO grades (student_id, course_id, grade) VALUES
 (2, 101, 85),
 (3, 102, 90),
 (1, 102, 80);
-
-
-
+```
 ---
 
-Level 5: Subqueries with Ranking and Complex Conditions
+## Level 5: Subqueries with Ranking and Complex Conditions
 
-9. Find Third-Highest Price per Category
-
-Task: Retrieve products with the third-highest price in each category.
-
-Tables: products (columns: id, product_name, price, category_id)
-
-DDL and DML:
-
+**9. Find Third-Highest Price per Category**
+**Task: Retrieve products with the third-highest price in each category.**
+**Tables: products (columns: id, product_name, price, category_id)**
+```sql
 CREATE TABLE products (
     id INT PRIMARY KEY,
     product_name VARCHAR(100),
@@ -254,16 +225,13 @@ INSERT INTO products (id, product_name, price, category_id) VALUES
 (5, 'Headphones', 200, 2),
 (6, 'Speakers', 300, 2),
 (7, 'Earbuds', 100, 2);
+```
 
+# 10. Find Employees Between Company Average and Department Max Salary
 
-10. Find Employees Between Company Average and Department Max Salary
-
-Task: Retrieve employees with salaries above the company average but below the maximum in their department.
-
-Tables: employees (columns: id, name, salary, department_id)
-
-DDL and DML:
-
+**Task: Retrieve employees with salaries above the company average but below the maximum in their department.**
+**Tables: employees (columns: id, name, salary, department_id)**
+```sql
 CREATE TABLE employees (
     id INT PRIMARY KEY,
     name VARCHAR(100),
@@ -277,3 +245,4 @@ INSERT INTO employees (id, name, salary, department_id) VALUES
 (3, 'Casey', 50000, 2),
 (4, 'Dana', 60000, 2),
 (5, 'Evan', 75000, 1);
+```
