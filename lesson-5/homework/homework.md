@@ -2,11 +2,8 @@
 All the Tasks should be solved using/in MSSQL-SERVER.
 
 ✅ Aliases
-
 ✅ UNION, UNION ALL, INTERSECT, EXCEPT
-
 ✅ Creating Conditional Columns with CASE and IIF
-
 ✅ Using IF, WHILE
 
 
