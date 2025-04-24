@@ -4,50 +4,56 @@ These homework tasks cover the following topics:
 - **Aggregate Functions** (MIN, MAX, COUNT, AVG, SUM)
 - **Filtering Aggregated Data with HAVING**
 
-Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. Students are scored based on what their query returns(does it fulfill the requirments). One way of solution is enough if it is true, other ways might be suggested but should not affect the score.
----
-
-## 🟢 Easy-Level Tasks (10)
-
-1. Write a query to find the minimum (MIN) price of a product in the Products table.
-2. Write a query to find the maximum (MAX) Salary from the Employees table.
-3. Write a query to count the number of rows in the Customers table using COUNT(*).
-4. Write a query to count the number of unique product categories (COUNT(DISTINCT Category)) from the Products table.
-5. Write a query to find the total (SUM) sales amount for the product with id 7 in the Sales table.
-6. Write a query to calculate the average (AVG) age of employees in the Employees table.
-7. Write a query that uses GROUP BY to count the number of employees in each department.
-8. Write a query to show the minimum and maximum Price of products grouped by Category. Use products table.
-9. Write a query to calculate the total (SUM) sales per Customer in the Sales table.
-10. Write a query to use HAVING to filter departments having more than 5 employees from the Employees table.(DeptID is enough, if you don't have DeptName).
+> **Notes before doing the tasks:**
+> - Tasks should be solved using **SQL Server**.
+> - Case insensitivity applies.
+> - Alias names do not affect the score.
+> - Scoring is based on the **correct output**.
+> - One correct solution is sufficient.
 
 ---
 
-## 🟠 Medium-Level Tasks (9)
+# 🟢 Easy-Level Tasks (10)
 
-11. Write a query to calculate the total sales and average sales for each product category from the Sales table.
-12. Write a query that uses COUNT(columnname) to count the number of employees from the Department HR.
-13. Write a query that finds the highest (MAX) and lowest (MIN) Salary by department in the Employees table.(DeptID is enough, if you don't have DeptName).
-14. Write a query that uses GROUP BY to calculate the average salary per Department.(DeptID is enough, if you don't have DeptName).
-15. Write a query to show the AVG salary and COUNT(*) of employees working in each department.(DeptID is enough, if you don't have DeptName).
-16. Write a query that uses HAVING to filter product categories with an average price greater than 400.
-17. Write a query that calculates the total sales for each year in the Sales table, and use GROUP BY to group them.
-18. Write a query that uses COUNT to show the number of customers who placed at least 3 orders.
-19. Write a query that applies the HAVING clause to filter out Departments with total salary expenses greater than 500,000.(DeptID is enough, if you don't have DeptName).
+## 1. Write a query to find the minimum (MIN) price of a product in the Products table.
+## 2. Write a query to find the maximum (MAX) Salary from the Employees table.
+## 3. Write a query to count the number of rows in the Customers table using COUNT(*).
+## 4. Write a query to count the number of unique product categories (COUNT(DISTINCT Category)) from the Products table.
+## 5. Write a query to find the total (SUM) sales amount for the product with id 7 in the Sales table.
+## 6. Write a query to calculate the average (AVG) age of employees in the Employees table.
+## 7. Write a query that uses GROUP BY to count the number of employees in each department.
+## 8. Write a query to show the minimum and maximum Price of products grouped by Category. Use products table.
+## 9. Write a query to calculate the total (SUM) sales per Customer in the Sales table.
+## 10. Write a query to use HAVING to filter departments having more than 5 employees from the Employees table.(DeptID is enough, if you don't have DeptName).
 
 ---
 
-## 🔴 Hard-Level Tasks (6)
+# 🟠 Medium-Level Tasks (9)
 
-20. Write a query that shows the average (AVG) sales for each product category, and then uses HAVING to filter categories with an average sales amount greater than 200.
-21. Write a query to calculate the total (SUM) sales for each Customer, then filter the results using HAVING to include only Customers with total sales over 1500.
-22. Write a query to find the total (SUM) and average (AVG) salary of employees grouped by department, and use HAVING to include only departments with an average salary greater than 65000.
-23. Write a query that finds the maximum (MAX) and minimum (MIN) order value for each customer, and then applies HAVING to exclude customers with an order value less than 50.
-24. Write a query that calculates the total sales (SUM) and counts distinct products sold in each month, and then applies HAVING to filter the months with more than 8 products sold.
-25. Write a query to find the MIN and MAX order quantity per Year. From orders table. (Do some research)
+## 11. Write a query to calculate the total sales and average sales for each product category from the Sales table.
+## 12. Write a query that uses COUNT(columnname) to count the number of employees from the Department HR.
+## 13. Write a query that finds the highest (MAX) and lowest (MIN) Salary by department in the Employees table.(DeptID is enough, if you don't have DeptName).
+## 14. Write a query that uses GROUP BY to calculate the average salary per Department.(DeptID is enough, if you don't have DeptName).
+## 15. Write a query to show the AVG salary and COUNT(*) of employees working in each department.(DeptID is enough, if you don't have DeptName).
+## 16. Write a query that uses HAVING to filter product categories with an average price greater than 400.
+## 17. Write a query that calculates the total sales for each year in the Sales table, and use GROUP BY to group them.
+## 18. Write a query that uses COUNT to show the number of customers who placed at least 3 orders.
+## 19. Write a query that applies the HAVING clause to filter out Departments with total salary expenses greater than 500,000.(DeptID is enough, if you don't have DeptName).
+
+---
+
+# 🔴 Hard-Level Tasks (6)
+
+## 20. Write a query that shows the average (AVG) sales for each product category, and then uses HAVING to filter categories with an average sales amount greater than 200.
+## 21. Write a query to calculate the total (SUM) sales for each Customer, then filter the results using HAVING to include only Customers with total sales over 1500.
+## 22. Write a query to find the total (SUM) and average (AVG) salary of employees grouped by department, and use HAVING to include only departments with an average salary greater than 65000.
+## 23. Write a query that finds the maximum (MAX) and minimum (MIN) order value for each customer, and then applies HAVING to exclude customers with an order value less than 50.
+## 24. Write a query that calculates the total sales (SUM) and counts distinct products sold in each month, and then applies HAVING to filter the months with more than 8 products sold.
+## 25. Write a query to find the MIN and MAX order quantity per Year. From orders table. (Do some research)
 
 
-Necessary tables:
-
+**Necessary tables:**
+```sql
 DROP TABLE IF EXISTS Employees;
 
 CREATE TABLE Employees (
@@ -171,7 +177,6 @@ CREATE TABLE Customers (
     Country VARCHAR(100)
 );
 
---2. Insert 40 Rows into Customers Table
 INSERT INTO Customers (CustomerID, FirstName, LastName, Email, Phone, Address, City, State, PostalCode, Country) VALUES
 (1, 'John', 'Doe', 'johndoe@gmail.com', '555-1234', '123 Elm St', 'New York', 'NY', '10001', 'USA'),
 (2, 'Jane', 'Smith', 'janesmith@yahoo.com', '555-2345', '456 Oak St', 'Los Angeles', 'CA', '90001', 'USA'),
@@ -343,3 +348,4 @@ INSERT INTO Sales (SaleID, ProductID, CustomerID, SaleDate, SaleAmount) VALUES
 (38, 8, 9, '2023-02-08', 500.00),
 (39, 9, 10, '2023-02-09', 550.00),
 (40, 10, 1, '2023-02-10', 600.00);
+```
