@@ -1,6 +1,5 @@
 # Lesson 4: Filtering and Ordering Data
 
-Here are 27 homework tasks for Lesson 4, categorized into easy, medium, and hard levels. These tasks cover:
 ✅ Filtering and Ordering Data
 ✅ Using SELECT TOP, OFFSET-FETCH
 ✅ Using ISNULL and COALESCE
@@ -10,8 +9,15 @@ Here are 27 homework tasks for Lesson 4, categorized into easy, medium, and hard
 ✅ Wildcard Characters
 ✅ ANY and ALL Operators
 
-Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. Students are scored based on what their query returns(does it fulfill the requirments). One way of solution is enough if it is true, other ways might be suggested but should not affect the score.
-________________________________________
+
+> **Notes before doing the tasks:**
+> - Tasks should be solved using **SQL Server**.
+> - Case insensitivity applies.
+> - Alias names do not affect the score.
+> - Scoring is based on the **correct output**.
+> - One correct solution is sufficient.
+
+
 ## 🟢 Easy-Level Tasks (10)
 1. Write a query to select the top 5 employees from the Employees table.
 2. Use SELECT DISTINCT to select unique ProductName values from the Products table.
@@ -51,8 +57,8 @@ ________________________________________
 
 
 
-Necessary tables:
-
+**Necessary tables:**
+```sql
 DROP TABLE IF EXISTS Employees;
 
 CREATE TABLE Employees (
@@ -390,3 +396,4 @@ INSERT INTO Orders VALUES
 (38, 38, 39, '2025-02-01', 1, 40.00),
 (39, 39, 40, '2023-11-26', 3, 120.00),
 (40, 40, 1, '2024-03-09', 1, 1200.00);
+```
