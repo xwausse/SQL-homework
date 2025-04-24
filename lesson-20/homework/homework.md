@@ -31,13 +31,15 @@ INSERT INTO #Sales (CustomerName, Product, Quantity, Price, SaleDate) VALUES
 ('Jack', 'Smartphone', 1, 820.00, '2024-06-01');
 ```
 
-1. Find customers who purchased at least one item in March 2024 using EXISTS
-2. Find the product with the highest total sales revenue using a subquery.
-3. Find the second highest sale amount using a subquery
-4. Find the total quantity of products sold per month using a subquery
-5. Find customers who bought same products as another customer using EXISTS
+# 1. Find customers who purchased at least one item in March 2024 using EXISTS
+# 2. Find the product with the highest total sales revenue using a subquery.
+# 3. Find the second highest sale amount using a subquery
+# 4. Find the total quantity of products sold per month using a subquery
+# 5. Find customers who bought same products as another customer using EXISTS
 
 **Question 6.**
+# Return how many fruits does each person have in individual fruit level
+
 ```sql
 create table Fruits(Name varchar(50), Fruit varchar(50))
 insert into Fruits values ('Francesko', 'Apple'), ('Francesko', 'Apple'), ('Francesko', 'Apple'), ('Francesko', 'Orange'),
@@ -46,40 +48,49 @@ insert into Fruits values ('Francesko', 'Apple'), ('Francesko', 'Apple'), ('Fran
 							('Mario', 'Apple'), ('Mario', 'Banana'), ('Mario', 'Banana'), 
 							('Mario', 'Orange')
 ```
-## Return how many fruits does each person have in individual fruit level
 
---Expected Output
-/*
-Name		Apple	Orange	Banana
-Francesko	3		2		1
-Li			2		1		1
-Mario		3		1		2
-*/
+**Expected Output**
+```
++-----------+-------+--------+--------+
+| Name      | Apple | Orange | Banana |
++-----------+-------+--------+--------+
+| Francesko |   3   |   2    |   1    |
+| Li        |   2   |   1    |   1    |
+| Mario     |   3   |   1    |   2    |
++-----------+-------+--------+--------+
+```
 
---Question 7. 
+**Question 7.**
+# Return older people in the family with younger ones
+```sql
 create table Family(ParentId int, ChildID int)
 insert into Family values (1, 2), (2, 3), (3, 4)
+```
 
---Return older people in the family with younger ones
+**1 Oldest person in the family --grandfather**
+**2 Father**
+**3 Son**
+**4 Grandson**
 
---1 Oldest person in the family --grandfather
---2 Father
---3 Son
---4 Grandson
+**Expected output**
+```
++-----+-----+
+| PID |CHID |
++-----+-----+
+|  1  |  2  |
+|  1  |  3  |
+|  1  |  4  |
+|  2  |  3  |
+|  2  |  4  |
+|  3  |  4  |
++-----+-----+
 
-/*
-Expected output
-1 2
-1 3
-1 4
-2 3
-2 4
-3 4
-*/
+```
 
---Question 8. 
+**Question 8.**
 
-
+# Write an SQL statement given the following requirements. For every customer that had a delivery to California, provide a result set of the customer orders that were delivered to Texas
+```sql
 CREATE TABLE #Orders
 (
 CustomerID     INTEGER,
@@ -88,21 +99,20 @@ DeliveryState  VARCHAR(100) NOT NULL,
 Amount         MONEY NOT NULL,
 PRIMARY KEY (CustomerID, OrderID)
 );
-GO
+
 
 INSERT INTO #Orders (CustomerID, OrderID, DeliveryState, Amount) VALUES
 (1001,1,'CA',340),(1001,2,'TX',950),(1001,3,'TX',670),
 (1001,4,'TX',860),(2002,5,'WA',320),(3003,6,'CA',650),
 (3003,7,'CA',830),(4004,8,'TX',120);
-GO
+```
 
-/*
-Write an SQL statement given the following requirements.
-For every customer that had a delivery to California, provide a result set of the customer orders that
-were delivered to Texas*/
+---
+**Question 9.**
 
---Question 9.
+# Insert the names of residents if they are missing
 
+```sql
 create table #residents(resid int identity, fullname varchar(50), address varchar(100))
 
 insert into #residents values 
@@ -111,11 +121,12 @@ insert into #residents values
 ('Celine', 'city=Marseille country=France name=Celine age=21'),
 ('Theo', 'city=Milan country=Italy age=28'),
 ('Rajabboy', 'city=Tashkent country=Uzbekistan age=22')
+```
+---
+**Question 10**
+# Write a query to return the route to reach from Tashkent to Khorezm. The result should include the cheapest and the most expensive routes
 
--- Insert the names of residents if they are missing
-
---Question 10
-
+```sql
 CREATE TABLE #Routes
 (
 RouteID        INTEGER NOT NULL,
@@ -124,7 +135,6 @@ ArrivalCity    VARCHAR(30) NOT NULL,
 Cost           MONEY NOT NULL,
 PRIMARY KEY (DepartureCity, ArrivalCity)
 );
-GO
 
 INSERT INTO #Routes (RouteID, DepartureCity, ArrivalCity, Cost) VALUES
 (1,'Tashkent','Samarkand',100),
@@ -133,25 +143,25 @@ INSERT INTO #Routes (RouteID, DepartureCity, ArrivalCity, Cost) VALUES
 (4,'Samarkand','Khorezm',400),
 (5,'Tashkent','Jizzakh',100),
 (6,'Jizzakh','Samarkand',50);
-GO
+```
 
---Write a query to return the route to reach from Tashkent to Khorezm. The result should include the cheapest
---and the most expensive routes
+**Expected Output**
+```
+|             Route                       |Cost |
+|Tashkent - Samarkand - Khorezm           | 500 |
+|Tashkent - Samarkand - Bukhoro - Khorezm | 600 |
+```
+---
+**Question 11**
+# Rank products based on their order of insertion.
 
-/*
-Expected Output
-Tashkent - Samarkand - Khorezm   500
-Tashkent - Samarkand - Bukhoro - Khorezm  600
-*/
-
---Question 11
-
+```sql
 CREATE TABLE #RankingPuzzle
 (
      ID INT
     ,Vals VARCHAR(10)
 )
-GO
+
  
 INSERT INTO #RankingPuzzle VALUES
 (1,'Product'),
@@ -164,18 +174,18 @@ INSERT INTO #RankingPuzzle VALUES
 (8,'b'),
 (9,'Product'),
 (10,'c')
-GO
+```
 
---Rank products based on their order of insertion.
+---
+**Question 12**
+# You have to return Ids, what number of the letter would be next if inserted, the maximum length of the consecutive occurence of the same digit
 
---Question 12 
-
+```sql
 CREATE TABLE #Consecutives
 (
      Id VARCHAR(5)  
     ,Vals INT /* Value can be 0 or 1 */
 )
-GO
  
 INSERT INTO #Consecutives VALUES
 ('a', 1),
@@ -189,12 +199,13 @@ INSERT INTO #Consecutives VALUES
 ('b', 0),
 ('b', 1),
 ('b', 0)
-GO
+```
 
---You have to return Ids, what number of the letter would be next if inserted, 
---the maximum length of the consecutive occurence of the same digit
+---
+**Question 13**
+# Find employees whose sales were higher than the average sales in their department
 
---Question 13
+```sql
 CREATE TABLE #EmployeeSales (
     EmployeeID INT PRIMARY KEY IDENTITY(1,1),
     EmployeeName VARCHAR(100),
@@ -204,7 +215,6 @@ CREATE TABLE #EmployeeSales (
     SalesYear INT
 );
 
--- Insert Sample Data
 INSERT INTO #EmployeeSales (EmployeeName, Department, SalesAmount, SalesMonth, SalesYear) VALUES
 ('Alice', 'Electronics', 5000, 1, 2024),
 ('Bob', 'Electronics', 7000, 1, 2024),
@@ -220,14 +230,14 @@ INSERT INTO #EmployeeSales (EmployeeName, Department, SalesAmount, SalesMonth, S
 ('Laura', 'Electronics', 6500, 4, 2024),
 ('Mia', 'Furniture', 4000, 4, 2024),
 ('Nathan', 'Clothing', 7800, 4, 2024);
+```
 
---Find employees whose sales were higher than the average sales in their department
+---
+# 14. Find employees who had the highest sales in any given month using EXISTS
+---
+# 15. Find employees who made sales in every month using NOT EXISTS
 
---14. Find employees who had the highest sales in any given month using EXISTS
-
---15. Find employees who made sales in every month using NOT EXISTS
--- Insert Sample Data
-
+```sql
 CREATE TABLE Products (
     ProductID   INT PRIMARY KEY,
     Name        VARCHAR(50),
@@ -252,17 +262,18 @@ INSERT INTO Products (ProductID, Name, Category, Price, Stock) VALUES
 (13, 'Pen', 'Stationery', 2.00, 500),
 (14, 'Backpack', 'Accessories', 80.00, 30),
 (15, 'Lamp', 'Furniture', 60.00, 25);
-
--- 16. Retrieve the names of products that are more expensive than the average price of all products.
-
--- 17. Find the products that have a stock count lower than the highest stock count.
-
--- 18. Get the names of products that belong to the same category as 'Laptop'.
-
--- 19. Retrieve products whose price is greater than the lowest price in the Electronics category.
-
--- 20. Find the products that have a higher price than the average price of their respective category.
-
+```
+---
+# 16. Retrieve the names of products that are more expensive than the average price of all products.
+---
+# 17. Find the products that have a stock count lower than the highest stock count.
+---
+# 18. Get the names of products that belong to the same category as 'Laptop'.
+---
+# 19. Retrieve products whose price is greater than the lowest price in the Electronics category.
+---
+# 20. Find the products that have a higher price than the average price of their respective category.
+```sql
 CREATE TABLE Orders (
     OrderID    INT PRIMARY KEY,
     ProductID  INT,
@@ -287,13 +298,15 @@ INSERT INTO Orders (OrderID, ProductID, Quantity, OrderDate) VALUES
 (13, 14, 4, '2024-04-02'),
 (14, 15, 5, '2024-04-05'),
 (15, 13, 20, '2024-04-08');
-
--- 21. Find the products that have been ordered at least once.
-
--- 22. Retrieve the names of products that have been ordered more than the average quantity ordered.
-
--- 23. Find the products that have never been ordered.
-
--- 24. Retrieve the product with the highest total quantity ordered.
-
--- 25. Find the products that have been ordered more times than the average number of orders placed.
+```
+---
+# 21. Find the products that have been ordered at least once.
+---
+# 22. Retrieve the names of products that have been ordered more than the average quantity ordered.
+---
+# 23. Find the products that have never been ordered.
+---
+# 24. Retrieve the product with the highest total quantity ordered.
+--=
+# 25. Find the products that have been ordered more times than the average number of orders placed.
+---
