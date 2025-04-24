@@ -1,6 +1,13 @@
 # lesson-8 Practice
 
-Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. Students are scored based on what their query returns(does it fulfill the requirments). One way of solution is enough if it is true, other ways might be suggested but should not affect the score.
+
+> **Notes before doing the tasks:**
+> - Tasks should be solved using **SQL Server**.
+> - Case insensitivity applies.
+> - Alias names do not affect the score.
+> - Scoring is based on the **correct output**.
+> - One correct solution is sufficient.
+
 
 ##  Easy-Level Tasks 
 1. Using Products table, find the total number of products available in each category.
@@ -13,7 +20,7 @@ Notes before doing the tasks: Tasks should be solved using SQL Server. It does n
 8. Using Customers table, find the total number of customers in each country.
 9. Using Orders table, find the minimum and maximum quantity ordered.
 
-________________________________________
+---
 
 ##  Medium-Level Tasks 
 10. Using Orders and Invoices tables, list customer IDs who placed orders in 2023 (using EXCEPT) to find those who did not have invoices.
@@ -25,17 +32,17 @@ ________________________________________
 16. Using Sales table, find total sales per product Id.
 17. Using Products table, use wildcard to find products that contain 'oo' in the name. Return productname.
 18. Using Products and Products_Discounted tables, compare product IDs using INTERSECT.
-________________________________________
-
+---
 ##  Hard-Level Tasks 
 19. Using Invoices table, show top 3 customers with the highest total invoice amount. Return CustomerID and Totalspent.
 20. Find product ID and productname that are present in Products but not in Products_Discounted.
 21. Using Products and Sales tables, list product names and the number of times each has been sold. (Research for Joins)
 22. Using Orders table, find top 5 products (by ProductID) with the highest order quantities.
 
+---
 
-Necessary tables:
-
+**Necessary tables:**
+```sql
 CREATE TABLE Products (
     ProductID INT PRIMARY KEY,
     ProductName VARCHAR(100),
@@ -346,3 +353,4 @@ INSERT INTO Invoices (InvoiceID, CustomerID, InvoiceDate, TotalAmount) VALUES
 (38, 38, '2023-03-31', 500.00),
 (39, 39, '2023-04-02', 550.00),
 (40, 40, '2023-04-04', 600.00);
+```
