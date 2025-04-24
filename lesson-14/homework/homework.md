@@ -1,4 +1,46 @@
-/*
+# Lesson-14: Practice
+
+> **Notes before doing the tasks:**
+> - Tasks should be solved using **SQL Server**.
+> - Case insensitivity applies.
+> - Alias names do not affect the score.
+> - Scoring is based on the **correct output**.
+> - One correct solution is sufficient.
+
+ 
+---
+
+
+# Easy Tasks
+## 1.Write a SQL query to split the Name column by a comma into two separate columns: Name and Surname.(TestMultipleColumns)
+## 2.Write a SQL query to find strings from a table where the string itself contains the % character.(TestPercent)
+## 3.In this puzzle you will have to split a string based on dot(.).(Splitter)
+## 4.Write a SQL query to replace all integers (digits) in the string with 'X'.(1234ABC123456XYZ1234567890ADS)
+## 5.Write a SQL query to return all rows where the value in the Vals column contains more than two dots (.).(testDots)
+## 6.Write a SQL query to count the occurrences of a substring within a string in a given column.(Not table)
+## 7.Write a SQL query to count the spaces present in the string.(CountSpaces)
+## 8.write a SQL query that finds out employees who earn more than their managers.(Employee)
+
+# Medium Tasks
+## 1.Write a SQL query to separate the integer values and the character values into two different columns.(SeperateNumbersAndCharcters)
+## 2.write a SQL query to find all dates' Ids with higher temperature compared to its previous (yesterday's) dates.(weather)
+## 3.Write a SQL query that reports the device that is first logged in for each player.(Activity)
+## 4.Write an SQL query that reports the first login date for each player.(Activity)
+## 5.Your task is to split the string into a list using a specific separator (such as a space, comma, etc.), and then return the third item from that list.(fruits)
+## 6.Write a SQL query to create a table where each character from the string will be converted into a row, with each row having a single ## column.(sdgfhsdgfhs@121313131)
+## 7.You are given two tables: p1 and p2. Join these tables on the id column. The catch is: when the value of p1.code is 0, replace it with the value of p2.code.(p1,p2)
+## 8.You are given a sales table. Calculate the week-on-week percentage of sales per area for each financial week. For each week, the total sales will be considered 100%, and the percentage sales for each day of the week should be calculated based on the area sales for that week.(WeekPercentagePuzzle)
+
+
+# Difficult Tasks
+## 1.In this puzzle you have to swap the first two letters of the comma separated string.(MultipleVals)
+## 2.Find a string where all characters are the same and the length is greater than 1.(FindSameCharacters)
+## 3.Write a T-SQL query to remove the duplicate integer values present in the string column. Additionally, remove the single integer character that appears in the string.(RemoveDuplicateIntsFromNames)
+## 4.Find a string where all characters are the same and the length is greater than 1.(FindSameCharacters)
+## 5.Write a SQL query to extract the integer value that appears at the start of the string in a column named Vals.(GetIntegers)
+
+
+```sql
 CREATE TABLE Employee (
     Id INT,
     Name VARCHAR(50),
@@ -43,13 +85,13 @@ CREATE TABLE MultipleVals
      Id INT
     ,[Vals] VARCHAR(100)
 )
-GO
+
  
  
 Insert Into MultipleVals values
  (1,'a,b,c')
 ,(2,'x,y,z')
-GO
+
 
 CREATE TABLE fruits (
     fruit_list VARCHAR(100)
@@ -63,7 +105,7 @@ CREATE TABLE RemoveLastComma
      Id INT
     ,Val VARCHAR(100)
 )
-GO
+
  
 INSERT INTO RemoveLastComma VALUES
 (1,'Pawan'),
@@ -73,13 +115,12 @@ INSERT INTO RemoveLastComma VALUES
 (5,'a,a,b,c,'),
 (6,NULL),
 (7,'')
-GO
+
 CREATE TABLE FindSameCharacters
 (
      Id INT
     ,Vals VARCHAR(10)
 )
-GO
  
 INSERT INTO FindSameCharacters VALUES
 (1,'aa'),
@@ -90,14 +131,13 @@ INSERT INTO FindSameCharacters VALUES
 (6,'a'),
 (7,'zzz'),
 (8,'abc')
-GO
+
 
 CREATE TABLE Splitter
 (
      Id INT
     ,Vals VARCHAR(100)
 )
-GO
  
 INSERT INTO Splitter VALUES
 (1,'P.K'),
@@ -105,14 +145,13 @@ INSERT INTO Splitter VALUES
 (3,'c.d'),
 (4,'e.J'),
 (5,'t.u.b')
-GO
+
 
 CREATE TABLE testDots
 (
      ID INT
     ,Vals VARCHAR(100)
 )
-GO
  
 INSERT INTO testDots VALUES
 (1,'0.0'),
@@ -121,14 +160,12 @@ INSERT INTO testDots VALUES
 (4,'1.1.'),
 (5,'a.b.b.b.b.b..b..b'),
 (6,'6.')
-GO
 
 CREATE TABLE GetIntegers
 (
      Id INT
     ,VALS VARCHAR(100)
 )
-GO
  
 INSERT INTO GetIntegers VALUES
  (1,'P1')
@@ -144,14 +181,12 @@ INSERT INTO GetIntegers VALUES
 ,(11,'98')
 ,(12,'111')
 ,(13,NULL)
-GO
 
 CREATE TABLE RemoveDuplicateIntsFromNames
 (
       PawanName INT
     , Pawan_slug_name VARCHAR(1000)
 )
-GO
  
  
 INSERT INTO RemoveDuplicateIntsFromNames VALUES
@@ -160,13 +195,11 @@ INSERT INTO RemoveDuplicateIntsFromNames VALUES
 (3, 'PawanB-32'    ),
 (4, 'PawanC-4444' ),
 (5, 'PawanD-3'  )
-GO
 
 CREATE TABLE TestPercent
 (
     Strs VARCHAR(100)
 )
-GO
  
 INSERT INTO TestPercent
 SELECT 'Pawan'
@@ -176,35 +209,22 @@ UNION ALL
 SELECT 'Pawan%Kumar'
 UNION ALL
 SELECT '%'
-GO
 
 CREATE TABLE [dbo].[TestMultipleColumns]
- 
 (
- 
 [Id] [int] NULL,
- 
 [Name] [varchar](20) NULL
- 
 )
  
 INSERT INTO [TestMultipleColumns] VALUES
- 
 (1,    'Pawan,Kumar'),
- 
 (2,    'Sandeep,Goyal'),
- 
 (3,    'Isha,Mattoo'),
- 
 (4,    'Gopal,Ranjan'),
- 
 (5,    'Neeraj,Garg'),
- 
 (6,    'Deepak,Sharma'),
- 
 (7,    ' Mayank,Tripathi')
  
-GO
 
 CREATE TABLE CountSpaces
 (
@@ -253,7 +273,7 @@ CREATE TABLE SeperateNumbersAndCharcters
 (
     Value VARCHAR(100)
 )
-GO
+
  
 INSERT INTO SeperateNumbersAndCharcters
 VALUES
@@ -261,36 +281,4 @@ VALUES
 ('123'),
 ('ABC'),
 ('23874283bsdjfhsjadkhfas09')
-GO
- 
- 
---
-
-*/
-/*
-Easy Tasks
-1.Write a SQL query to split the Name column by a comma into two separate columns: Name and Surname.(TestMultipleColumns)
-2.Write a SQL query to find strings from a table where the string itself contains the % character.(TestPercent)
-3.In this puzzle you will have to split a string based on dot(.).(Splitter)
-4.Write a SQL query to replace all integers (digits) in the string with 'X'.(1234ABC123456XYZ1234567890ADS)
-5.Write a SQL query to return all rows where the value in the Vals column contains more than two dots (.).(testDots)
-6.Write a SQL query to count the occurrences of a substring within a string in a given column.(Not table)
-7.Write a SQL query to count the spaces present in the string.(CountSpaces)
-8.write a SQL query that finds out employees who earn more than their managers.(Employee)
-
-Medium Tasks
-1.Write a SQL query to separate the integer values and the character values into two different columns.(SeperateNumbersAndCharcters)
-2.write a SQL query to find all dates' Ids with higher temperature compared to its previous (yesterday's) dates.(weather)
-3.Write a SQL query that reports the device that is first logged in for each player.(Activity)
-4.Write an SQL query that reports the first login date for each player.(Activity)
-5.Your task is to split the string into a list using a specific separator (such as a space, comma, etc.), and then return the third item from that list.(fruits)
-6.Write a SQL query to create a table where each character from the string will be converted into a row, with each row having a single column.(sdgfhsdgfhs@121313131)
-7.You are given two tables: p1 and p2. Join these tables on the id column. The catch is: when the value of p1.code is 0, replace it with the value of p2.code.(p1,p2)
-8.You are given a sales table. Calculate the week-on-week percentage of sales per area for each financial week. For each week, the total sales will be considered 100%, and the percentage sales for each day of the week should be calculated based on the area sales for that week.(WeekPercentagePuzzle)
-
-Difficult Tasks
-1.In this puzzle you have to swap the first two letters of the comma separated string.(MultipleVals)
-2.Find a string where all characters are the same and the length is greater than 1.(FindSameCharacters)
-3.Write a T-SQL query to remove the duplicate integer values present in the string column. Additionally, remove the single integer character that appears in the string.(RemoveDuplicateIntsFromNames)
-4.Find a string where all characters are the same and the length is greater than 1.(FindSameCharacters)
-5.Write a SQL query to extract the integer value that appears at the start of the string in a column named Vals.(GetIntegers)
+```
