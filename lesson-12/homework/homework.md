@@ -9,7 +9,7 @@
 > - Scoring is based on the **correct output**.
 > - One correct solution is sufficient.
 
-#1. Combine Two Tables
+1. Combine Two Tables
 
 **Table: Person**
 ```
@@ -42,8 +42,7 @@
 
 **The result format is in the following example.**
 
-**Input: **
-**Person table:**
+**Input: **Person table:**
 ```
 | personId | lastName | firstName |
 +----------+----------+-----------+
