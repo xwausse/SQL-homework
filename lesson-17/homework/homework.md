@@ -254,20 +254,20 @@ VALUES
 
 **Here is the expected output.**
 ```
-|Row Number	|	Workflow	|	Status	|
-|---------------------------------------|
-|	  1		|	  Alpha		|	 Pass	|
-|	  2		|	  Alpha		|	 Fail	|
-|	  3		|	  Alpha		|	 Fail	|
-|	  4		|	  Alpha		|	 Fail	|
-|	  5		|	  Bravo		|	 Pass	|
-|	  6		|	  Bravo		|	 Fail	|
-|	  7		|	  Bravo		|	 Fail	|
-|	  8		|	  Bravo		|	 Pass	|
-|	  9		|	  Bravo		|	 Pass	|
-|	  10	|	 Charlie	|	 Fail	|
-|	  11	|	 Charlie	|	 Fail	|
-|	  12	|	 Charlie	|	 Fail	|
+| RowNumber | Workflow | Status |
+|--------------------------------|
+| 1         | Alpha    | Pass   |
+| 2         | Alpha    | Fail   |
+| 3         | Alpha    | Fail   |
+| 4         | Alpha    | Fail   |
+| 5         | Bravo    | Pass   |
+| 6         | Bravo    | Fail   |
+| 7         | Bravo    | Fail   |
+| 8         | Bravo    | Pass   |
+| 9         | Bravo    | Pass   |
+| 10        | Charlie  | Fail   |
+| 11        | Charlie  | Fail   |
+| 12        | Charlie  | Fail   |
 ```
 
 ```sql
