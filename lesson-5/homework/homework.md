@@ -2,11 +2,21 @@
 All the Tasks should be solved using/in MSSQL-SERVER.
 
 ✅ Aliases
+
 ✅ UNION, UNION ALL, INTERSECT, EXCEPT
+
 ✅ Creating Conditional Columns with CASE and IIF
+
 ✅ Using IF, WHILE
 
-Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. Students are scored based on what their query returns(does it fulfill the requirments). One way of solution is enough if it is true, other ways might be suggested but should not affect the score.
+
+> **Notes before doing the tasks:**
+> - Tasks should be solved using **SQL Server**.
+> - Case insensitivity applies.
+> - Alias names do not affect the score.
+> - Scoring is based on the **correct output**.
+> - One correct solution is sufficient.
+
 ________________________________________
 
 ##  Easy-Level Tasks 
@@ -36,8 +46,8 @@ ________________________________________
         Between 1 and 3 items : 5% 
         Otherwise: 7% 
 
-Necessary tables:
-
+**Necessary tables:**
+```sql
 CREATE TABLE Products (
     ProductID INT PRIMARY KEY,
     ProductName VARCHAR(100),
@@ -453,3 +463,4 @@ INSERT INTO Employees (EmployeeID, FirstName, LastName, DepartmentName, Salary, 
 (38, 'Ronald', NULL, 'IT', 68000.00, '2017-02-04', 39, NULL, 'Germany'),
 (39, 'Angela', 'Jenkins', 'Finance', 52000.00, '2018-04-23', 34, 'angelaj@example.com', 'Canada'),
 (40, 'Gary', 'Wright', 'Marketing', 87000.00, '2021-01-10', 29, NULL, 'UK');
+```
