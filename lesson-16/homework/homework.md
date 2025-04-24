@@ -326,7 +326,7 @@ INSERT INTO Employee VALUES
 | C98787    | 91     |
 ```
 
-**Expected Output:** `The expected output would be $110, as you have one winning ticket, and one ticket that has some but not all the winning numbers.`
+**Expected Output would be $110, as you have one winning ticket, and one ticket that has some but not all the winning numbers.**
 
 ---
 
