@@ -1,5 +1,4 @@
 # Lesson-6: Practice
-# Lesson-16: Practice
 
 > **Notes before doing the tasks:**
 > - Tasks should be solved using **SQL Server**.
