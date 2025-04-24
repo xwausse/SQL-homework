@@ -10,7 +10,13 @@ These homework tasks cover the following topics:
 - **Showing INNER join**
 - **Using different logical Operators in ON clause(=, <>, >, >=, <, <=)**
 
-Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. Students are scored based on what their query returns(does it fulfill the requirments). One way of solution is enough if it is true, other ways might be suggested but should not affect the score.
+> **Notes before doing the tasks:**
+> - Tasks should be solved using **SQL Server**.
+> - Case insensitivity applies.
+> - Alias names do not affect the score.
+> - Scoring is based on the **correct output**.
+> - One correct solution is sufficient.
+
 
 ## 🟢 Easy-Level Tasks (10)
 
@@ -71,7 +77,7 @@ List employees who are managers of someone, but their salary is less than or equ
 List customers who have made an order, but no payment has been recorded for it.
 
 ---
-
+```sql
 DROP TABLE IF EXISTS Employees;
 
 CREATE TABLE Employees (
@@ -523,3 +529,4 @@ INSERT INTO Sales (SaleID, ProductID, CustomerID, SaleDate, SaleAmount) VALUES
 (38, 8, 9, '2023-02-08', 500.00),
 (39, 9, 10, '2023-02-09', 550.00),
 (40, 10, 1, '2023-02-10', 600.00);
+```
