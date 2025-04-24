@@ -1,126 +1,6 @@
 
 # Lesson 22: Aggregated Window Functions
 
-## 🔹 10 Easy Questions
-
-1. **Compute Running Total Sales per Customer**
-2. **Count the Number of Orders per Product Category**
-3. **Find the Maximum Total Amount per Product Category**
-4. **Find the Minimum Price of Products per Product Category**
-5. **Compute the Moving Average of Sales of 3 days (prev day, curr day, next day)**
-6. **Find the Total Sales per Region**
-7. **Compute the Rank of Customers Based on Their Total Purchase Amount**
-8. **Calculate the Difference Between Current and Previous Sale Amount per Customer**
-9. **Find the Top 3 Most Expensive Products in Each Category**
-10. **Compute the Cumulative Sum of Sales Per Region by Order Date**
-
----
-
-## 🔸 10 Medium Questions
-
-11. **Compute Cumulative Revenue per Product Category**
-
-12. **Sum of Previous Values (Running Total Example)**
-
-**Input:**
-
-```
-| ID |
-|----|
-|  1 |
-|  2 |
-|  3 |
-|  4 |
-|  5 |
-```
-
-**Expected Output:**
-
-```
-| ID | SumPreValues |
-|----|--------------|
-|  1 |            1 |
-|  2 |            3 |
-|  3 |            6 |
-|  4 |           10 |
-|  5 |           15 |
-```
-
-13. **Sum of Previous Value to Current Value Puzzle**
-
-```sql
-CREATE TABLE OneColumn (Value SMALLINT);
-INSERT INTO OneColumn VALUES (10), (20), (30), (40), (100);
-```
-
-**Expected Output:**
-
-```
-| Value | Sum of Previous |
-|-------|-----------------|
-|    10 |              10 |
-|    20 |              30 |
-|    30 |              50 |
-|    40 |              70 |
-|   100 |             140 |
-```
-
-14. **Odd Row Numbering Per Partition**
-
-```sql
-CREATE TABLE Row_Nums (Id INT, Vals VARCHAR(10));
--- Inserting sample values
-```
-
-**Expected Output:**
-
-```
-| Id  | Vals | RowNumber |
-|-----|------|-----------|
-| 101 | a    |         1 |
-| 102 | b    |         3 |
-| 102 | c    |         4 |
-...
-```
-
-15. **Find customers who purchased from more than one product category**  
-16. **Find Customers with Above-Average Spending in Their Region**  
-17. **Dense Rank Customers by Total Spending per Region**  
-18. **Running Total of Total Amount by Customer and Order Date**  
-19. **Sales Growth Rate for Each Month Compared to Previous Month**  
-20. **Customers with Higher Current Total Amount than Their Previous Order**  
-
----
-
-## 🔺 5 Hard Questions
-
-21. **Products Priced Above Average**  
-22. **Sum of val1 and val2 for Each Group at Start Row Only**
-
-```sql
-CREATE TABLE MyData (Id INT, Grp INT, Val1 INT, Val2 INT);
--- Insert sample values
-```
-
-**Expected Output:**
-
-```
-| Id | Grp | Val1 | Val2 | Tot  |
-|----|-----|------|------|------|
-|  1 |   1 |   30 |   29 |  134 |
-|  2 |   1 |   19 |    0 | NULL |
-...
-```
-
-23. **Sum Cost and Quantity (with merging logic)**  
-24. **Sum TyZe per 'Z' Row with Logic Column**  
-25. **Even Row Number Start Per Partition**  
-
----
-
-## 📊 Sample Table
-
-### `sales_data` Table Definition
 
 ```sql
 CREATE TABLE sales_data (
@@ -135,14 +15,249 @@ CREATE TABLE sales_data (
     order_date DATE,
     region VARCHAR(50)
 );
+
+INSERT INTO sales_data VALUES
+    (1, 101, 'Alice', 'Electronics', 'Laptop', 1, 1200.00, 1200.00, '2024-01-01', 'North'),
+    (2, 102, 'Bob', 'Electronics', 'Phone', 2, 600.00, 1200.00, '2024-01-02', 'South'),
+    (3, 103, 'Charlie', 'Clothing', 'T-Shirt', 5, 20.00, 100.00, '2024-01-03', 'East'),
+    (4, 104, 'David', 'Furniture', 'Table', 1, 250.00, 250.00, '2024-01-04', 'West'),
+    (5, 105, 'Eve', 'Electronics', 'Tablet', 1, 300.00, 300.00, '2024-01-05', 'North'),
+    (6, 106, 'Frank', 'Clothing', 'Jacket', 2, 80.00, 160.00, '2024-01-06', 'South'),
+    (7, 107, 'Grace', 'Electronics', 'Headphones', 3, 50.00, 150.00, '2024-01-07', 'East'),
+    (8, 108, 'Hank', 'Furniture', 'Chair', 4, 75.00, 300.00, '2024-01-08', 'West'),
+    (9, 109, 'Ivy', 'Clothing', 'Jeans', 1, 40.00, 40.00, '2024-01-09', 'North'),
+    (10, 110, 'Jack', 'Electronics', 'Laptop', 2, 1200.00, 2400.00, '2024-01-10', 'South'),
+    (11, 101, 'Alice', 'Electronics', 'Phone', 1, 600.00, 600.00, '2024-01-11', 'North'),
+    (12, 102, 'Bob', 'Furniture', 'Sofa', 1, 500.00, 500.00, '2024-01-12', 'South'),
+    (13, 103, 'Charlie', 'Electronics', 'Camera', 1, 400.00, 400.00, '2024-01-13', 'East'),
+    (14, 104, 'David', 'Clothing', 'Sweater', 2, 60.00, 120.00, '2024-01-14', 'West'),
+    (15, 105, 'Eve', 'Furniture', 'Bed', 1, 800.00, 800.00, '2024-01-15', 'North'),
+    (16, 106, 'Frank', 'Electronics', 'Monitor', 1, 200.00, 200.00, '2024-01-16', 'South'),
+    (17, 107, 'Grace', 'Clothing', 'Scarf', 3, 25.00, 75.00, '2024-01-17', 'East'),
+    (18, 108, 'Hank', 'Furniture', 'Desk', 1, 350.00, 350.00, '2024-01-18', 'West'),
+    (19, 109, 'Ivy', 'Electronics', 'Speaker', 2, 100.00, 200.00, '2024-01-19', 'North'),
+    (20, 110, 'Jack', 'Clothing', 'Shoes', 1, 90.00, 90.00, '2024-01-20', 'South'),
+    (21, 111, 'Kevin', 'Electronics', 'Mouse', 3, 25.00, 75.00, '2024-01-21', 'East'),
+    (22, 112, 'Laura', 'Furniture', 'Couch', 1, 700.00, 700.00, '2024-01-22', 'West'),
+    (23, 113, 'Mike', 'Clothing', 'Hat', 4, 15.00, 60.00, '2024-01-23', 'North'),
+    (24, 114, 'Nancy', 'Electronics', 'Smartwatch', 1, 250.00, 250.00, '2024-01-24', 'South'),
+    (25, 115, 'Oscar', 'Furniture', 'Wardrobe', 1, 1000.00, 1000.00, '2024-01-25', 'East')
+
 ```
 
-### Sample Data (Partial View)
+
+
+## Easy Questions
+
+1. **Compute Running Total Sales per Customer**
+2. **Count the Number of Orders per Product Category**
+3. **Find the Maximum Total Amount per Product Category**
+4. **Find the Minimum Price of Products per Product Category**
+5. **Compute the Moving Average of Sales of 3 days (prev day, curr day, next day)**
+6. **Find the Total Sales per Region**
+7. **Compute the Rank of Customers Based on Their Total Purchase Amount**
+8. **Calculate the Difference Between Current and Previous Sale Amount per Customer**
+9. **Find the Top 3 Most Expensive Products in Each Category**
+10. **Compute the Cumulative Sum of Sales Per Region by Order Date**
+
+---
+
+## Medium Questions
+
+11. **Compute Cumulative Revenue per Product Category**
+
+12. **Here you need to find out the sum of previous values. Please go through the sample input and expected output.**
+
+**Sample Input**
+```
+| ID |
+|----|
+|  1 |
+|  2 |
+|  3 |
+|  4 |
+|  5 |
+```
+
+**Expected Output**
+```
+| ID | SumPreValues |
+|----|--------------|
+|  1 |            1 |
+|  2 |            3 |
+|  3 |            6 |
+|  4 |           10 |
+|  5 |           15 |
+```
+---
+
+13. **Sum of Previous Values to Current Value**
 
 ```sql
-INSERT INTO sales_data VALUES
-(1, 101, 'Alice', 'Electronics', 'Laptop', 1, 1200.00, 1200.00, '2024-01-01', 'North'),
-(2, 102, 'Bob', 'Electronics', 'Phone', 2, 600.00, 1200.00, '2024-01-02', 'South'),
-...
-(25, 115, 'Oscar', 'Furniture', 'Wardrobe', 1, 1000.00, 1000.00, '2024-01-25', 'East');
+CREATE TABLE OneColumn (
+    Value SMALLINT
+);
+INSERT INTO OneColumn VALUES (10), (20), (30), (40), (100);
+```
+
+**Sample Input**
+```
+| Value |
+|-------|
+|    10 |
+|    20 |
+|    30 |
+|    40 |
+|   100 |
+```
+**Expected Output**
+```
+| Value | Sum of Previous |
+|-------|-----------------|
+|    10 |              10 |
+|    20 |              30 |
+|    30 |              50 |
+|    40 |              70 |
+|   100 |             140 |
+```
+---
+
+14. **Generate Row Numbers with First as Odd Number in Each Partition**
+
+```sql
+CREATE TABLE Row_Nums (
+    Id INT,
+    Vals VARCHAR(10)
+);
+INSERT INTO Row_Nums VALUES
+(101,'a'), (102,'b'), (102,'c'), (103,'f'), (103,'e'), (103,'q'), (104,'r'), (105,'p');
+```
+
+**Expected Output**
+```
+| Id  | Vals | RowNumber |
+|-----|------|-----------|
+| 101 | a    | 1         |
+| 102 | b    | 3         |
+| 102 | c    | 4         |
+| 103 | f    | 5         |
+| 103 | e    | 6         |
+| 103 | q    | 7         |
+| 104 | r    | 9         |
+| 105 | p    | 11        |
+```
+---
+
+15. **Find customers who have purchased items from more than one product_category**
+16. **Find Customers with Above-Average Spending in Their Region**
+17. **Rank customers based on total spending in each region (Dense Rank)**
+18. **Calculate the cumulative_sales for each customer_id by order_date**
+19. **Calculate monthly sales growth rate**
+20. **Identify customers whose total_amount is higher than their previous order**
+
+---
+
+## Hard Questions
+
+21. **Identify Products that prices are above the average product price**
+
+22. **Sum of val1 and val2 at beginning of group**
+
+```sql
+CREATE TABLE MyData (
+    Id INT, Grp INT, Val1 INT, Val2 INT
+);
+INSERT INTO MyData VALUES
+(1,1,30,29), (2,1,19,0), (3,1,11,45), (4,2,0,0), (5,2,100,17);
+```
+
+**Expected Output**
+```
+| Id | Grp | Val1 | Val2 | Tot  |
+|----|-----|------|------|------|
+| 1  | 1   | 30   | 29   | 134  |
+| 2  | 1   | 19   | 0    | NULL |
+| 3  | 1   | 11   | 45   | NULL |
+| 4  | 2   | 0    | 0    | 117  |
+| 5  | 2   | 100  | 17   | NULL |
+```
+---
+
+23. **Sum of Cost and Quantity (Grouped Logic)**
+
+```sql
+CREATE TABLE TheSumPuzzle (
+    ID INT, Cost INT, Quantity INT
+);
+INSERT INTO TheSumPuzzle VALUES
+(1234,12,164), (1234,13,164), (1235,100,130), (1235,100,135), (1236,12,136);
+```
+
+**Expected Output**
+```
+| Id   | Cost | Quantity |
+|------|------|----------|
+| 1234 | 25   | 164      |
+| 1235 | 200  | 265      |
+| 1236 | 12   | 136      |
+```
+---
+
+24. **Sum of TyZe for Each Z Using Logic Based on Levels**
+
+```sql
+CREATE TABLE testSuXVI (
+    Level TINYINT, TyZe TINYINT, Result CHAR(1)
+);
+INSERT INTO testSuXVI VALUES
+(0, 1 ,'X'), (1, 5 ,'X'), (2, 2 ,'X'), (3, 2 ,'Z'), (1, 8 ,'X'), (2, 6 ,'Z'),
+(1, 20 ,'X'), (2, 9 ,'X'), (3, 32 ,'X'), (4, 91 ,'Z'), (2, 21 ,'Z'), (3, 30 ,'Z');
+```
+
+**Expected Output**
+```
+| Level | TyZe | Result | Results |
+|--------|-------|--------|---------|
+| 0      | 1     | X      | 0       |
+| 1      | 5     | X      | 0       |
+| 2      | 2     | X      | 0       |
+| 3      | 2     | Z      | 10      |
+| 1      | 8     | X      | 0       |
+| 2      | 6     | Z      | 14      |
+| 1      | 20    | X      | 0       |
+| 2      | 20    | X      | 0       |
+| 3      | 32    | X      | 0       |
+| 4      | 91    | Z      | 152     |
+| 2      | 21    | Z      | 41      |
+| 3      | 30    | Z      | 59      |
+```
+---
+
+25. **Row Numbers with First as Even in Each Partition**
+
+**Sample Input**
+```
+| Id  | Vals |
+|-----|------|
+| 101 | a    |
+| 102 | b    |
+| 102 | c    |
+| 103 | f    |
+| 103 | e    |
+| 103 | q    |
+| 104 | r    |
+| 105 | p    |
+```
+**Expected Output**
+```
+| Id  | Vals | Changed |
+|-----|------|---------|
+| 101 | a    | 2       |
+| 102 | b    | 4       |
+| 102 | c    | 5       |
+| 103 | e    | 7       |
+| 103 | f    | 8       |
+| 103 | q    | 9       |
+| 104 | r    | 11      |
+| 105 | p    | 13      |
 ```
