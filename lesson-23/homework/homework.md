@@ -262,16 +262,16 @@ VALUES
 ('Air Conditioner', 'Appliances', 2, 2000.00, '2024-01-19', 'West'),
 ('Camera', 'Electronics', 7, 900.00, '2024-01-20', 'North');
 ```
-### 7. What is the total revenue generated from all sales?  
-### 8. What is the average unit price of products?  
-### 9. How many sales transactions were recorded?  
-### 10. What is the highest number of units sold in a single transaction?  
-### 11. How many products were sold in each category?  
-### 12. What is the total revenue for each region?  
-### 13. What is the total quantity sold per month?  
-### 14. Which product generated the highest total revenue?  
-### 15. Compute the running total of revenue ordered by sale date.  
-### 16. How much does each category contribute to total sales revenue?  
+7. What is the total revenue generated from all sales?  
+8. What is the average unit price of products?  
+9. How many sales transactions were recorded?  
+10. What is the highest number of units sold in a single transaction?  
+11. How many products were sold in each category?  
+12. What is the total revenue for each region?  
+13. What is the total quantity sold per month?  
+14. Which product generated the highest total revenue?  
+15. Compute the running total of revenue ordered by sale date.  
+16. How much does each category contribute to total sales revenue?  
 
 ---
 
@@ -297,11 +297,11 @@ VALUES
 ('Daniel Garcia', 'East', '2022-08-22');
 ```
 
-### 17. Show all sales along with the corresponding customer names  
-### 18. List customers who have not made any purchases  
-### 19. Compute total revenue generated from each customer  
-### 20. Find the customer who has contributed the most revenue  
-### 21. Calculate the total sales per customer per month  
+17. Show all sales along with the corresponding customer names  
+18. List customers who have not made any purchases  
+19. Compute total revenue generated from each customer  
+20. Find the customer who has contributed the most revenue  
+21. Calculate the total sales per customer per month  
 
 ---
 
@@ -328,7 +328,7 @@ VALUES
 ('Gaming Console', 'Electronics', 320.00, 450.00);
 ```
 
-### 22. List all products that have been sold at least once  
-### 23. Find the most expensive product in the Products table  
-### 24. Show each sale with its corresponding cost price from the Products table  
-### 25. Find all products where the selling price is higher than the average selling price in their category  
+22. List all products that have been sold at least once  
+23. Find the most expensive product in the Products table  
+24. Show each sale with its corresponding cost price from the Products table  
+25. Find all products where the selling price is higher than the average selling price in their category  
