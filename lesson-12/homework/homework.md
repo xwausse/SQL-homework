@@ -42,7 +42,7 @@
 
 **The result format is in the following example.**
 
-**Input: **Person table:**
+**Input: Person table:**
 ```
 | personId | lastName | firstName |
 +----------+----------+-----------+
@@ -84,7 +84,7 @@ insert into Address (addressId, personId, city, state) values ('2', '3', 'Leetco
 ```
 
 ---
-2.Employees Earning More Than Their Managers
+2. Employees Earning More Than Their Managers
 ---
 **Table: Employee**
 ```
@@ -136,7 +136,7 @@ insert into Employee (id, name, salary, managerId) values ('4', 'Max', '90000', 
 
 ---
 
-3.Duplicate Emails
+3. Duplicate Emails
 ```
 | Column Name | Type    |
 +-------------+---------+
@@ -187,7 +187,7 @@ insert into Person (id, email) values ('3', 'a@b.com')
 
 ---
 
-**4. Delete Duplicate Emails**
+4. Delete Duplicate Emails
 
 **Table: Person**
 ```
@@ -275,12 +275,12 @@ VALUES
 
 ---
 
-6.Total over 50 and least
+6. Total over 50 and least
 **Find total Sales amount for the orders which weights more than 50 for each customer along with their least weight.(from TSQL2012 database, Sales.Orders Table)**
 
 ---
 
-7.Carts
+7. Carts
 
 **You have the tables below, write a query to get the expected output**
 
@@ -330,7 +330,7 @@ GO
 
 
 
-8.Matches
+8. Matches
 
 **Resultga yutgan jamoaning nomi chiqsin agar durrang bo''lsa 'Draw' so''zi chiqsin.(Hisob 10:11 yoki 111:99 bo'lishi ham mumkin :)  )**
 
@@ -373,7 +373,7 @@ insert into match1 values
 ```
 
 ---
-9.Customers Who Never Order
+9. Customers Who Never Order
 ---
 
 **Table: Customers**
@@ -453,7 +453,7 @@ insert into Orders (id, customerId) values ('2', '1')
 
 ---
 
-10.Students and Examinations
+10. Students and Examinations
 ---
 
 **Table: Students**
