@@ -1,87 +1,58 @@
-# SQL Homework Tasks: CTEs and Derived Tables
+### Lesson-15: CTEs and Derived Tables
 
-This document contains a collection of SQL homework tasks divided into three difficulty levels: **Easy**, **Medium**, and **Difficult**.
-
-Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. Students are scored based on what their query returns(does it fulfill the requirments). One way of solution is enough if it is true, other ways might be suggested but should not affect the score.
+> **Notes before doing the tasks:**
+> - Tasks should be solved using **SQL Server**.
+> - Case insensitivity applies.
+> - Alias names do not affect the score.
+> - Scoring is based on the **correct output**.
+> - One correct solution is sufficient.
 
 ---
+## Easy Tasks
 
-Easy Tasks 
-
-1.Create a numbers table using a recursive query.
-
-2.Beginning at 1, this script uses a recursive statement to double the number for each record
-
-3.Write a query to find the total sales per employee using a derived table.(Sales, Employees)
-
-4.Create a CTE to find the average salary of employees.(Employees)
-
-5.Write a query using a derived table to find the highest sales for each product.(Sales, Products)
-
-6.Use a CTE to get the names of employees who have made more than 5 sales.(Sales, Employees)
-
-7.Write a query using a CTE to find all products with sales greater than $500.(Sales, Products)
-
-8.Create a CTE to find employees with salaries above the average salary.(Employees)
-
-9.Write a query to find the total number of products sold using a derived table.(Sales, Products)
-
-10.Use a CTE to find the names of employees who have not made any sales.(Sales, Employees)
+# 1.Create a numbers table using a recursive query.
+# 2.Beginning at 1, this script uses a recursive statement to double the number for each record
+# 3.Write a query to find the total sales per employee using a derived table.(Sales, Employees)
+# 4.Create a CTE to find the average salary of employees.(Employees)
+# 5.Write a query using a derived table to find the highest sales for each product.(Sales, Products)
+# 6.Use a CTE to get the names of employees who have made more than 5 sales.(Sales, Employees)
+# 7.Write a query using a CTE to find all products with sales greater than $500.(Sales, Products)
+# 8.Create a CTE to find employees with salaries above the average salary.(Employees)
+# 9.Write a query to find the total number of products sold using a derived table.(Sales, Products)
+# 10.Use a CTE to find the names of employees who have not made any sales.(Sales, Employees)
 
 
-Medium Tasks
+## Medium Tasks
 
-1.This script uses recursion to calculate factorials
-
-2.This script uses recursion to calculate Fibonacci numbers
-
-3.This script uses recursion to split a string into rows of substrings for each character in the string.(Example)
-
-4.Create a CTE to rank employees based on their total sales.(Employees, Sales)
-
-5.Write a query using a derived table to find the top 5 employees by the number of orders made.(Employees, Sales)
-
-6.Use a CTE to calculate the sales difference between the current month and the previous month.(Sales)
-
-7.Write a query using a derived table to find the sales per product category.(Sales, Products)
-
-8.Use a CTE to rank products based on total sales in the last year.(Sales, Products)
-
-9.Create a derived table to find employees with sales over $5000 in each quarter.(Sales, Employees)
-
-10.Use a derived table to find the top 3 employees by total sales amount in the last month.(Sales, Employees)
+# 1.This script uses recursion to calculate factorials
+# 2.This script uses recursion to calculate Fibonacci numbers
+# 3.This script uses recursion to split a string into rows of substrings for each character in the string.(Example)
+# 4.Create a CTE to rank employees based on their total sales.(Employees, Sales)
+# 5.Write a query using a derived table to find the top 5 employees by the number of orders made.(Employees, Sales)
+# 6.Use a CTE to calculate the sales difference between the current month and the previous month.(Sales)
+# 7.Write a query using a derived table to find the sales per product category.(Sales, Products)
+# 8.Use a CTE to rank products based on total sales in the last year.(Sales, Products)
+# 9.Create a derived table to find employees with sales over $5000 in each quarter.(Sales, Employees)
+# 10.Use a derived table to find the top 3 employees by total sales amount in the last month.(Sales, Employees)
 
 
-Difficult Tasks
+## Difficult Tasks
 
-1.Create a numbers table that shows all numbers 1 through n and their order gradually increasing by the next number in the sequence.(Example:n=5 | 1, 12, 123, 1234, 12345)
-
-2.Write a query using a derived table to find the employees who have made the most sales in the last 6 months.(Employees,Sales)
-
-3.This script uses recursion to display a running total where the sum cannot go higher than 10 or lower than 0.(Numbers)
-
-4.Given a table of employee shifts, and another table of their activities, merge the two tables and write an SQL statement that produces the desired output. If an employee is scheduled and does not have an activity planned, label the time frame as “Work”. (Schedule,Activity)
-
-5.Create a complex query that uses both a CTE and a derived table to calculate sales totals for each department and product.(Employees, Sales, Products, Departments)
+# 1.Create a numbers table that shows all numbers 1 through n and their order gradually increasing by the next number in the sequence.(Example:n=5 | 1, 12, 123, 1234, 12345)
+# 2.Write a query using a derived table to find the employees who have made the most sales in the last 6 months.(Employees,Sales)
+# 3.This script uses recursion to display a running total where the sum cannot go higher than 10 or lower than 0.(Numbers)
+# 4.Given a table of employee shifts, and another table of their activities, merge the two tables and write an SQL statement that produces the desired output. If an employee is scheduled and does not have an activity planned, label the time frame as “Work”. (Schedule,Activity)
+# 5.Create a complex query that uses both a CTE and a derived table to calculate sales totals for each department and product.(Employees, Sales, Products, Departments)
 
 
 
-
-
-
-
-
-
-
-
-
-/*CREATE TABLE Schedule
+```sql
+CREATE TABLE Schedule
 (
 ScheduleID  CHAR(1) PRIMARY KEY,
 StartTime   DATETIME NOT NULL,
 EndTime     DATETIME NOT NULL
 );
-GO
 
 CREATE TABLE Activity
 (
@@ -91,12 +62,11 @@ StartTime     DATETIME,
 EndTime       DATETIME,
 PRIMARY KEY (ScheduleID, ActivityName, StartTime, EndTime)
 );
-GO
 
 INSERT INTO Schedule (ScheduleID, StartTime, EndTime) VALUES
 ('A',CAST('2021-10-01 10:00:00' AS DATETIME),CAST('2021-10-01 15:00:00' AS DATETIME)),
 ('B',CAST('2021-10-01 10:15:00' AS DATETIME),CAST('2021-10-01 12:15:00' AS DATETIME));
-GO
+
 
 INSERT INTO Activity (ScheduleID, ActivityName, StartTime, EndTime) VALUES
 ('A','Meeting',CAST('2021-10-01 10:00:00' AS DATETIME),CAST('2021-10-01 10:30:00' AS DATETIME)),
@@ -110,7 +80,7 @@ Id         INTEGER,
 StepNumber INTEGER,
 [Count]    INTEGER
 );
-GO
+
 
 INSERT INTO Numbers VALUES
  (1,1,1) 
@@ -120,17 +90,17 @@ INSERT INTO Numbers VALUES
 ,(1,5,-2)
 ,(2,1,7)
 ,(2,2,-3);
-GO
+
 
 CREATE TABLE Example
 (
 Id       INTEGER IDENTITY(1,1) PRIMARY KEY,
 String VARCHAR(30) NOT NULL
 );
-GO
+
 
 INSERT INTO Example VALUES('123456789'),('abcdefghi');
-GO
+
 
 CREATE TABLE Employees (
     EmployeeID INT PRIMARY KEY,
@@ -237,3 +207,4 @@ INSERT INTO Products (ProductID, CategoryID, ProductName, Price) VALUES
 (8, 4, 'Speaker', 200.00),
 (9, 5, 'Smartwatch', 250.00),
 (10, 5, 'Camera', 700.00);
+```
