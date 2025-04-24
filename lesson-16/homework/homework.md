@@ -264,14 +264,14 @@ INSERT INTO Device VALUES
 **Expected Output:**
 ```
 | Device_id | no_of_location | max_signal_location | no_of_signals |
-|-----------|----------------|---------------------|----------------|
-| 12        | 2              | Bangalore           | 6              |
-| 13        | 2              | Secunderabad        | 5              |
+|-----------|----------------|---------------------|---------------|
+| 12        | 2              | Bangalore           | 6             |
+| 13        | 2              | Secunderabad        | 5             |
 ```
 
 ---
 
-### 8. Employees earning above dept average
+### 8. Write a SQL  to find all Employees who earn more than the average salary in their corresponding department. Return EmpID, EmpName,Salary in your output
 
 **SQL Setup:**
 ```sql
