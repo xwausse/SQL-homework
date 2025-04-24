@@ -230,7 +230,7 @@ CREATE TABLE CountSpaces
 (
 texts VARCHAR(100)
 )
-GO
+
  
 INSERT INTO CountSpaces VALUES
 ('P Q R S '),
@@ -259,15 +259,15 @@ CREATE TABLE WeekPercentagePuzzle
     , [MonthName] VARCHAR(15)
     , FinancialYear INT
 )
-GO
+
  
 INSERT INTO WeekPercentagePuzzle VALUES
-(1,    '2015-04-01',  0,                  50,                        'Wed',            4,                       1,                        'April',               2015),
-(2,   '2015-04-01',   null,              null   ,                   'Wed',           4  ,                      1    ,                     'April',              2015), 
-(3,  '2015-04-01',    100 ,             0      ,                    'Wed',           4   ,                      1  ,                      'April',             2015),
-(3,  '2015-04-01',   50  ,               100 ,                        'Wed',            4,                        1,                        'April',               2015),
-(3,  '2015-04-04',   50  ,              50  ,                          'Sat',             7,                         1,                        'April',              2015)
-GO
+(1,'2015-04-01',0,50,'Wed',4,1,'April',2015),
+(2,'2015-04-01',null,null,'Wed',4,1,'April',2015),
+(3,'2015-04-01',100,0,'Wed',4,1,'April',2015),
+(3,'2015-04-01',50,100,'Wed',4,1,'April',2015),
+(3,'2015-04-04',50,50,'Sat',7,1,'April',2015);
+
 
 CREATE TABLE SeperateNumbersAndCharcters
 (
