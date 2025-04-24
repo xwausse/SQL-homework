@@ -1,11 +1,18 @@
-lesson-6 homework: practice
+# Lesson-6: Practice
+# Lesson-16: Practice
 
-Notes before doing the tasks: Tasks should be solved using SQL Server. It does not matter the solutions are uppercase or lowercase, which means case insensitive. Using alies names does not matter in scoring your work. Students are scored based on what their query returns(does it fulfill the requirments). One way of solution is enough if it is true, other ways might be suggested but should not affect the score.
+> **Notes before doing the tasks:**
+> - Tasks should be solved using **SQL Server**.
+> - Case insensitivity applies.
+> - Alias names do not affect the score.
+> - Scoring is based on the **correct output**.
+> - One correct solution is sufficient.
+
 ## Puzzle 1: Finding Distinct Values
 Question: Explain at least two ways to find distinct values based on two columns.
 
-Input table (`InputTbl`):
-
+**Input table (`InputTbl`):**
+```
 | col1 | col2 |
 |------|------|
 | a    | b    |
@@ -15,15 +22,17 @@ Input table (`InputTbl`):
 | c    | d    |
 | m    | n    |
 | n    | m    |
-
-Result should be like this:
-
+```
+**Result should be like this:**
+```
 | col1 | col2 |
 |------|------|
 | a    | b    |
 | c    | d    |
 | m    | n    |
+```
 
+```sql
 CREATE TABLE InputTbl (
     col1 VARCHAR(10),
     col2 VARCHAR(10)
@@ -36,14 +45,15 @@ CREATE TABLE InputTbl (
 ('c', 'd'),
 ('m', 'n'),
 ('n', 'm');
-
+```
 
 ---
 
 ## Puzzle 2: Removing Rows with All Zeroes
-Question: If all the columns have zero values, then don’t show that row. In this case, we have to remove the 5th row while selecting data.
+**Question: If all the columns have zero values, then don’t show that row. In this case, we have to remove the 5th row while selecting data.**
 
 ### Table Schema:
+```sql
 CREATE TABLE TestMultipleZero (
     A INT NULL,
     B INT NULL,
@@ -51,7 +61,6 @@ CREATE TABLE TestMultipleZero (
     D INT NULL
 );
 
-### Sample Data:
 INSERT INTO TestMultipleZero(A,B,C,D)
 VALUES 
     (0,0,0,1),
@@ -60,11 +69,11 @@ VALUES
     (1,0,0,0),
     (0,0,0,0),
     (1,1,1,0);
-
+```
 ---
 
 ## Puzzle 3: Find those with odd ids
-
+```sql
 create table section1(id int, name varchar(20))
 insert into section1 values (1, 'Been'),
        (2, 'Roma'),
@@ -74,7 +83,7 @@ insert into section1 values (1, 'Been'),
        (6, 'Bruno'),
        (7, 'Fred'),
        (8, 'Andro')
-
+```
 ## Puzzle 4: Person with the smallest id (use the table in puzzle 3)
 
 ---
@@ -88,7 +97,7 @@ insert into section1 values (1, 'Been'),
 ---
 
 ## Puzle 7: Write a query to return only the rows where the code contains the literal underscore _ (not as a wildcard).
-
+```sql
 CREATE TABLE ProductCodes (
     Code VARCHAR(20)
 );
@@ -102,3 +111,4 @@ INSERT INTO ProductCodes (Code) VALUES
 ('X_ABC'),
 ('X#DEF'),
 ('X-999');
+```
