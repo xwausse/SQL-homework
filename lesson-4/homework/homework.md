@@ -20,10 +20,10 @@
 
 ## 🟢 Easy-Level Tasks (10)
 1. Write a query to select the top 5 employees from the Employees table.
-2. Use SELECT DISTINCT to select unique ProductName values from the Products table.
+2. Use SELECT DISTINCT to select unique CategoryName values from the Products table.
 3. Write a query that filters the Products table to show products with Price > 100.
-4. Write a query to select all CustomerName values that start with 'A' using the LIKE operator.
-5. Order the results of a Products query by Price in ascending order.
+4. Write a query to select all Customers whose FirstName start with 'A' using the LIKE operator.
+5. Order the results of a Products table by Price in ascending order.
 6. Write a query that uses the WHERE clause to filter for employees with Salary >= 60000 and Department = 'HR'.
 7. Use ISNULL to replace NULL values in the Email column with the text "noemail@example.com".From  Employees table
 8. Write a query that shows all products with Price BETWEEN 50 AND 100.
@@ -46,14 +46,14 @@ ________________________________________
 ________________________________________
 
 ## 🔴 Hard-Level Tasks 
-20. Write a query that selects the top 10 products with the highest sales, using TOP(10) and ordered by SalesAmount DESC.
+20. Write a query that selects the top 5 products with the highest sales, using TOP(5) and ordered by SalesAmount DESC.
 21. Combine FirstName and LastName into one column named FullName in the Employees table. (only in select statement)
 22. Write a query to select the distinct Category, ProductName, and Price for products that are priced above $50, using DISTINCT on three columns.
 23. Write a query that selects products whose Price is less than 10% of the average price in the Products table. (Do some research on how to find average price of all products)
 24. Use WHERE clause to filter for employees whose Age is less than 30 and who work in either the 'HR' or 'IT' department.
 25. Use LIKE with wildcard to select all customers whose Email contains the domain '@gmail.com'.
 26. Write a query that uses the ALL operator to find employees whose salary is greater than all employees in the 'Sales' department.
-27. Write a query that filters the Orders table for orders placed in the last 180 days using BETWEEN and CURRENT_DATE. (Search how to get the current date)
+27. Write a query that filters the Orders table for orders placed in the last 180 days using BETWEEN and LATEST_DATE in the table. (Search how to get the current date and latest date)
 
 
 
@@ -86,7 +86,7 @@ INSERT INTO Employees (EmployeeID, FirstName, LastName, DepartmentName, Salary, 
 (10, 'William', NULL, 'IT', 64000.00, '2020-04-10', 26, NULL, 'Germany'),
 (11, NULL, 'Thomas', 'Finance', 47000.00, '2017-01-25', 38, NULL, 'Canada'),
 (12, 'Joseph', 'Jackson', 'Marketing', 78000.00, '2016-09-30', 44, 'josephj@example.com', 'UK'),
-(13, 'Karen', 'White', 'HR', 59000.00, '2018-06-10', 33, 'karenw@example.com', 'USA'),
+(13, 'Karen', 'White', 'HR', 59000.00, '2018-06-10', 33, 'karenw@gmail.com', 'USA'),
 (14, 'Steven', NULL, 'IT', 71000.00, '2021-07-15', 24, NULL, 'Germany'),
 (15, 'Nancy', 'Clark', 'Finance', 45000.00, '2020-02-20', 27, 'nancyc@example.com', 'Canada'),
 (16, 'George', 'Lewis', 'Marketing', 80000.00, '2019-11-10', 36, 'georgel@example.com', 'UK'),
@@ -94,7 +94,7 @@ INSERT INTO Employees (EmployeeID, FirstName, LastName, DepartmentName, Salary, 
 (18, 'Samuel', 'Walker', 'IT', 72000.00, '2021-03-22', 23, 'samuelw@example.com', 'Germany'),
 (19, 'Helen', 'Hall', 'Finance', 49000.00, '2018-10-16', 34, 'helenh@example.com', 'Canada'),
 (20, NULL, 'Allen', 'Marketing', 90000.00, '2015-08-11', 50, NULL, 'UK'),
-(21, 'Betty', 'Young', 'HR', 53000.00, '2020-05-17', 28, 'bettyy@example.com', 'USA'),
+(21, 'Betty', 'Young', 'HR', 53000.00, '2020-05-17', 28, 'bettyy@gmail.com', 'USA'),
 (22, 'Frank', NULL, 'IT', 67000.00, '2021-02-02', 26, 'frankk@example.com', 'Germany'),
 (23, 'Deborah', 'Scott', 'Finance', 47000.00, '2019-07-09', 29, NULL, 'Canada'),
 (24, 'Matthew', 'Green', 'Marketing', 76000.00, '2021-01-15', 30, 'matthewg@example.com', 'UK'),
@@ -104,13 +104,13 @@ INSERT INTO Employees (EmployeeID, FirstName, LastName, DepartmentName, Salary, 
 (28, 'Anthony', 'Mitchell', 'Marketing', 82000.00, '2021-04-10', 29, NULL, 'UK'),
 (29, 'Lisa', 'Perez', 'HR', 60000.00, '2021-03-05', 24, 'lisap@example.com', 'USA'),
 (30, NULL, 'Roberts', 'IT', 69000.00, '2019-09-24', 32, NULL, 'Germany'),
-(31, 'Jessica', 'Gonzalez', 'Finance', 47000.00, '2017-12-13', 38, 'jessicag@example.com', 'Canada'),
+(31, 'Jessica', 'Gonzalez', 'Finance', 47000.00, '2017-12-13', 38, 'jessicag@gamil.com', 'Canada'),
 (32, 'Brian', NULL, 'Marketing', 85000.00, '2018-11-05', 35, NULL, 'UK'),
 (33, 'Dorothy', 'Evans', 'HR', 59000.00, '2019-06-11', 31, 'dorothye@example.com', 'USA'),
 (34, 'Matthew', 'Carter', 'IT', 70000.00, '2020-01-29', 29, 'matthewc@example.com', 'Germany'),
 (35, NULL, 'Martinez', 'Finance', 51000.00, '2021-06-06', 22, NULL, 'Canada'),
 (36, 'Daniel', 'Perez', 'Marketing', 83000.00, '2021-07-01', 30, 'danielp@example.com', 'UK'),
-(37, 'Catherine', 'Roberts', 'HR', 60000.00, '2020-09-19', 27, 'catheriner@example.com', 'USA'),
+(37, 'Catherine', 'Roberts', 'HR', 60000.00, '2020-09-19', 27, 'catheriner@gmail.com', 'USA'),
 (38, 'Ronald', NULL, 'IT', 68000.00, '2017-02-04', 39, NULL, 'Germany'),
 (39, 'Angela', 'Jenkins', 'Finance', 52000.00, '2018-04-23', 34, 'angelaj@example.com', 'Canada'),
 (40, 'Gary', 'Wright', 'Marketing', 87000.00, '2021-01-10', 29, NULL, 'UK');
