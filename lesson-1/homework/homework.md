@@ -20,4 +20,5 @@
 ## Hard
 7. Research and explain the different SQL commands: DQL, DML, DDL, DCL, TCL with examples.
 8. Write a query to insert three records into the Students table.
-9. Create a backup of your SchoolDB database and restore it. (write its steps to submit)
+9. Restore AdventureWorksDW2022.bak file to your server. (write its steps to submit)
+   You can find the database from this link :`https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/AdventureWorksDW2022.bak`
