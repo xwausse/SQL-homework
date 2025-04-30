@@ -16,28 +16,28 @@
 4. Using Products table, get all product names that end with 'er'.
 5. Using Customers table, list all customers from countries ending in 'A'.
 6. Using Products table, show the highest price among all products.
-7. Using Products table, use IIF to label stock as 'Low Stock' if quantity < 30, else 'Sufficient'.
+7. Using Products table, label stock as 'Low Stock' if quantity < 30, else 'Sufficient'.
 8. Using Customers table, find the total number of customers in each country.
 9. Using Orders table, find the minimum and maximum quantity ordered.
 
 ---
 
 ##  Medium-Level Tasks 
-10. Using Orders and Invoices tables, list customer IDs who placed orders in 2023 (using EXCEPT) to find those who did not have invoices.
+10. Using Orders and Invoices tables, list customer IDs who placed orders in 2023 January to find those who did not have invoices.
 11. Using Products and Products_Discounted table, Combine all product names from Products and Products_Discounted including duplicates.
 12. Using Products and Products_Discounted table, Combine all product names from Products and Products_Discounted without duplicates.
 13. Using Orders table, find the average order amount by year.
-14. Using Products table, use CASE to group products based on price: 'Low' (<100), 'Mid' (100-500), 'High' (>500). Return productname and pricegroup.
-15. Using Customers table, list all unique cities where customers live, sorted alphabetically.
+14. Using Products table, group products based on price: 'Low' (<100), 'Mid' (100-500), 'High' (>500). Return productname and pricegroup.
+15. Using City_Population table, use Pivot to show values of Year column in seperate columns ([2012], [2013]) and copy results to a new Population_Each_Year table.
 16. Using Sales table, find total sales per product Id.
 17. Using Products table, use wildcard to find products that contain 'oo' in the name. Return productname.
-18. Using Products and Products_Discounted tables, compare product IDs using INTERSECT.
+18. Using City_Population table, use Pivot to show values of City column in seperate columns (Bektemir, Chilonzor, Yakkasaroy)  and copy results to a new Population_Each_City table.
 ---
 ##  Hard-Level Tasks 
 19. Using Invoices table, show top 3 customers with the highest total invoice amount. Return CustomerID and Totalspent.
-20. Find product ID and productname that are present in Products but not in Products_Discounted.
+20. Transform Population_Each_Year table to its original format (City_Population).
 21. Using Products and Sales tables, list product names and the number of times each has been sold. (Research for Joins)
-22. Using Orders table, find top 5 products (by ProductID) with the highest order quantities.
+22. Transform Population_Each_City table to its original format (City_Population).
 
 ---
 
@@ -353,4 +353,19 @@ INSERT INTO Invoices (InvoiceID, CustomerID, InvoiceDate, TotalAmount) VALUES
 (38, 38, '2023-03-31', 500.00),
 (39, 39, '2023-04-02', 550.00),
 (40, 40, '2023-04-04', 600.00);
+
+create table city_population ( district_id int, district_name varchar(30),population decimal(10,2),year varchar(20))
+
+insert into city_population values 
+(1,'Chilonzor',2500,2012),
+(2,'Yakkasaroy',1500,2012),
+(3,'Mirobod',3000,2012),
+(4,'Yashnobod',1000,2012),
+(5,'Bektemir',2000,2012),
+(1,'Chilonzor',2800,2013),
+(2,'Yakkasaroy',1900,2013),
+(3,'Mirobod',2000,2013),
+(4,'Yashnobod',5000,2013),
+(5,'Bektemir',1500,2013)
+
 ```
