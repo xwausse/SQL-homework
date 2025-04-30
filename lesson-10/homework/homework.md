@@ -12,94 +12,93 @@
 ## 🟢 **Easy-Level Tasks (10)**
 
 1. **Using the `Employees` and `Departments` tables**, write a query to return the names and salaries of employees whose salary is greater than 50000, along with their department names.  
-   🔁 *Expected Output:* `EmployeeName`, `Salary`, `DepartmentName`
+   🔁 *Expected Columns:* `EmployeeName`, `Salary`, `DepartmentName`
 
 2. **Using the `Customers` and `Orders` tables**, write a query to display customer names and order dates for orders placed in the year 2023.  
-   🔁 *Expected Output:* `FirstName`, `LastName`, `OrderDate`
+   🔁 *Expected Columns:* `FirstName`, `LastName`, `OrderDate`
 
 3. **Using the `Employees` and `Departments` tables**, write a query to show all employees along with their department names. Include employees who do not belong to any department.  
-   🔁 *Expected Output:* `EmployeeName`, `DepartmentName`  
-   *(Hint: Use a LEFT OUTER JOIN)*
+   🔁 *Expected Columns:* `EmployeeName`, `DepartmentName`  
 
 4. **Using the `Products` and `Suppliers` tables**, write a query to list all suppliers and the products they supply. Show suppliers even if they don’t supply any product.  
-   🔁 *Expected Output:* `SupplierName`, `ProductName`
+   🔁 *Expected Columns:* `SupplierName`, `ProductName`
 
 5. **Using the `Orders` and `Payments` tables**, write a query to return all orders and their corresponding payments. Include orders without payments and payments not linked to any order.  
-   🔁 *Expected Output:* `OrderID`, `OrderDate`, `PaymentDate`, `Amount`
+   🔁 *Expected Columns:* `OrderID`, `OrderDate`, `PaymentDate`, `Amount`
 
 6. **Using the `Employees` table**, write a query to show each employee's name along with the name of their manager.  
-   🔁 *Expected Output:* `EmployeeName`, `ManagerName`
+   🔁 *Expected Columns:* `EmployeeName`, `ManagerName`
 
 7. **Using the `Students`, `Courses`, and `Enrollments` tables**, write a query to list the names of students who are enrolled in the course named 'Math 101'.  
-   🔁 *Expected Output:* `StudentName`, `CourseName`
+   🔁 *Expected Columns:* `StudentName`, `CourseName`
 
 8. **Using the `Customers` and `Orders` tables**, write a query to find customers who have placed an order with more than 3 items. Return their name and the quantity they ordered.  
-   🔁 *Expected Output:* `FirstName`, `LastName`, `Quantity`
+   🔁 *Expected Columns:* `FirstName`, `LastName`, `Quantity`
 
 9. **Using the `Employees` and `Departments` tables**, write a query to list employees working in the 'Human Resources' department.  
-   🔁 *Expected Output:* `EmployeeName`, `DepartmentName`  
+   🔁 *Expected Columns:* `EmployeeName`, `DepartmentName`  
 
 ---
 
 ## 🟠 **Medium-Level Tasks (9)**
 
-10. **Using the `Employees` and `Departments` tables**, write a query to return department names that have more than 10 employees.  
-   🔁 *Expected Output:* `DepartmentName`, `EmployeeCount`
+10. **Using the `Employees` and `Departments` tables**, write a query to return department names that have more than 5 employees.  
+   🔁 *Expected Columns:* `DepartmentName`, `EmployeeCount`
 
 11. **Using the `Products` and `Sales` tables**, write a query to find products that have never been sold.  
-   🔁 *Expected Output:* `ProductID`, `ProductName`
+   🔁 *Expected Columns:* `ProductID`, `ProductName`
 
 12. **Using the `Customers` and `Orders` tables**, write a query to return customer names who have placed at least one order.  
-   🔁 *Expected Output:* `FirstName`, `LastName`, `TotalOrders`
+   🔁 *Expected Columns:* `FirstName`, `LastName`, `TotalOrders`
 
 13. **Using the `Employees` and `Departments` tables**, write a query to show only those records where both employee and department exist (no NULLs).  
-   🔁 *Expected Output:* `EmployeeName`, `DepartmentName`  
+   🔁 *Expected Columns:* `EmployeeName`, `DepartmentName`  
 
 14. **Using the `Employees` table**, write a query to find pairs of employees who report to the same manager.  
-   🔁 *Expected Output:* `Employee1`, `Employee2`, `ManagerID`
+   🔁 *Expected Columns:* `Employee1`, `Employee2`, `ManagerID`
 
 15. **Using the `Orders` and `Customers` tables**, write a query to list all orders placed in 2022 along with the customer name.  
-   🔁 *Expected Output:* `OrderID`, `OrderDate`, `FirstName`, `LastName`
+   🔁 *Expected Columns:* `OrderID`, `OrderDate`, `FirstName`, `LastName`
 
 16. **Using the `Employees` and `Departments` tables**, write a query to return employees from the 'Sales' department whose salary is above 60000.  
-   🔁 *Expected Output:* `EmployeeName`, `Salary`, `DepartmentName`
+   🔁 *Expected Columns:* `EmployeeName`, `Salary`, `DepartmentName`
 
 17. **Using the `Orders` and `Payments` tables**, write a query to return only those orders that have a corresponding payment.  
-   🔁 *Expected Output:* `OrderID`, `OrderDate`, `PaymentDate`, `Amount`
+   🔁 *Expected Columns:* `OrderID`, `OrderDate`, `PaymentDate`, `Amount`
 
 18. **Using the `Products` and `Orders` tables**, write a query to find products that were never ordered.  
-   🔁 *Expected Output:* `ProductID`, `ProductName`
+   🔁 *Expected Columns:* `ProductID`, `ProductName`
 
 ---
 
 ## 🔴 **Hard-Level Tasks (9)**
 
-19. **Using the `Employees` table**, write a query to find employees whose salary is greater than the average salary of all employees.  
-   🔁 *Expected Output:* `EmployeeName`, `Salary`
+19. **Using the `Employees` table**, write a query to find employees whose salary is greater than the average salary in their own departments.  
+   🔁 *Expected Columns:* `EmployeeName`, `Salary`
 
 20. **Using the `Orders` and `Payments` tables**, write a query to list all orders placed before 2020 that have no corresponding payment.  
-   🔁 *Expected Output:* `OrderID`, `OrderDate`
+   🔁 *Expected Columns:* `OrderID`, `OrderDate`
 
 21. **Using the `Products` and `Categories` tables**, write a query to return products that do not have a matching category.  
-   🔁 *Expected Output:* `ProductID`, `ProductName`
+   🔁 *Expected Columns:* `ProductID`, `ProductName`
 
 22. **Using the `Employees` table**, write a query to find employees who report to the same manager and earn more than 60000.  
-   🔁 *Expected Output:* `Employee1`, `Employee2`, `ManagerID`, `Salary`
+   🔁 *Expected Columns:* `Employee1`, `Employee2`, `ManagerID`, `Salary`
 
-23. **Using the `Employees` and `Departments` tables**, write a query to return employees who work in departments whose name starts with the letter 'M'.  
-   🔁 *Expected Output:* `EmployeeName`, `DepartmentName`
+23. **Using the `Employees` and `Departments` tables**, write a query to return employees who work in departments which name starts with the letter 'M'.  
+   🔁 *Expected Columns:* `EmployeeName`, `DepartmentName`
 
 24. **Using the `Products` and `Sales` tables**, write a query to list sales where the amount is greater than 500, including product names.  
-   🔁 *Expected Output:* `SaleID`, `ProductName`, `SaleAmount`
+   🔁 *Expected Columns:* `SaleID`, `ProductName`, `SaleAmount`
 
 25. **Using the `Students`, `Courses`, and `Enrollments` tables**, write a query to find students who have **not** enrolled in the course 'Math 101'.  
-   🔁 *Expected Output:* `StudentID`, `StudentName`
+   🔁 *Expected Columns:* `StudentID`, `StudentName`
 
 26. **Using the `Orders` and `Payments` tables**, write a query to return orders that are missing payment details.  
-   🔁 *Expected Output:* `OrderID`, `OrderDate`, `PaymentID`
+   🔁 *Expected Columns:* `OrderID`, `OrderDate`, `PaymentID`
 
 27. **Using the `Products` and `Categories` tables**, write a query to list products that belong to either the 'Electronics' or 'Furniture' category.  
-   🔁 *Expected Output:* `ProductID`, `ProductName`, `CategoryName`
+   🔁 *Expected Columns:* `ProductID`, `ProductName`, `CategoryName`
 
 ---
 ```sql
