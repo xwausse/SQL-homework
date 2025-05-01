@@ -17,9 +17,9 @@
    **Task**: Display the names of employees who work in either the Sales or Marketing department.  
    **Tables Used**: `Employees`, `Departments`
 
-3. **Return**: `DepartmentName`, `TopEmployeeName`, `MaxSalary`  
-   **Task**: For each department, show the name of the employee who earns the highest salary.  
-   **Tables Used**: `Departments`, `Employees` (as a derived table)
+3. **Return**: `DepartmentName`,  `MaxSalary`  
+   **Task**: Show the highest salary for each department.  
+   **Tables Used**: `Departments`, `Employees`
 
 4. **Return**: `CustomerName`, `OrderID`, `OrderDate`  
    **Task**: List all customers from the USA who placed orders in the year 2023.  
@@ -27,21 +27,21 @@
 
 5. **Return**: `CustomerName`, `TotalOrders`  
    **Task**: Show how many orders each customer has placed.  
-   **Tables Used**: `Orders` (as a derived table), `Customers`
+   **Tables Used**: `Orders` , `Customers`
 
 6. **Return**: `ProductName`, `SupplierName`  
    **Task**: Display the names of products that are supplied by either Gadget Supplies or Clothing Mart.  
    **Tables Used**: `Products`, `Suppliers`
 
-7. **Return**: `CustomerName`, `MostRecentOrderDate`, `OrderID`  
+7. **Return**: `CustomerName`, `MostRecentOrderDate`  
    **Task**: For each customer, show their most recent order. Include customers who haven't placed any orders.  
-   **Tables Used**: `Customers`, `Orders` (as a derived table)
+   **Tables Used**: `Customers`, `Orders`
 
 ---
 
 ## 🟠 Medium-Level Tasks (6)
 
-8. **Return**: `CustomerName`, `OrderID`, `OrderTotal`  
+8. **Return**: `CustomerName`,  `OrderTotal`  
    **Task**: Show the customers who have placed an order where the total amount is greater than 500.  
    **Tables Used**: `Orders`, `Customers`
 
@@ -51,14 +51,14 @@
 
 10. **Return**: `ProductName`, `TotalSalesAmount`  
     **Task**: Display each product along with the total amount it has been sold for.  
-    **Tables Used**: `Sales` (as a derived table), `Products`
+    **Tables Used**: `Sales`, `Products`
 
 11. **Return**: `EmployeeName`, `DepartmentName`, `Salary`  
-    **Task**: Show the employees who work in the HR department and earn a salary greater than 50000.  
+    **Task**: Show the employees who work in the HR department and earn a salary greater than 60000.  
     **Tables Used**: `Employees`, `Departments`
 
 12. **Return**: `ProductName`, `SaleDate`, `StockQuantity`  
-    **Task**: List the products that were sold in 2023 and had more than 50 units in stock at the time.  
+    **Task**: List the products that were sold in 2023 and had more than 100 units in stock at the time.  
     **Tables Used**: `Products`, `Sales`
 
 13. **Return**: `EmployeeName`, `DepartmentName`, `HireDate`  
@@ -79,7 +79,7 @@
 
 16. **Return**: `CategoryName`, `ProductCount`  
     **Task**: Show the number of products available in each category.  
-    **Tables Used**: `Products` (as a derived table), `Categories`
+    **Tables Used**: `Products`, `Categories`
 
 17. **Return**: `CustomerName`, `City`, `OrderID`, `Amount`  
     **Task**: List orders where the customer is from Los Angeles and the order amount is greater than 300.  
@@ -89,11 +89,7 @@
     **Task**: Display employees who are in the HR or Finance department, or whose name contains at least 4 vowels.  
     **Tables Used**: `Employees`, `Departments`
 
-19. **Return**: `ProductName`, `QuantitySold`, `Price`  
-    **Task**: List products that had a sales quantity above 100 and a price above 500.  
-    **Tables Used**: `Sales`, `Products`
-
-20. **Return**: `EmployeeName`, `DepartmentName`, `Salary`  
+19. **Return**: `EmployeeName`, `DepartmentName`, `Salary`  
     **Task**: Show employees who are in the Sales or Marketing department and have a salary above 60000.  
     **Tables Used**: `Employees`, `Departments`
 
@@ -531,44 +527,44 @@ CREATE TABLE Sales (
 );
 
 INSERT INTO Sales (SaleID, ProductID, CustomerID, SaleDate, SaleAmount) VALUES
-(1, 1, 1, '2023-01-01', 150.00),
-(2, 2, 2, '2023-01-02', 200.00),
-(3, 3, 3, '2023-01-03', 250.00),
-(4, 4, 4, '2023-01-04', 300.00),
-(5, 5, 5, '2023-01-05', 350.00),
-(6, 6, 6, '2023-01-06', 400.00),
-(7, 7, 7, '2023-01-07', 450.00),
-(8, 8, 8, '2023-01-08', 500.00),
-(9, 9, 9, '2023-01-09', 550.00),
-(10, 10, 10, '2023-01-10', 600.00),
-(11, 1, 1, '2023-01-11', 150.00),
-(12, 2, 2, '2023-01-12', 200.00),
-(13, 3, 3, '2023-01-13', 250.00),
-(14, 4, 4, '2023-01-14', 300.00),
-(15, 5, 5, '2023-01-15', 350.00),
-(16, 6, 6, '2023-01-16', 400.00),
-(17, 7, 7, '2023-01-17', 450.00),
-(18, 8, 8, '2023-01-18', 500.00),
-(19, 9, 9, '2023-01-19', 550.00),
-(20, 10, 10, '2023-01-20', 600.00),
-(21, 1, 2, '2023-01-21', 150.00),
-(22, 2, 3, '2023-01-22', 200.00),
-(23, 3, 4, '2023-01-23', 250.00),
-(24, 4, 5, '2023-01-24', 300.00),
-(25, 5, 6, '2023-01-25', 350.00),
-(26, 6, 7, '2023-01-26', 400.00),
-(27, 7, 8, '2023-01-27', 450.00),
-(28, 8, 9, '2023-01-28', 500.00),
-(29, 9, 10, '2023-01-29', 550.00),
-(30, 10, 1, '2023-01-30', 600.00),
-(31, 1, 2, '2023-02-01', 150.00),
-(32, 2, 3, '2023-02-02', 200.00),
-(33, 3, 4, '2023-02-03', 250.00),
-(34, 4, 5, '2023-02-04', 300.00),
-(35, 5, 6, '2023-02-05', 350.00),
-(36, 6, 7, '2023-02-06', 400.00),
-(37, 7, 8, '2023-02-07', 450.00),
-(38, 8, 9, '2023-02-08', 500.00),
-(39, 9, 10, '2023-02-09', 550.00),
-(40, 10, 1, '2023-02-10', 600.00);
+(1, 1, 1, '2021-01-01', 150.00),
+(2, 2, 2, '2022-03-15', 200.00),
+(3, 3, 3, '2024-06-10', 250.00),
+(4, 4, 4, '2025-07-21', 300.00),
+(5, 5, 5, '2021-11-09', 350.00),
+(6, 6, 6, '2023-04-25', 400.00),
+(7, 7, 7, '2024-02-14', 450.00),
+(8, 8, 8, '2022-10-31', 500.00),
+(9, 9, 9, '2025-01-08', 550.00),
+(10, 10, 10, '2021-08-19', 600.00),
+(11, 1, 1, '2023-03-11', 150.00),
+(12, 2, 2, '2024-12-05', 200.00),
+(13, 3, 3, '2022-09-18', 250.00),
+(14, 4, 4, '2025-05-22', 300.00),
+(15, 5, 5, '2021-06-30', 350.00),
+(16, 6, 6, '2024-01-15', 400.00),
+(17, 7, 7, '2022-02-07', 450.00),
+(18, 8, 8, '2023-07-13', 500.00),
+(19, 9, 9, '2021-12-29', 550.00),
+(20, 10, 10, '2025-03-20', 600.00),
+(21, 1, 2, '2023-10-10', 150.00),
+(22, 2, 3, '2022-11-25', 200.00),
+(23, 3, 4, '2024-04-09', 250.00),
+(24, 4, 5, '2021-07-17', 300.00),
+(25, 5, 6, '2023-12-02', 350.00),
+(26, 6, 7, '2022-08-08', 400.00),
+(27, 7, 8, '2025-06-11', 450.00),
+(28, 8, 9, '2024-09-26', 500.00),
+(29, 9, 10, '2021-05-05', 550.00),
+(30, 10, 1, '2023-02-18', 600.00),
+(31, 1, 2, '2022-01-20', 150.00),
+(32, 2, 3, '2025-04-30', 200.00),
+(33, 3, 4, '2021-03-04', 250.00),
+(34, 4, 5, '2023-06-27', 300.00),
+(35, 5, 6, '2024-11-19', 350.00),
+(36, 6, 7, '2022-05-23', 400.00),
+(37, 7, 8, '2025-08-16', 450.00),
+(38, 8, 9, '2021-04-12', 500.00),
+(39, 9, 10, '2023-09-03', 550.00),
+(40, 10, 1, '2024-07-07', 600.00);
 ```
