@@ -239,6 +239,7 @@ The result format is in the following example.
 ---
 
 # 5. Find those parents who has only girls.
+**Return Parent Name only.**
 ```sql
 CREATE TABLE boys (
     Id INT PRIMARY KEY,
@@ -277,6 +278,8 @@ VALUES
 
 # 6. Total over 50 and least
 **Find total Sales amount for the orders which weights more than 50 for each customer along with their least weight.(from TSQL2012 database, Sales.Orders Table)**
+
+**You can find tsql2012 database in here: https://gist.github.com/alejotima/cac70484db23834591b142ad07e79e67**
 
 ---
 
@@ -329,51 +332,8 @@ GO
 
 
 
-
-# 8. Matches
-
-**Resultga yutgan jamoaning nomi chiqsin agar durrang bo''lsa 'Draw' so''zi chiqsin.(Hisob 10:11 yoki 111:99 bo'lishi ham mumkin :)  )**
-
-
-**Input:**
-
-```
-| MatchID | Match             | Score | 
-|---------|-------------------|-------|  
-|    1    | Italy-Spain       |  2:0  |  
-|    2    | Spain-France      |  2:1  |  
-|    3    | France-Belgium    |  0:0  |  
-|    4    | Belgium-Spain     |  2:2  |  
-|    5    | Belgium-Italy     |  0:3  |  
-|    6    | Italy-France      |  2:0  |
-```
-
-
-**Expected Output:**
-```
-| MatchID | Match             | Score | Result |  
-|---------|-------------------|-------|--------| 
-|    1    | Italy-Spain       |  2:0  | Italy  | 
-|    2    | Spain-France      |  2:1  | Spain  | 
-|    3    | France-Belgium    |  0:0  | Draw   | 
-|    4    | Belgium-Spain     |  2:2  | Draw   | 
-|    5    | Belgium-Italy     |  0:3  | Italy  |  
-|    6    | Italy-France      |  2:0  | Italy  |
-```
-
-```sql
-create table match1 (MatchID int, Match varchar(30), Score varchar(5))
-insert into match1 values 
-		      (1,'Italy-Spain','2:0'),
-              (2,'Spain-France','2:1'),
-              (3,'France-Belgium','0:0'),
-              (4,'Belgium-Spain','2:2'),
-              (5,'Belgium-Italy','0:3'),
-              (6,'Italy-France','2:0');
-```
-
 ---
-# 9. Customers Who Never Order
+# 8. Customers Who Never Order
 ---
 
 **Table: Customers**
@@ -453,7 +413,7 @@ insert into Orders (id, customerId) values ('2', '1')
 
 ---
 
-# 10. Students and Examinations
+# 9. Students and Examinations
 ---
 
 **Table: Students**
