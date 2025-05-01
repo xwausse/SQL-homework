@@ -18,22 +18,19 @@
 6. Find me odd numbered movies and description is not boring.(cinema)
 7. You have to sort data based on the Id but Id with 0 should always be the last row. Now the question is can you do that with a single order by column.(SingleOrder)
 8. Write an SQL query to select the first non-null value from a set of columns. If the first column is null, move to the next, and so on. If all columns are null, return null.(person)
-9. Find the employees who have been with the company for more than 10 years, but less than 15 years. Display their Employee ID, First Name, Last Name, Hire Date, and the Years of Service (calculated as the number of years between the current date and the hire date, rounded to two decimal places).(Employees)
-10. Find the employees who have a salary greater than the average salary of their respective department.(Employees)
+9. Find the employees who have been with the company for more than 10 years, but less than 15 years. Display their Employee ID, First Name, Last Name, Hire Date, and the Years of Service (calculated as the number of years between the current date and the hire date).(Employees)
 
 
 ## Medium Tasks
-1. Write an SQL query that separates the uppercase letters, lowercase letters, numbers, and other characters from the given string 'tf56sd#%OqH' into separate columns.
 
-2. Split column FullName into 3 part ( Firstname, Middlename, and Lastname).(Students Table)
 
-3. For every customer that had a delivery to California, provide a result set of the customer orders that were delivered to Texas. (Orders Table)
+1. Split column FullName into 3 part ( Firstname, Middlename, and Lastname).(Students Table)
 
-4. Write an SQL query to transform a table where each product has a total quantity into a new table where each row represents a single unit of that product.For example, if A and B, it should be A,B and B,A.(Ungroup)
+2. For every customer that had a delivery to California, provide a result set of the customer orders that were delivered to Texas. (Orders Table)
 
-5. Write an SQL statement that can group concatenate the following values.(DMLTable)
+3. Write an SQL statement that can group concatenate the following values.(DMLTable)
 
-6. Write an SQL query to determine the Employment Stage for each employee based on their HIRE_DATE. The stages are defined as follows:
+4. Write an SQL query to determine the Employment Stage for each employee based on their HIRE_DATE. The stages are defined as follows:
 
 > - If the employee has worked for less than 1 year → 'New Hire'
 
@@ -45,24 +42,19 @@
 
 > - If the employee has worked for more than 20 years → 'Veteran'(Employees)
 
-7. Find the employees who have a salary greater than the average salary of their respective department(Employees)
 
-8. Find all employees whose names (concatenated first and last) contain the letter "a" and whose salary is divisible by 5(Employees)
+5. Find all employees whose names (concatenated first and last) contain the letter "a" at least 3 times.
 
-9. The total number of employees in each department and the percentage of those employees who have been with the company for more than 3 years(Employees)
+6. The total number of employees in each department and the percentage of those employees who have been with the company for more than 3 years(Employees)
 
-10. Write an SQL statement that determines the most and least experienced Spaceman ID by their job description.(Personal)
+7. Write an SQL statement that determines the most and least experienced Spaceman ID by their job description.(Personal)
 
 
 ## Difficult Tasks
-1. Write an SQL query that replaces each row with the sum of its value and the previous row's value. (Students table)
-
-2. Given the following hierarchical table, write an SQL statement that determines the level of depth each employee has from the president. (Employee table)
-
+1. Write an SQL query that separates the uppercase letters, lowercase letters, numbers, and other characters from the given string 'tf56sd#%OqH' into separate columns.
+2. Write an SQL query that replaces each row with the sum of its value and the previous rows' value. (Students table)
 3. You are given the following table, which contains a VARCHAR column that contains mathematical equations. Sum the equations and provide the answers in the output.(Equations)
-
 4. Given the following dataset, find the students that share the same birthday.(Student Table)
-
 5. You have a table with two players (Player A and Player B) and their scores. If a pair of players have multiple entries, aggregate their scores into a single row for each unique pair of players. Write an SQL query to calculate the total score for each unique player pair(PlayerScores)
 
 ```sql
@@ -219,20 +211,10 @@ GO
 
 INSERT INTO Orders (CustomerID, OrderID, DeliveryState, Amount) VALUES
 (1001,1,'CA',340),(1001,2,'TX',950),(1001,3,'TX',670),
-(1001,4,'TX',860),(2002,5,'WA',320),(3003,6,'CA',650),
+(1001,4,'TX',860),(2002,5,'WA',f320),(3003,6,'CA',650),
 (3003,7,'CA',830),(4004,8,'TX',120);
 GO
 
-CREATE TABLE Ungroup
-(
-ProductDescription  VARCHAR(100) PRIMARY KEY,
-Quantity            INTEGER NOT NULL
-);
-GO
-
-INSERT INTO Ungroup (ProductDescription, Quantity) VALUES
-('Pencil',3),('Eraser',4),('Notebook',2);
-GO
 CREATE TABLE DMLTable
 (
 SequenceNumber  INTEGER PRIMARY KEY,
