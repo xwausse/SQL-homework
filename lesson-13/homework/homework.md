@@ -1,4 +1,4 @@
-# Lesson 13 ----Practice: String Functions, Mathematical Functions, Date and time Functions
+# Lesson 13 ----Practice: String Functions, Mathematical Functions
 
 
 > **Notes before doing the tasks:**
@@ -18,7 +18,6 @@
 6. Find me odd numbered movies and description is not boring.(cinema)
 7. You have to sort data based on the Id but Id with 0 should always be the last row. Now the question is can you do that with a single order by column.(SingleOrder)
 8. Write an SQL query to select the first non-null value from a set of columns. If the first column is null, move to the next, and so on. If all columns are null, return null.(person)
-9. Find the employees who have been with the company for more than 10 years, but less than 15 years. Display their Employee ID, First Name, Last Name, Hire Date, and the Years of Service (calculated as the number of years between the current date and the hire date).(Employees)
 
 
 ## Medium Tasks
@@ -30,24 +29,12 @@
 
 3. Write an SQL statement that can group concatenate the following values.(DMLTable)
 
-4. Write an SQL query to determine the Employment Stage for each employee based on their HIRE_DATE. The stages are defined as follows:
 
-> - If the employee has worked for less than 1 year → 'New Hire'
+4. Find all employees whose names (concatenated first and last) contain the letter "a" at least 3 times.
 
-> - If the employee has worked for 1 to 5 years → 'Junior'
+5. The total number of employees in each department and the percentage of those employees who have been with the company for more than 3 years(Employees)
 
-> -  If the employee has worked for 5 to 10 years → 'Mid-Level'
-
-> -  If the employee has worked for 10 to 20 years → 'Senior'
-
-> - If the employee has worked for more than 20 years → 'Veteran'(Employees)
-
-
-5. Find all employees whose names (concatenated first and last) contain the letter "a" at least 3 times.
-
-6. The total number of employees in each department and the percentage of those employees who have been with the company for more than 3 years(Employees)
-
-7. Write an SQL statement that determines the most and least experienced Spaceman ID by their job description.(Personal)
+6. Write an SQL statement that determines the most and least experienced Spaceman ID by their job description.(Personal)
 
 
 ## Difficult Tasks
