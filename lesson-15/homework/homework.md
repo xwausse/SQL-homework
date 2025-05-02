@@ -10,86 +10,72 @@
 ---
 # Easy Tasks
 
-1. Create a numbers table using a recursive query.
-2. Beginning at 1, this script uses a recursive statement to double the number for each record
-3. Write a query to find the total sales per employee using a derived table.(Sales, Employees)
-4. Create a CTE to find the average salary of employees.(Employees)
-5. Write a query using a derived table to find the highest sales for each product.(Sales, Products)
+1. Create a numbers table using a recursive query from 1 to 1000.
+2. Write a query to find the total sales per employee using a derived table.(Sales, Employees)
+3. Create a CTE to find the average salary of employees.(Employees)
+4. Write a query using a derived table to find the highest sales for each product.(Sales, Products)
+5. Beginning at 1, write a statement to double the number for each record, the max value you get should be less than 1000000.
 6. Use a CTE to get the names of employees who have made more than 5 sales.(Sales, Employees)
 7. Write a query using a CTE to find all products with sales greater than $500.(Sales, Products)
 8. Create a CTE to find employees with salaries above the average salary.(Employees)
-9. Write a query to find the total number of products sold using a derived table.(Sales, Products)
-10. Use a CTE to find the names of employees who have not made any sales.(Sales, Employees)
 
 
 # Medium Tasks
-
-1. This script uses recursion to calculate factorials
-2. This script uses recursion to calculate Fibonacci numbers
-3. This script uses recursion to split a string into rows of substrings for each character in the string.(Example)
-4. Create a CTE to rank employees based on their total sales.(Employees, Sales)
-5. Write a query using a derived table to find the top 5 employees by the number of orders made.(Employees, Sales)
-6. Use a CTE to calculate the sales difference between the current month and the previous month.(Sales)
-7. Write a query using a derived table to find the sales per product category.(Sales, Products)
-8. Use a CTE to rank products based on total sales in the last year.(Sales, Products)
-9. Create a derived table to find employees with sales over $5000 in each quarter.(Sales, Employees)
-10. Use a derived table to find the top 3 employees by total sales amount in the last month.(Sales, Employees)
+1. Write a query using a derived table to find the top 5 employees by the number of orders made.(Employees, Sales)
+2. Write a query using a derived table to find the sales per product category.(Sales, Products)
+3. Write a script to return the factorial of each value next to it.(Numbers1)
+4. This script uses recursion to split a string into rows of substrings for each character in the string.(Example)
+5. Use a CTE to calculate the sales difference between the current month and the previous month.(Sales)
+6. Create a derived table to find employees with sales over $45000 in each quarter.(Sales, Employees)
 
 
 # Difficult Tasks
-
-1. Create a numbers table that shows all numbers 1 through n and their order gradually increasing by the next number in the sequence.(Example:n=5 | 1, 12, 123, 1234, 12345)
-2. Write a query using a derived table to find the employees who have made the most sales in the last 6 months.(Employees,Sales)
-3. This script uses recursion to display a running total where the sum cannot go higher than 10 or lower than 0.(Numbers)
-4. Given a table of employee shifts, and another table of their activities, merge the two tables and write an SQL statement that produces the desired output. If an employee is scheduled and does not have an activity planned, label the time frame as “Work”. (Schedule,Activity)
-5. Create a complex query that uses both a CTE and a derived table to calculate sales totals for each department and product.(Employees, Sales, Products, Departments)
-
-
+1. This script uses recursion to calculate Fibonacci numbers
+2. Find a string where all characters are the same and the length is greater than 1.(FindSameCharacters)
+3. Create a numbers table that shows all numbers 1 through n and their order gradually increasing by the next number in the sequence.(Example:n=5 | 1, 12, 123, 1234, 12345)
+4. Write a query using a derived table to find the employees who have made the most sales in the last 6 months.(Employees,Sales)
+5. Write a T-SQL query to remove the duplicate integer values present in the string column. Additionally, remove the single integer character that appears in the string.(RemoveDuplicateIntsFromNames)
 
 ```sql
-CREATE TABLE Schedule
+
+CREATE TABLE Numbers1(Number INT)
+
+INSERT INTO Numbers1 VALUES (5),(9),(8),(6),(7)
+
+CREATE TABLE FindSameCharacters
 (
-ScheduleID  CHAR(1) PRIMARY KEY,
-StartTime   DATETIME NOT NULL,
-EndTime     DATETIME NOT NULL
-);
+     Id INT
+    ,Vals VARCHAR(10)
+)
+ 
+INSERT INTO FindSameCharacters VALUES
+(1,'aa'),
+(2,'cccc'),
+(3,'abc'),
+(4,'aabc'),
+(5,NULL),
+(6,'a'),
+(7,'zzz'),
+(8,'abc')
 
-CREATE TABLE Activity
+
+
+CREATE TABLE RemoveDuplicateIntsFromNames
 (
-ScheduleID    CHAR(1) REFERENCES Schedule (ScheduleID),
-ActivityName  VARCHAR(100),
-StartTime     DATETIME,
-EndTime       DATETIME,
-PRIMARY KEY (ScheduleID, ActivityName, StartTime, EndTime)
-);
-
-INSERT INTO Schedule (ScheduleID, StartTime, EndTime) VALUES
-('A',CAST('2021-10-01 10:00:00' AS DATETIME),CAST('2021-10-01 15:00:00' AS DATETIME)),
-('B',CAST('2021-10-01 10:15:00' AS DATETIME),CAST('2021-10-01 12:15:00' AS DATETIME));
-
-
-INSERT INTO Activity (ScheduleID, ActivityName, StartTime, EndTime) VALUES
-('A','Meeting',CAST('2021-10-01 10:00:00' AS DATETIME),CAST('2021-10-01 10:30:00' AS DATETIME)),
-('A','Break',CAST('2021-10-01 12:00:00' AS DATETIME),CAST('2021-10-01 12:30:00' AS DATETIME)),
-('A','Meeting',CAST('2021-10-01 13:00:00' AS DATETIME),CAST('2021-10-01 13:30:00' AS DATETIME)),
-('B','Break',CAST('2021-10-01 11:00:00'AS DATETIME),CAST('2021-10-01 11:15:00' AS DATETIME));
-
-CREATE TABLE Numbers
-(
-Id         INTEGER,
-StepNumber INTEGER,
-[Count]    INTEGER
-);
+      PawanName INT
+    , Pawan_slug_name VARCHAR(1000)
+)
+ 
+ 
+INSERT INTO RemoveDuplicateIntsFromNames VALUES
+(1,  'PawanA-111'  ),
+(2, 'PawanB-123'   ),
+(3, 'PawanB-32'    ),
+(4, 'PawanC-4444' ),
+(5, 'PawanD-3'  )
 
 
-INSERT INTO Numbers VALUES
- (1,1,1) 
-,(1,2,-2)
-,(1,3,-1)
-,(1,4,12)
-,(1,5,-2)
-,(2,1,7)
-,(2,2,-3);
+
 
 
 CREATE TABLE Example
@@ -146,48 +132,68 @@ CREATE TABLE Sales (
     SalesAmount DECIMAL(10, 2),
     SaleDate DATE
 );
-
 INSERT INTO Sales (SalesID, EmployeeID, ProductID, SalesAmount, SaleDate) VALUES
-(1, 1, 1, 1500.00, '2025-01-01'),
-(2, 2, 2, 2000.00, '2025-01-02'),
-(3, 3, 3, 1200.00, '2025-01-03'),
-(4, 4, 4, 1800.00, '2025-01-04'),
-(5, 5, 5, 2200.00, '2025-01-05'),
-(6, 6, 6, 1400.00, '2025-01-06'),
-(7, 7, 1, 2500.00, '2025-01-07'),
-(8, 8, 2, 1700.00, '2025-01-08'),
-(9, 9, 3, 1600.00, '2025-01-09'),
-(10, 10, 4, 1900.00, '2025-01-10'),
-(11, 1, 5, 2100.00, '2025-01-11'),
-(12, 2, 6, 1300.00, '2025-01-12'),
-(13, 3, 1, 2000.00, '2025-01-13'),
-(14, 4, 2, 1800.00, '2025-01-14'),
-(15, 5, 3, 1500.00, '2025-01-15'),
-(16, 6, 4, 2200.00, '2025-01-16'),
-(17, 7, 5, 1700.00, '2025-01-17'),
-(18, 8, 6, 1600.00, '2025-01-18'),
-(19, 9, 1, 2500.00, '2025-01-19'),
-(20, 10, 2, 1800.00, '2025-01-20'),
-(21, 1, 3, 1400.00, '2025-01-21'),
-(22, 2, 4, 1900.00, '2025-01-22'),
-(23, 3, 5, 2100.00, '2025-01-23'),
-(24, 4, 6, 1600.00, '2025-01-24'),
-(25, 5, 1, 1500.00, '2025-01-25'),
-(26, 6, 2, 2000.00, '2025-01-26'),
-(27, 7, 3, 2200.00, '2025-01-27'),
-(28, 8, 4, 1300.00, '2025-01-28'),
-(29, 9, 5, 2500.00, '2025-01-29'),
-(30, 10, 6, 1800.00, '2025-01-30'),
-(31, 1, 1, 2100.00, '2025-02-01'),
-(32, 2, 2, 1700.00, '2025-02-02'),
-(33, 3, 3, 1600.00, '2025-02-03'),
-(34, 4, 4, 1900.00, '2025-02-04'),
-(35, 5, 5, 2000.00, '2025-02-05'),
-(36, 6, 6, 2200.00, '2025-02-06'),
-(37, 7, 1, 2300.00, '2025-02-07'),
-(38, 8, 2, 1750.00, '2025-02-08'),
-(39, 9, 3, 1650.00, '2025-02-09'),
-(40, 10, 4, 1950.00, '2025-02-10');
+-- January 2025
+(1, 1, 1, 1550.00, '2025-01-02'),
+(2, 2, 2, 2050.00, '2025-01-04'),
+(3, 3, 3, 1250.00, '2025-01-06'),
+(4, 4, 4, 1850.00, '2025-01-08'),
+(5, 5, 5, 2250.00, '2025-01-10'),
+(6, 6, 6, 1450.00, '2025-01-12'),
+(7, 7, 1, 2550.00, '2025-01-14'),
+(8, 8, 2, 1750.00, '2025-01-16'),
+(9, 9, 3, 1650.00, '2025-01-18'),
+(10, 10, 4, 1950.00, '2025-01-20'),
+(11, 1, 5, 2150.00, '2025-02-01'),
+(12, 2, 6, 1350.00, '2025-02-03'),
+(13, 3, 1, 2050.00, '2025-02-05'),
+(14, 4, 2, 1850.00, '2025-02-07'),
+(15, 5, 3, 1550.00, '2025-02-09'),
+(16, 6, 4, 2250.00, '2025-02-11'),
+(17, 7, 5, 1750.00, '2025-02-13'),
+(18, 8, 6, 1650.00, '2025-02-15'),
+(19, 9, 1, 2550.00, '2025-02-17'),
+(20, 10, 2, 1850.00, '2025-02-19'),
+(21, 1, 3, 1450.00, '2025-03-02'),
+(22, 2, 4, 1950.00, '2025-03-05'),
+(23, 3, 5, 2150.00, '2025-03-08'),
+(24, 4, 6, 1700.00, '2025-03-11'),
+(25, 5, 1, 1600.00, '2025-03-14'),
+(26, 6, 2, 2050.00, '2025-03-17'),
+(27, 7, 3, 2250.00, '2025-03-20'),
+(28, 8, 4, 1350.00, '2025-03-23'),
+(29, 9, 5, 2550.00, '2025-03-26'),
+(30, 10, 6, 1850.00, '2025-03-29'),
+(31, 1, 1, 2150.00, '2025-04-02'),
+(32, 2, 2, 1750.00, '2025-04-05'),
+(33, 3, 3, 1650.00, '2025-04-08'),
+(34, 4, 4, 1950.00, '2025-04-11'),
+(35, 5, 5, 2050.00, '2025-04-14'),
+(36, 6, 6, 2250.00, '2025-04-17'),
+(37, 7, 1, 2350.00, '2025-04-20'),
+(38, 8, 2, 1800.00, '2025-04-23'),
+(39, 9, 3, 1700.00, '2025-04-26'),
+(40, 10, 4, 2000.00, '2025-04-29'),
+(41, 1, 5, 2200.00, '2025-05-03'),
+(42, 2, 6, 1650.00, '2025-05-07'),
+(43, 3, 1, 2250.00, '2025-05-11'),
+(44, 4, 2, 1800.00, '2025-05-15'),
+(45, 5, 3, 1900.00, '2025-05-19'),
+(46, 6, 4, 2000.00, '2025-05-23'),
+(47, 7, 5, 2400.00, '2025-05-27'),
+(48, 8, 6, 2450.00, '2025-05-31'),
+(49, 9, 1, 2600.00, '2025-06-04'),
+(50, 10, 2, 2050.00, '2025-06-08'),
+(51, 1, 3, 1550.00, '2025-06-12'),
+(52, 2, 4, 1850.00, '2025-06-16'),
+(53, 3, 5, 1950.00, '2025-06-20'),
+(54, 4, 6, 1900.00, '2025-06-24'),
+(55, 5, 1, 2000.00, '2025-07-01'),
+(56, 6, 2, 2100.00, '2025-07-05'),
+(57, 7, 3, 2200.00, '2025-07-09'),
+(58, 8, 4, 2300.00, '2025-07-13'),
+(59, 9, 5, 2350.00, '2025-07-17'),
+(60, 10, 6, 2450.00, '2025-08-01');
 
 CREATE TABLE Products (
     ProductID INT PRIMARY KEY,
