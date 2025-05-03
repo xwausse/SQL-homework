@@ -117,8 +117,6 @@ This is for those who has no idea about prime numbers: A prime number is a numbe
 
 ### 7. Write a SQL query to return the Nth highest distinct salary from the Employee table. If there are fewer than N distinct salaries, return NULL. 
 
-**NOTE: You have to do some research on Dense_rank window function.**
-
 ### Example 1:
 
 **Input.Employee table:**
@@ -237,38 +235,38 @@ VALUES
 ### 10. Write an SQL statement to fill in the missing gaps. You have to write only select statement, no need to modify the table.
 
 ```
-| RowNumber | Workflow | Status |
-|-------------------------------|
-| 1         | Alpha    | Pass   |
-| 2         |          | Fail   |
-| 3         |          | Fail   |
-| 4         |          | Fail   |
-| 5         | Bravo    | Pass   |
-| 6         |          | Fail   |
-| 7         |          | Fail   |
-| 8         |          | Pass   |
-| 9         |          | Pass   |
-| 10        | Charlie  | Fail   |
-| 11        |          | Fail   |
-| 12        |          | Fail   |
+| RowNumber | Workflow |
+|----------------------|
+| 1         | Alpha    |
+| 2         |          |
+| 3         |          |
+| 4         |          |
+| 5         | Bravo    |
+| 6         |          |
+| 7         |          |
+| 8         |          |
+| 9         |          |
+| 10        | Charlie  |
+| 11        |          |
+| 12        |          |
 ```
 
 **Here is the expected output.**
 ```
-| RowNumber | Workflow | Status |
-|-------------------------------|
-| 1         | Alpha    | Pass   |
-| 2         | Alpha    | Fail   |
-| 3         | Alpha    | Fail   |
-| 4         | Alpha    | Fail   |
-| 5         | Bravo    | Pass   |
-| 6         | Bravo    | Fail   |
-| 7         | Bravo    | Fail   |
-| 8         | Bravo    | Pass   |
-| 9         | Bravo    | Pass   |
-| 10        | Charlie  | Fail   |
-| 11        | Charlie  | Fail   |
-| 12        | Charlie  | Fail   |
+| RowNumber | Workflow |
+|----------------------|
+| 1         | Alpha    |
+| 2         | Alpha    |
+| 3         | Alpha    |
+| 4         | Alpha    |
+| 5         | Bravo    |
+| 6         | Bravo    |
+| 7         | Bravo    |
+| 8         | Bravo    |
+| 9         | Bravo    |
+| 10        | Charlie  |
+| 11        | Charlie  |
+| 12        | Charlie  |
 ```
 
 ```sql
