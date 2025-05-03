@@ -140,9 +140,9 @@ INSERT INTO #Routes (RouteID, DepartureCity, ArrivalCity, Cost) VALUES
 
 **Expected Output**
 ```
-|             Route                       |Cost |
-|Tashkent - Samarkand - Khorezm           | 500 |
-|Tashkent - Samarkand - Bukhoro - Khorezm | 600 |
+|             Route                                 |Cost |
+|Tashkent - Samarkand - Khorezm                     | 500 |
+|Tashkent - Jizzakh - Samarkand - Bukhoro - Khorezm | 650 |
 ```
 ---
 # 11. Rank products based on their order of insertion.
@@ -169,31 +169,7 @@ INSERT INTO #RankingPuzzle VALUES
 ```
 
 ---
-# 12. You have to return Ids, what number of the letter would be next if inserted, the maximum length of the consecutive occurence of the same digit
-
-```sql
-CREATE TABLE #Consecutives
-(
-     Id VARCHAR(5)  
-    ,Vals INT /* Value can be 0 or 1 */
-)
- 
-INSERT INTO #Consecutives VALUES
-('a', 1),
-('a', 0),
-('a', 1),
-('a', 1),
-('a', 1),
-('a', 0),
-('b', 1),
-('b', 1),
-('b', 0),
-('b', 1),
-('b', 0)
-```
-
----
-# Question 13
+# Question 12
 # Find employees whose sales were higher than the average sales in their department
 
 ```sql
@@ -224,9 +200,9 @@ INSERT INTO #EmployeeSales (EmployeeName, Department, SalesAmount, SalesMonth, S
 ```
 
 ---
-# 14. Find employees who had the highest sales in any given month using EXISTS
+# 13. Find employees who had the highest sales in any given month using EXISTS
 ---
-# 15. Find employees who made sales in every month using NOT EXISTS
+# 14. Find employees who made sales in every month using NOT EXISTS
 
 ```sql
 CREATE TABLE Products (
@@ -255,15 +231,15 @@ INSERT INTO Products (ProductID, Name, Category, Price, Stock) VALUES
 (15, 'Lamp', 'Furniture', 60.00, 25);
 ```
 ---
-# 16. Retrieve the names of products that are more expensive than the average price of all products.
+# 15. Retrieve the names of products that are more expensive than the average price of all products.
 ---
-# 17. Find the products that have a stock count lower than the highest stock count.
+# 16. Find the products that have a stock count lower than the highest stock count.
 ---
-# 18. Get the names of products that belong to the same category as 'Laptop'.
+# 17. Get the names of products that belong to the same category as 'Laptop'.
 ---
-# 19. Retrieve products whose price is greater than the lowest price in the Electronics category.
+# 18. Retrieve products whose price is greater than the lowest price in the Electronics category.
 ---
-# 20. Find the products that have a higher price than the average price of their respective category.
+# 19. Find the products that have a higher price than the average price of their respective category.
 ```sql
 CREATE TABLE Orders (
     OrderID    INT PRIMARY KEY,
@@ -291,13 +267,11 @@ INSERT INTO Orders (OrderID, ProductID, Quantity, OrderDate) VALUES
 (15, 13, 20, '2024-04-08');
 ```
 ---
-# 21. Find the products that have been ordered at least once.
+# 20. Find the products that have been ordered at least once.
 ---
-# 22. Retrieve the names of products that have been ordered more than the average quantity ordered.
+# 21. Retrieve the names of products that have been ordered more than the average quantity ordered.
 ---
-# 23. Find the products that have never been ordered.
+# 22. Find the products that have never been ordered.
 ---
-# 24. Retrieve the product with the highest total quantity ordered.
----
-# 25. Find the products that have been ordered more times than the average number of orders placed.
+# 23. Retrieve the product with the highest total quantity ordered.
 ---
