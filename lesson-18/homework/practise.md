@@ -1,299 +1,286 @@
-Lesson-18: Stored procedures, Merge and Practice
+# Lesson-18: View, temp table, variable, functions
 
-Notes before doing the tasks:
+> **Notes before doing the tasks:**
+> - Tasks should be solved using **SQL Server**.
+> - Case insensitivity applies.
+> - Alias names do not affect the score.
+> - Scoring is based on the **correct output**.
+> - One correct solution is sufficient.
 
-Tasks should be solved using SQL Server.
-Case insensitivity applies.
-Alias names do not affect the score.
-Scoring is based on the correct output.
-One correct solution is sufficient.
+----
 
-
----
-
-# ✅ TASKS on **Stored Procedures** and **MERGE**
-
----
-
-# 🔵 Part 1: Stored Procedure Tasks
-
-## Tables to use:
-
+You're working in a database for a Retail Sales System. The database contains the following tables:
 ```sql
-CREATE TABLE Employees (
-    EmployeeID INT PRIMARY KEY,
-    FirstName NVARCHAR(50),
-    LastName NVARCHAR(50),
-    Department NVARCHAR(50),
-    Salary DECIMAL(10,2)
-);
-
-CREATE TABLE DepartmentBonus (
-    Department NVARCHAR(50) PRIMARY KEY,
-    BonusPercentage DECIMAL(5,2)
-);
-
-INSERT INTO Employees VALUES
-(1, 'John', 'Doe', 'Sales', 5000),
-(2, 'Jane', 'Smith', 'Sales', 5200),
-(3, 'Mike', 'Brown', 'IT', 6000),
-(4, 'Anna', 'Taylor', 'HR', 4500);
-
-INSERT INTO DepartmentBonus VALUES
-('Sales', 10),
-('IT', 15),
-('HR', 8);
-```
-
----
-
-## 📄 Task 1:
-
-Create a stored procedure that:
-
-- Creates a temp table `#EmployeeBonus`
-- Inserts EmployeeID, FullName (FirstName + LastName), Department, Salary, and BonusAmount into it
-  - (BonusAmount = Salary * BonusPercentage / 100)
-- Then, selects all data from the temp table.
-
----
-
-## 📄 Task 2:
-
-Create a stored procedure that:
-
-- Accepts a department name and an increase percentage as parameters
-- Increases salary of all employees in the given department by the given percentage
-- Returns updated employees from that department.
-
----
-
-# 🔵 Part 2: MERGE Tasks
-
-## Tables to use:
-
-```sql
-CREATE TABLE Products_Current (
-    ProductID INT PRIMARY KEY,
-    ProductName NVARCHAR(100),
-    Price DECIMAL(10,2)
-);
-
-CREATE TABLE Products_New (
-    ProductID INT PRIMARY KEY,
-    ProductName NVARCHAR(100),
-    Price DECIMAL(10,2)
-);
-
-INSERT INTO Products_Current VALUES
-(1, 'Laptop', 1200),
-(2, 'Tablet', 600),
-(3, 'Smartphone', 800);
-
-INSERT INTO Products_New VALUES
-(2, 'Tablet Pro', 700),
-(3, 'Smartphone', 850),
-(4, 'Smartwatch', 300);
-```
-
----
-
-## 📄 Task 3:
-
-Perform a MERGE operation that:
-
-- Updates `ProductName` and `Price` if `ProductID` matches
-- Inserts new products if `ProductID` does not exist
-- Deletes products from `Products_Current` if they are missing in `Products_New`
-- Return the final state of `Products_Current` after the MERGE.
-
----
-
-## 📄 Task 4:
-
-**Tree Node**
-
-Each node in the tree can be one of three types:
-
-- **"Leaf"**: if the node is a leaf node.
-- **"Root"**: if the node is the root of the tree.
-- **"Inner"**: If the node is neither a leaf node nor a root node.
-
-Write a solution to report the type of each node in the tree.
-
-Input: 
-
-```sql
-CREATE TABLE IF NOT EXISTS Tree (id INT, p_id INT);
-TRUNCATE TABLE Tree;
-INSERT INTO Tree (id, p_id) VALUES (1, NULL);
-INSERT INTO Tree (id, p_id) VALUES (2, 1);
-INSERT INTO Tree (id, p_id) VALUES (3, 1);
-INSERT INTO Tree (id, p_id) VALUES (4, 2);
-INSERT INTO Tree (id, p_id) VALUES (5, 2);
-```
-
-Output:
-
-| id  | type  |
-|-----|-------|
-| 1   | Root  |
-| 2   | Inner |
-| 3   | Leaf  |
-| 4   | Leaf  |
-| 5   | Leaf  |
-
-🔗 [Solve this puzzle on LeetCode](https://leetcode.com/problems/tree-node/description/)
-
----
-
-## 📄 Task 5:
-
-**Confirmation Rate**
-
-Find the confirmation rate for each user. If a user has no confirmation requests, the rate should be 0.
-
-Input:
-
-```sql
-CREATE TABLE IF NOT EXISTS Signups (user_id INT, time_stamp DATETIME);
-CREATE TABLE IF NOT EXISTS Confirmations (user_id INT, time_stamp DATETIME, action ENUM('confirmed','timeout'));
-
-TRUNCATE TABLE Signups;
-INSERT INTO Signups (user_id, time_stamp) VALUES 
-(3, '2020-03-21 10:16:13'),
-(7, '2020-01-04 13:57:59'),
-(2, '2020-07-29 23:09:44'),
-(6, '2020-12-09 10:39:37');
-
-TRUNCATE TABLE Confirmations;
-INSERT INTO Confirmations (user_id, time_stamp, action) VALUES 
-(3, '2021-01-06 03:30:46', 'timeout'),
-(3, '2021-07-14 14:00:00', 'timeout'),
-(7, '2021-06-12 11:57:29', 'confirmed'),
-(7, '2021-06-13 12:58:28', 'confirmed'),
-(7, '2021-06-14 13:59:27', 'confirmed'),
-(2, '2021-01-22 00:00:00', 'confirmed'),
-(2, '2021-02-28 23:59:59', 'timeout');
-```
-
-Output:
-
-| user_id | confirmation_rate |
-|---------|-------------------|
-| 6       | 0.00               |
-| 3       | 0.00               |
-| 7       | 1.00               |
-| 2       | 0.50               |
-
-🔗 [Solve this puzzle on LeetCode](https://leetcode.com/problems/confirmation-rate/description/)
-
----
-
-## 📄 Task 6:
-
-**Find employees with the lowest salary**
-
-Input:
-
-```sql
-CREATE TABLE employees (
-    id INT PRIMARY KEY,
-    name VARCHAR(100),
-    salary DECIMAL(10,2)
-);
-
-INSERT INTO employees (id, name, salary) VALUES
-(1, 'Alice', 50000),
-(2, 'Bob', 60000),
-(3, 'Charlie', 50000);
-```
-
-- Find all employees who have the lowest salary using subqueries.
-
----
-
-## 📄 Task 7:
-
-**Get Product Sales Summary**
-
-Input:
-
-```sql
--- Products Table
 CREATE TABLE Products (
     ProductID INT PRIMARY KEY,
-    ProductName NVARCHAR(100),
-    Category NVARCHAR(50),
+    ProductName VARCHAR(100),
+    Category VARCHAR(50),
     Price DECIMAL(10,2)
 );
 
--- Sales Table
 CREATE TABLE Sales (
     SaleID INT PRIMARY KEY,
-    ProductID INT FOREIGN KEY REFERENCES Products(ProductID),
+    ProductID INT,
     Quantity INT,
-    SaleDate DATE
+    SaleDate DATE,
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
 );
 
-INSERT INTO Products (ProductID, ProductName, Category, Price) VALUES
-(1, 'Laptop Model A', 'Electronics', 1200),
-(2, 'Laptop Model B', 'Electronics', 1500),
-(3, 'Tablet Model X', 'Electronics', 600),
-(4, 'Tablet Model Y', 'Electronics', 700),
-(5, 'Smartphone Alpha', 'Electronics', 800),
-(6, 'Smartphone Beta', 'Electronics', 850),
-(7, 'Smartwatch Series 1', 'Wearables', 300),
-(8, 'Smartwatch Series 2', 'Wearables', 350),
-(9, 'Headphones Basic', 'Accessories', 150),
-(10, 'Headphones Pro', 'Accessories', 250),
-(11, 'Wireless Mouse', 'Accessories', 50),
-(12, 'Wireless Keyboard', 'Accessories', 80),
-(13, 'Desktop PC Standard', 'Computers', 1000),
-(14, 'Desktop PC Gaming', 'Computers', 2000),
-(15, 'Monitor 24 inch', 'Displays', 200),
-(16, 'Monitor 27 inch', 'Displays', 300),
-(17, 'Printer Basic', 'Office', 120),
-(18, 'Printer Pro', 'Office', 400),
-(19, 'Router Basic', 'Networking', 70),
-(20, 'Router Pro', 'Networking', 150);
+INSERT INTO Products (ProductID, ProductName, Category, Price)
+VALUES
+(1, 'Samsung Galaxy S23', 'Electronics', 899.99),
+(2, 'Apple iPhone 14', 'Electronics', 999.99),
+(3, 'Sony WH-1000XM5 Headphones', 'Electronics', 349.99),
+(4, 'Dell XPS 13 Laptop', 'Electronics', 1249.99),
+(5, 'Organic Eggs (12 pack)', 'Groceries', 3.49),
+(6, 'Whole Milk (1 gallon)', 'Groceries', 2.99),
+(7, 'Alpen Cereal (500g)', 'Groceries', 4.75),
+(8, 'Extra Virgin Olive Oil (1L)', 'Groceries', 8.99),
+(9, 'Mens Cotton T-Shirt', 'Clothing', 12.99),
+(10, 'Womens Jeans - Blue', 'Clothing', 39.99),
+(11, 'Unisex Hoodie - Grey', 'Clothing', 29.99),
+(12, 'Running Shoes - Black', 'Clothing', 59.95),
+(13, 'Ceramic Dinner Plate Set (6 pcs)', 'Home & Kitchen', 24.99),
+(14, 'Electric Kettle - 1.7L', 'Home & Kitchen', 34.90),
+(15, 'Non-stick Frying Pan - 28cm', 'Home & Kitchen', 18.50),
+(16, 'Atomic Habits - James Clear', 'Books', 15.20),
+(17, 'Deep Work - Cal Newport', 'Books', 14.35),
+(18, 'Rich Dad Poor Dad - Robert Kiyosaki', 'Books', 11.99),
+(19, 'LEGO City Police Set', 'Toys', 49.99),
+(20, 'Rubiks Cube 3x3', 'Toys', 7.99);
 
-INSERT INTO Sales (SaleID, ProductID, Quantity, SaleDate) VALUES
-(1, 1, 2, '2024-01-15'),
-(2, 1, 1, '2024-02-10'),
-(3, 1, 3, '2024-03-08'),
-(4, 2, 1, '2024-01-22'),
-(5, 3, 5, '2024-01-20'),
-(6, 5, 2, '2024-02-18'),
-(7, 5, 1, '2024-03-25'),
-(8, 6, 4, '2024-04-02'),
-(9, 7, 2, '2024-01-30'),
-(10, 7, 1, '2024-02-25'),
-(11, 7, 1, '2024-03-15'),
-(12, 9, 8, '2024-01-18'),
-(13, 9, 5, '2024-02-20'),
-(14, 10, 3, '2024-03-22'),
-(15, 11, 2, '2024-02-14'),
-(16, 13, 1, '2024-03-10'),
-(17, 14, 2, '2024-03-22'),
-(18, 15, 5, '2024-02-01'),
-(19, 15, 3, '2024-03-11'),
-(20, 19, 4, '2024-04-01');
+INSERT INTO Sales (SaleID, ProductID, Quantity, SaleDate)
+VALUES
+(1, 1, 2, '2025-04-01'),
+(2, 1, 1, '2025-04-05'),
+(3, 2, 1, '2025-04-10'),
+(4, 2, 2, '2025-04-15'),
+(5, 3, 3, '2025-04-18'),
+(6, 3, 1, '2025-04-20'),
+(7, 4, 2, '2025-04-21'),
+(8, 5, 10, '2025-04-22'),
+(9, 6, 5, '2025-04-01'),
+(10, 6, 3, '2025-04-11'),
+(11, 10, 2, '2025-04-08'),
+(12, 12, 1, '2025-04-12'),
+(13, 12, 3, '2025-04-14'),
+(14, 19, 2, '2025-04-05'),
+(15, 20, 4, '2025-04-19'),
+(16, 1, 1, '2025-03-15'),
+(17, 2, 1, '2025-03-10'),
+(18, 5, 5, '2025-02-20'),
+(19, 6, 6, '2025-01-18'),
+(20, 10, 1, '2024-12-25'),
+(21, 1, 1, '2024-04-20');
+```
+### 1. Create a temporary table named MonthlySales to store the total quantity sold and total revenue for each product in the current month.
+**Return: ProductID, TotalQuantity, TotalRevenue**
+
+### 2. Create a view named vw_ProductSalesSummary that returns product info along with total sales quantity across all time.
+**Return: ProductID, ProductName, Category, TotalQuantitySold**
+
+### 3. Create a function named fn_GetTotalRevenueForProduct(@ProductID INT)
+**Return: total revenue for the given product ID**
+
+### 4. Create an function fn_GetSalesByCategory(@Category VARCHAR(50))
+**Return: ProductName, TotalQuantity, TotalRevenue for all products in that category.**
+
+# Now we will move on with 2 Lateral-thinking puzzles (5 and 6th puzzles). Lateral-thinking puzzles are the ones that can’t be solved by straightforward logic — you have to think outside the box. 🔍🧠
+
+### 5. You have to create a function that get one argument as input from user and the function should return 'Yes' if the input number is a prime number and 'No' otherwise. You can start it like this:
+```sql
+Create function dbo.fn_IsPrime (@Number INT)
+Returns ...
 ```
 
-Create a stored procedure called `GetProductSalesSummary` that:
+```
+This is for those who has no idea about prime numbers: A prime number is a number greater than 1 that has only two divisors: 1 and itself(2, 3, 5, 7 and so on).
+```
 
-- Accepts a `@ProductID` input
-- Returns:
-  - ProductName
-  - Total Quantity Sold
-  - Total Sales Amount (Quantity × Price)
-  - First Sale Date
-  - Last Sale Date
-- If the product has no sales, return `NULL` for quantity, total amount, first date, and last date, but still return the product name.
+### 6. Create a table-valued function named fn_GetNumbersBetween that accepts two integers as input:
+```sql
+@Start INT
+@End INT
+```
+**The function should return a table with a single column:**
+```sql
+| Number |
+|--------|
+| @Start |
+...
+...
+...
+|   @end |
+```
 
----
+**It should include all integer values from @Start to @End, inclusive.**
 
-✅ Done!  
-Would you also like me to generate a **`README.md`** style version for you too if you want it looking even more professional for GitHub? 🚀  
-(very easy to add if you want!)
+### 7. Write a SQL query to return the Nth highest distinct salary from the Employee table. If there are fewer than N distinct salaries, return NULL. 
+
+**NOTE: You have to do some research on Dense_rank window function.**
+
+### Example 1:
+
+**Input.Employee table:**
+
+```
+| id | salary |
++----+--------+
+| 1  | 100    |
+| 2  | 200    |
+| 3  | 300    |
+```
+
+### n = 2
+
+**Output:**
+```sql
+| getNthHighestSalary(2) |
+```
+```sql
+|    HighestNSalary      |
+|------------------------|
+| 200                    |
+```
+
+### Example 2:
+
+**Input.Employee table:**
+
+```sql
+| id | salary |
+|----|--------|
+| 1  | 100    |
+```
+
+
+### n = 2
+**Output:**
+```sql
+| getNthHighestSalary(2) |
+```
+```sql
+|    HighestNSalary      |
+|        null            |
+```
+
+**You can also solve this in Leetcode: https://leetcode.com/problems/nth-highest-salary/description/**
+
+### 8. Write a SQL query to find the person who has the most friends.
+
+**Return: Their id, The total number of friends they have**
+
+#### Friendship is mutual. For example, if user A sends a request to user B and it's accepted, both A and B are considered friends with each other. The test case is guaranteed to have only one user with the most friends.
+
+**Input.RequestAccepted table:**
+
+```
+| requester_id | accepter_id | accept_date |
++--------------+-------------+-------------+
+| 1            | 2           | 2016/06/03  |
+| 1            | 3           | 2016/06/08  |
+| 2            | 3           | 2016/06/08  |
+| 3            | 4           | 2016/06/09  |
+```
+
+**Output:** 
+```
+| id | num |
++----+-----+
+| 3  | 3   |
+```
+
+**Explanation: The person with id 3 is a friend of people 1, 2, and 4, so he has three friends in total, which is the most number than any others.**
+
+**You can also solve this in Leetcode: https://leetcode.com/problems/friend-requests-ii-who-has-the-most-friends/description/?envType=study-plan-v2&envId=top-sql-50**
+
+### 9. Create a View for Customer Order Summary. 
+```sql
+CREATE TABLE Customers (
+    customer_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    city VARCHAR(50)
+);
+
+CREATE TABLE Orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT FOREIGN KEY REFERENCES Customers(customer_id),
+    order_date DATE,
+    amount DECIMAL(10,2)
+);
+
+-- Customers
+INSERT INTO Customers (customer_id, name, city)
+VALUES
+(1, 'Alice Smith', 'New York'),
+(2, 'Bob Jones', 'Chicago'),
+(3, 'Carol White', 'Los Angeles');
+
+-- Orders
+INSERT INTO Orders (order_id, customer_id, order_date, amount)
+VALUES
+(101, 1, '2024-12-10', 120.00),
+(102, 1, '2024-12-20', 200.00),
+(103, 1, '2024-12-30', 220.00),
+(104, 2, '2025-01-12', 120.00),
+(105, 2, '2025-01-20', 180.00);
+```
+**Create a view called vw_CustomerOrderSummary that returns a summary of customer orders. The view must contain the following columns:**
+
+> - Column Name | Description
+> - customer_id | Unique identifier of the customer
+> - name | Full name of the customer
+> - total_orders | Total number of orders placed by the customer
+> - total_amount | Cumulative amount spent across all orders
+> - last_order_date | Date of the most recent order placed by the customer
+
+### 10. Write an SQL statement to fill in the missing gaps. You have to write only select statement, no need to modify the table.
+
+```
+| RowNumber | Workflow | Status |
+|-------------------------------|
+| 1         | Alpha    | Pass   |
+| 2         |          | Fail   |
+| 3         |          | Fail   |
+| 4         |          | Fail   |
+| 5         | Bravo    | Pass   |
+| 6         |          | Fail   |
+| 7         |          | Fail   |
+| 8         |          | Pass   |
+| 9         |          | Pass   |
+| 10        | Charlie  | Fail   |
+| 11        |          | Fail   |
+| 12        |          | Fail   |
+```
+
+**Here is the expected output.**
+```
+| RowNumber | Workflow | Status |
+|-------------------------------|
+| 1         | Alpha    | Pass   |
+| 2         | Alpha    | Fail   |
+| 3         | Alpha    | Fail   |
+| 4         | Alpha    | Fail   |
+| 5         | Bravo    | Pass   |
+| 6         | Bravo    | Fail   |
+| 7         | Bravo    | Fail   |
+| 8         | Bravo    | Pass   |
+| 9         | Bravo    | Pass   |
+| 10        | Charlie  | Fail   |
+| 11        | Charlie  | Fail   |
+| 12        | Charlie  | Fail   |
+```
+
+```sql
+DROP TABLE IF EXISTS Gaps;
+
+CREATE TABLE Gaps
+(
+RowNumber   INTEGER PRIMARY KEY,
+TestCase    VARCHAR(100) NULL
+);
+
+INSERT INTO Gaps (RowNumber, TestCase) VALUES
+(1,'Alpha'),(2,NULL),(3,NULL),(4,NULL),
+(5,'Bravo'),(6,NULL),(7,'Charlie'),(8,NULL),(9,NULL);
+```
