@@ -1,4 +1,4 @@
-# Lesson-17: View, temp table, variable, functions
+# Lesson-17: Practice
 
 > **Notes before doing the tasks:**
 > - Tasks should be solved using **SQL Server**.
@@ -7,280 +7,362 @@
 > - Scoring is based on the **correct output**.
 > - One correct solution is sufficient.
 
-----
+---
 
-You're working in a database for a Retail Sales System. The database contains the following tables:
+### 1. Write an SQL Statement to de-group the following data.
+
+**Input Table: 'Grouped'**
+```
+|Product  |Quantity|
+--------------------
+|Pencil   |   3    |
+|Eraser   |   4    |
+|Notebook |   2    |
+```
+
+**Expected Output:**
+```
+|Product  |Quantity|
+--------------------
+|Pencil   |   1    |
+|Pencil   |   1    |
+|Pencil   |   1    |
+|Eraser   |   1    |
+|Eraser   |   1    |
+|Eraser   |   1    |
+|Eraser   |   1    |
+|Notebook |   1    |
+|Notebook |   1    |
+```
+
+**SQL Setup:**
 ```sql
-CREATE TABLE Products (
-    ProductID INT PRIMARY KEY,
-    ProductName VARCHAR(100),
-    Category VARCHAR(50),
-    Price DECIMAL(10,2)
-);
-
-CREATE TABLE Sales (
-    SaleID INT PRIMARY KEY,
-    ProductID INT,
-    Quantity INT,
-    SaleDate DATE,
-    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
-);
-
-INSERT INTO Products (ProductID, ProductName, Category, Price)
-VALUES
-(1, 'Samsung Galaxy S23', 'Electronics', 899.99),
-(2, 'Apple iPhone 14', 'Electronics', 999.99),
-(3, 'Sony WH-1000XM5 Headphones', 'Electronics', 349.99),
-(4, 'Dell XPS 13 Laptop', 'Electronics', 1249.99),
-(5, 'Organic Eggs (12 pack)', 'Groceries', 3.49),
-(6, 'Whole Milk (1 gallon)', 'Groceries', 2.99),
-(7, 'Alpen Cereal (500g)', 'Groceries', 4.75),
-(8, 'Extra Virgin Olive Oil (1L)', 'Groceries', 8.99),
-(9, 'Mens Cotton T-Shirt', 'Clothing', 12.99),
-(10, 'Womens Jeans - Blue', 'Clothing', 39.99),
-(11, 'Unisex Hoodie - Grey', 'Clothing', 29.99),
-(12, 'Running Shoes - Black', 'Clothing', 59.95),
-(13, 'Ceramic Dinner Plate Set (6 pcs)', 'Home & Kitchen', 24.99),
-(14, 'Electric Kettle - 1.7L', 'Home & Kitchen', 34.90),
-(15, 'Non-stick Frying Pan - 28cm', 'Home & Kitchen', 18.50),
-(16, 'Atomic Habits - James Clear', 'Books', 15.20),
-(17, 'Deep Work - Cal Newport', 'Books', 14.35),
-(18, 'Rich Dad Poor Dad - Robert Kiyosaki', 'Books', 11.99),
-(19, 'LEGO City Police Set', 'Toys', 49.99),
-(20, 'Rubiks Cube 3x3', 'Toys', 7.99);
-
-INSERT INTO Sales (SaleID, ProductID, Quantity, SaleDate)
-VALUES
-(1, 1, 2, '2025-04-01'),
-(2, 1, 1, '2025-04-05'),
-(3, 2, 1, '2025-04-10'),
-(4, 2, 2, '2025-04-15'),
-(5, 3, 3, '2025-04-18'),
-(6, 3, 1, '2025-04-20'),
-(7, 4, 2, '2025-04-21'),
-(8, 5, 10, '2025-04-22'),
-(9, 6, 5, '2025-04-01'),
-(10, 6, 3, '2025-04-11'),
-(11, 10, 2, '2025-04-08'),
-(12, 12, 1, '2025-04-12'),
-(13, 12, 3, '2025-04-14'),
-(14, 19, 2, '2025-04-05'),
-(15, 20, 4, '2025-04-19'),
-(16, 1, 1, '2025-03-15'),
-(17, 2, 1, '2025-03-10'),
-(18, 5, 5, '2025-02-20'),
-(19, 6, 6, '2025-01-18'),
-(20, 10, 1, '2024-12-25'),
-(21, 1, 1, '2024-04-20');
-```
-### 1. Create a temporary table named MonthlySales to store the total quantity sold and total revenue for each product in the current month.
-**Return: ProductID, TotalQuantity, TotalRevenue**
-
-### 2. Create a view named vw_ProductSalesSummary that returns product info along with total sales quantity across all time.
-**Return: ProductID, ProductName, Category, TotalQuantitySold**
-
-### 3. Create a function named fn_GetTotalRevenueForProduct(@ProductID INT)
-**Return: total revenue for the given product ID**
-
-### 4. Create an function fn_GetSalesByCategory(@Category VARCHAR(50))
-**Return: ProductName, TotalQuantity, TotalRevenue for all products in that category.**
-
-# Now we will move on with 2 Lateral-thinking puzzles (5 and 6th puzzles). Lateral-thinking puzzles are the ones that can’t be solved by straightforward logic — you have to think outside the box. 🔍🧠
-
-### 5. You have to create a function that get one argument as input from user and the function should return 'Yes' if the input number is a prime number and 'No' otherwise. You can start it like this:
-```sql
-Create function dbo.fn_IsPrime (@Number INT)
-Returns ...
-```
-
-```
-This is for those who has no idea about prime numbers: A prime number is a number greater than 1 that has only two divisors: 1 and itself(2, 3, 5, 7 and so on).
-```
-
-### 6. Create a table-valued function named fn_GetNumbersBetween that accepts two integers as input:
-```sql
-@Start INT
-@End INT
-```
-**The function should return a table with a single column:**
-```sql
-| Number |
-|--------|
-| @Start |
-...
-...
-...
-|   @end |
-```
-
-**It should include all integer values from @Start to @End, inclusive.**
-
-### 7. Write a SQL query to return the Nth highest distinct salary from the Employee table. If there are fewer than N distinct salaries, return NULL. 
-
-**NOTE: You have to do some research on Dense_rank window function.**
-
-### Example 1:
-
-**Input.Employee table:**
-
-```
-| id | salary |
-+----+--------+
-| 1  | 100    |
-| 2  | 200    |
-| 3  | 300    |
-```
-
-### n = 2
-
-**Output:**
-```sql
-| getNthHighestSalary(2) |
-```
-```sql
-|    HighestNSalary      |
-|------------------------|
-| 200                    |
-```
-
-### Example 2:
-
-**Input.Employee table:**
-
-```sql
-| id | salary |
-|----|--------|
-| 1  | 100    |
-```
-
-
-### n = 2
-**Output:**
-```sql
-| getNthHighestSalary(2) |
-```
-```sql
-|    HighestNSalary      |
-|        null            |
-```
-
-**You can also solve this in Leetcode: https://leetcode.com/problems/nth-highest-salary/description/**
-
-### 8. Write a SQL query to find the person who has the most friends.
-
-**Return: Their id, The total number of friends they have**
-
-#### Friendship is mutual. For example, if user A sends a request to user B and it's accepted, both A and B are considered friends with each other. The test case is guaranteed to have only one user with the most friends.
-
-**Input.RequestAccepted table:**
-
-```
-| requester_id | accepter_id | accept_date |
-+--------------+-------------+-------------+
-| 1            | 2           | 2016/06/03  |
-| 1            | 3           | 2016/06/08  |
-| 2            | 3           | 2016/06/08  |
-| 3            | 4           | 2016/06/09  |
-```
-
-**Output:** 
-```
-| id | num |
-+----+-----+
-| 3  | 3   |
-```
-
-**Explanation: The person with id 3 is a friend of people 1, 2, and 4, so he has three friends in total, which is the most number than any others.**
-
-**You can also solve this in Leetcode: https://leetcode.com/problems/friend-requests-ii-who-has-the-most-friends/description/?envType=study-plan-v2&envId=top-sql-50**
-
-### 9. Create a View for Customer Order Summary. 
-```sql
-CREATE TABLE Customers (
-    customer_id INT PRIMARY KEY,
-    name VARCHAR(100),
-    city VARCHAR(50)
-);
-
-CREATE TABLE Orders (
-    order_id INT PRIMARY KEY,
-    customer_id INT FOREIGN KEY REFERENCES Customers(customer_id),
-    order_date DATE,
-    amount DECIMAL(10,2)
-);
-
--- Customers
-INSERT INTO Customers (customer_id, name, city)
-VALUES
-(1, 'Alice Smith', 'New York'),
-(2, 'Bob Jones', 'Chicago'),
-(3, 'Carol White', 'Los Angeles');
-
--- Orders
-INSERT INTO Orders (order_id, customer_id, order_date, amount)
-VALUES
-(101, 1, '2024-12-10', 120.00),
-(102, 1, '2024-12-20', 200.00),
-(103, 1, '2024-12-30', 220.00),
-(104, 2, '2025-01-12', 120.00),
-(105, 2, '2025-01-20', 180.00);
-```
-**Create a view called vw_CustomerOrderSummary that returns a summary of customer orders. The view must contain the following columns:**
-
-> - Column Name | Description
-> - customer_id | Unique identifier of the customer
-> - name | Full name of the customer
-> - total_orders | Total number of orders placed by the customer
-> - total_amount | Cumulative amount spent across all orders
-> - last_order_date | Date of the most recent order placed by the customer
-
-### 10. Write an SQL statement to fill in the missing gaps. You have to write only select statement, no need to modify the table.
-
-```
-| RowNumber | Workflow | Status |
-|-------------------------------|
-| 1         | Alpha    | Pass   |
-| 2         |          | Fail   |
-| 3         |          | Fail   |
-| 4         |          | Fail   |
-| 5         | Bravo    | Pass   |
-| 6         |          | Fail   |
-| 7         |          | Fail   |
-| 8         |          | Pass   |
-| 9         |          | Pass   |
-| 10        | Charlie  | Fail   |
-| 11        |          | Fail   |
-| 12        |          | Fail   |
-```
-
-**Here is the expected output.**
-```
-| RowNumber | Workflow | Status |
-|-------------------------------|
-| 1         | Alpha    | Pass   |
-| 2         | Alpha    | Fail   |
-| 3         | Alpha    | Fail   |
-| 4         | Alpha    | Fail   |
-| 5         | Bravo    | Pass   |
-| 6         | Bravo    | Fail   |
-| 7         | Bravo    | Fail   |
-| 8         | Bravo    | Pass   |
-| 9         | Bravo    | Pass   |
-| 10        | Charlie  | Fail   |
-| 11        | Charlie  | Fail   |
-| 12        | Charlie  | Fail   |
-```
-
-```sql
-DROP TABLE IF EXISTS Gaps;
-
-CREATE TABLE Gaps
+DROP TABLE IF EXISTS Grouped;
+CREATE TABLE Grouped
 (
-RowNumber   INTEGER PRIMARY KEY,
-TestCase    VARCHAR(100) NULL
+  Product  VARCHAR(100) PRIMARY KEY,
+  Quantity INTEGER NOT NULL
 );
-
-INSERT INTO Gaps (RowNumber, TestCase) VALUES
-(1,'Alpha'),(2,NULL),(3,NULL),(4,NULL),
-(5,'Bravo'),(6,NULL),(7,'Charlie'),(8,NULL),(9,NULL);
+INSERT INTO Grouped (Product, Quantity) VALUES
+('Pencil', 3), ('Eraser', 4), ('Notebook', 2);
 ```
+
+---
+
+### 2. You must provide a report of all distributors and their sales by region.  If a distributor did not have any sales for a region, rovide a zero-dollar value for that day.  Assume there is at least one sale for each region
+
+**SQL Setup:**
+```sql
+DROP TABLE IF EXISTS #RegionSales;
+GO
+CREATE TABLE #RegionSales (
+  Region      VARCHAR(100),
+  Distributor VARCHAR(100),
+  Sales       INTEGER NOT NULL,
+  PRIMARY KEY (Region, Distributor)
+);
+GO
+INSERT INTO #RegionSales (Region, Distributor, Sales) VALUES
+('North','ACE',10), ('South','ACE',67), ('East','ACE',54),
+('North','ACME',65), ('South','ACME',9), ('East','ACME',1), ('West','ACME',7),
+('North','Direct Parts',8), ('South','Direct Parts',7), ('West','Direct Parts',12);
+```
+
+
+**Input:**
+```
+|Region       |Distributor    | Sales |
+|-------------|---------------|--------
+|North        |ACE            |   10  |
+|South        |ACE            |   67  |
+|East         |ACE            |   54  |
+|North        |Direct Parts   |   8   |
+|South        |Direct Parts   |   7   |
+|West         |Direct Parts   |   12  |
+|North        |ACME           |   65  |
+|South        |ACME           |   9   |
+|East         |ACME           |   1   |
+|West         |ACME           |   7   |
+```
+
+
+
+**Expected Output:**
+```
+|Region |Distributor   | Sales |
+|-------|--------------|-------|
+|North  |ACE           | 10    |
+|South  |ACE           | 67    |
+|East   |ACE           | 54    |
+|West   |ACE           | 0     |
+|North  |Direct Parts  | 8     |
+|South  |Direct Parts  | 7     |
+|East   |Direct Parts  | 0     |
+|West   |Direct Parts  | 12    |
+|North  |ACME          | 65    |
+|South  |ACME          | 9     |
+|East   |ACME          | 1     |
+|West   |ACME          | 7     |
+```
+
+---
+
+### 3. Find managers with at least five direct reports
+
+**SQL Setup:**
+```sql
+CREATE TABLE Employee (id INT, name VARCHAR(255), department VARCHAR(255), managerId INT);
+TRUNCATE TABLE Employee;
+INSERT INTO Employee VALUES
+(101, 'John', 'A', NULL), (102, 'Dan', 'A', 101), (103, 'James', 'A', 101),
+(104, 'Amy', 'A', 101), (105, 'Anne', 'A', 101), (106, 'Ron', 'B', 101);
+```
+
+**Input:**
+```
+| id  | name  | department | managerId |
++-----+-------+------------+-----------+
+| 101 | John  | A          | null      |
+| 102 | Dan   | A          | 101       |
+| 103 | James | A          | 101       |
+| 104 | Amy   | A          | 101       |
+| 105 | Anne  | A          | 101       |
+| 106 | Ron   | B          | 101       |
+```
+
+**Expected Output:**
+```
++------+
+| name |
++------+
+| John |
++------+
+```
+
+```
+You cal also solve this puzzle in Leetcode: https://leetcode.com/problems/managers-with-at-least-5-direct-reports/description/?envType=study-plan-v2&envId=top-sql-50
+```
+
+---
+
+### 4. Write a solution to get the names of products that have at least 100 units ordered in February 2020 and their amount.
+
+**SQL Setup:**
+```sql
+CREATE TABLE Products (product_id INT, product_name VARCHAR(40), product_category VARCHAR(40));
+CREATE TABLE Orders (product_id INT, order_date DATE, unit INT);
+TRUNCATE TABLE Products;
+INSERT INTO Products VALUES
+(1, 'Leetcode Solutions', 'Book'),
+(2, 'Jewels of Stringology', 'Book'),
+(3, 'HP', 'Laptop'), (4, 'Lenovo', 'Laptop'), (5, 'Leetcode Kit', 'T-shirt');
+TRUNCATE TABLE Orders;
+INSERT INTO Orders VALUES
+(1,'2020-02-05',60),(1,'2020-02-10',70),
+(2,'2020-01-18',30),(2,'2020-02-11',80),
+(3,'2020-02-17',2),(3,'2020-02-24',3),
+(4,'2020-03-01',20),(4,'2020-03-04',30),(4,'2020-03-04',60),
+(5,'2020-02-25',50),(5,'2020-02-27',50),(5,'2020-03-01',50);
+```
+
+**Input:**
+```
+| product_id  | product_name          | product_category |
++-------------+-----------------------+------------------+
+| 1           | Leetcode Solutions    | Book             |
+| 2           | Jewels of Stringology | Book             |
+| 3           | HP                    | Laptop           |
+| 4           | Lenovo                | Laptop           |
+| 5           | Leetcode Kit          | T-shirt          |
+```
+
+
+
+**Expected Output:**
+```
+| product_name       | unit  |
++--------------------+-------+
+| Leetcode Solutions | 130   |
+| Leetcode Kit       | 100   |
+```
+
+---
+
+### 5. Write an SQL statement that returns the vendor from which each customer has placed the most orders
+
+
+**SQL Setup:**
+```sql
+DROP TABLE IF EXISTS Orders;
+CREATE TABLE Orders (
+  OrderID    INTEGER PRIMARY KEY,
+  CustomerID INTEGER NOT NULL,
+  [Count]    MONEY NOT NULL,
+  Vendor     VARCHAR(100) NOT NULL
+);
+INSERT INTO Orders VALUES
+(1,1001,12,'Direct Parts'), (2,1001,54,'Direct Parts'), (3,1001,32,'ACME'),
+(4,2002,7,'ACME'), (5,2002,16,'ACME'), (6,2002,5,'Direct Parts');
+```
+
+**Input:**
+```
+|Order ID   | Customer ID | Order Count|     Vendor     |
+---------------------------------------------------------
+|Ord195342  |     1001    |      12    |  Direct Parts  |
+|Ord245532  |     1001    |      54    |  Direct Parts  |
+|Ord344394  |     1001    |      32    |     ACME       |
+|Ord442423  |     2002    |      7     |     ACME       |
+|Ord524232  |     2002    |      16    |     ACME       |
+|Ord645363  |     2002    |      5     |  Direct Parts  |
+```
+
+**Expected Output:**
+```
+| CustomerID | Vendor       |
+|------------|--------------|
+| 1001       | Direct Parts |
+| 2002       | ACME         |
+```
+
+---
+
+### 6. You will be given a number as a variable called @Check_Prime check if this number is prime then return 'This number is prime' else eturn 'This number is not prime'
+
+**Example Input:**
+```sql
+DECLARE @Check_Prime INT = 91;
+-- Your WHILE-based SQL logic here
+```
+
+**Expected Output:**
+```
+This number is not prime(or "This number is prime")
+```
+
+---
+
+### 7. Write an SQL query to return the number of locations,in which location most signals sent, and total number of signal for each device from the given table.
+
+**SQL Setup:**
+```sql
+CREATE TABLE Device(
+  Device_id INT,
+  Locations VARCHAR(25)
+);
+INSERT INTO Device VALUES
+(12,'Bangalore'), (12,'Bangalore'), (12,'Bangalore'), (12,'Bangalore'),
+(12,'Hosur'), (12,'Hosur'),
+(13,'Hyderabad'), (13,'Hyderabad'), (13,'Secunderabad'),
+(13,'Secunderabad'), (13,'Secunderabad');
+```
+
+
+
+
+
+**Expected Output:**
+```
+| Device_id | no_of_location | max_signal_location | no_of_signals |
+|-----------|----------------|---------------------|---------------|
+| 12        | 2              | Bangalore           | 6             |
+| 13        | 2              | Secunderabad        | 5             |
+```
+
+---
+
+### 8. Write a SQL  to find all Employees who earn more than the average salary in their corresponding department. Return EmpID, EmpName,Salary in your output
+
+**SQL Setup:**
+```sql
+CREATE TABLE Employee (
+  EmpID INT,
+  EmpName VARCHAR(30),
+  Salary FLOAT,
+  DeptID INT
+);
+INSERT INTO Employee VALUES
+(1001,'Mark',60000,2), (1002,'Antony',40000,2), (1003,'Andrew',15000,1),
+(1004,'Peter',35000,1), (1005,'John',55000,1), (1006,'Albert',25000,3), (1007,'Donald',35000,3);
+```
+
+**Expected Output:**
+```
+| EmpID | EmpName | Salary |
+|-------|---------|--------|
+| 1001  | Mark    | 60000  |
+| 1004  | Peter   | 35000  |
+| 1005  | John    | 55000  |
+| 1007  | Donald  | 35000  |
+```
+
+---
+
+### 9. You are part of an office lottery pool where you keep a table of the winning lottery numbers along with a table of each ticket’s chosen numbers.  If a ticket has some but not all the winning numbers, you win $10.  If a ticket has all the winning numbers, you win $100.    Calculate the total winnings for today’s drawing.
+
+**Winning Numbers:**
+```
+|Number|
+--------
+|  25  |
+|  45  |
+|  78  |
+
+```
+
+
+**Tickets:**
+```
+| Ticket ID | Number |
+|-----------|--------|
+| A23423    | 25     |
+| A23423    | 45     |
+| A23423    | 78     |
+| B35643    | 25     |
+| B35643    | 45     |
+| B35643    | 98     |
+| C98787    | 67     |
+| C98787    | 86     |
+| C98787    | 91     |
+```
+
+**Expected Output would be $110, as you have one winning ticket, and one ticket that has some but not all the winning numbers.**
+
+---
+
+### 10. The Spending table keeps the logs of the spendings history of users that make purchases from an online shopping website which has a desktop and a mobile devices.
+
+## Write an SQL query to find the total number of users and the total amount spent using mobile only, desktop only and both mobile and desktop together for each date.
+
+**SQL Setup:**
+```sql
+CREATE TABLE Spending (
+  User_id INT,
+  Spend_date DATE,
+  Platform VARCHAR(10),
+  Amount INT
+);
+INSERT INTO Spending VALUES
+(1,'2019-07-01','Mobile',100),
+(1,'2019-07-01','Desktop',100),
+(2,'2019-07-01','Mobile',100),
+(2,'2019-07-02','Mobile',100),
+(3,'2019-07-01','Desktop',100),
+(3,'2019-07-02','Desktop',100);
+```
+
+**Expected Output:**
+```
+| Row | Spend_date | Platform | Total_Amount | Total_users |
+|-----|------------|----------|--------------|-------------|
+| 1   | 2019-07-01 | Mobile   | 100          | 1           |
+| 2   | 2019-07-01 | Desktop  | 100          | 1           |
+| 3   | 2019-07-01 | Both     | 200          | 1           |
+| 4   | 2019-07-02 | Mobile   | 100          | 1           |
+| 5   | 2019-07-02 | Desktop  | 100          | 1           |
+| 6   | 2019-07-02 | Both     | 0            | 0           |
+```
+
+---
+
+
