@@ -63,7 +63,7 @@ Create a stored procedure that:
 Create a stored procedure that:
 
 - Accepts a department name and an increase percentage as parameters
-- Increases salary of all employees in the given department by the given percentage
+- Update salary of all employees in the given department by the given percentage
 - Returns updated employees from that department.
 
 ---
@@ -294,9 +294,6 @@ Create a stored procedure called `GetProductSalesSummary` that:
 
 ---
 
-✅ Done!  
-Would you also like me to generate a **`README.md`** style version for you too if you want it looking even more professional for GitHub? 🚀  
-(very easy to add if you want!)
 
 
 
