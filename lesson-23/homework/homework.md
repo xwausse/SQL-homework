@@ -157,7 +157,7 @@ INSERT INTO TestMaximum VALUES
 
 ---
 
-### Puzzle 5: In this puzzle you have to first find the maximum value for each Id and DetailedNumber, and then Sum the data using Id only. Can you do this both in a single SELECT ?. Please check out sample input and expected output.
+### Puzzle 5: In this puzzle you have to first find the maximum value for each Id and DetailedNumber, and then Sum the data using Id only. Please check out sample input and expected output.
 
 **Input Table: SumOfMax**
 ```sql
@@ -177,7 +177,7 @@ INSERT INTO SumOfMax VALUES
 +----------------+------+-----+  
 |        1       |  5   | 101 |  
 |        1       |  4   | 101 |  
-|        1       |  6   | 101 |  
+|        2       |  6   | 101 |  
 |        2       |  3   | 101 |  
 |        3       |  3   | 102 |  
 |        4       |  2   | 102 |  
