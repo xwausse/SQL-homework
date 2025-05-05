@@ -242,6 +242,32 @@ INSERT INTO TheSumPuzzle VALUES
 ```
 ---
 
+24. **From following set of integers, write an SQL statement to determine the expected outputs**
+
+```sql
+CREATE TABLE Seats 
+( 
+SeatNumber INTEGER 
+); 
+
+INSERT INTO Seats VALUES 
+(7),(13),(14),(15),(27),(28),(29),(30), 
+(31),(32),(33),(34),(35),(52),(53),(54); 
+```
+
+**Output:**
+```
+---------------------
+|Gap Start	|Gap End|
+---------------------
+|     1     |	6	|
+|     8     |	12	|
+|     16    |	26	|
+|     36    |	51	|
+---------------------
+```
+
+
 
 25. **In this puzzle you need to generate row numbers for the given data. The condition is that the first row number for every partition should be even number.For more details please check the sample input and expected output.**
 
