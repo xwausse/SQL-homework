@@ -117,7 +117,7 @@ INSERT INTO TestFixLengths VALUES
 
 ---
 
-### Puzzle 4: In this puzzle you have to find the maximum value for each Id and then get the Item for that Id and Maximum value. The Challenge is to do that in a SINGLE SELECT. Please check out sample input and expected output.
+### Puzzle 4: In this puzzle you have to find the maximum value for each Id and then get the Item for that Id and Maximum value. Please check out sample input and expected output.
 
 **Input Table: TestMaximum**
 ```sql
