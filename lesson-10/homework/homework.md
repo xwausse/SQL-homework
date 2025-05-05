@@ -391,8 +391,7 @@ INSERT INTO Products (ProductID, ProductName, Price, Category, StockQuantity, Su
 (37, 'Blender', 35.00, 'Electronics', 40, 1),
 (38, 'Juicer', 55.00, 'Electronics', 30, 1),
 (39, 'Toaster', 40.00, 'Electronics', 70, 1),
-(40, 'Dishwasher', 500.00, 'Electronics', 20, 1),
-(41, 'Handsanitizer', 300.00, 'Healthcare', 20, 1);
+(40, 'Dishwasher', 500.00, 'Electronics', 20, 1);
 
 DROP TABLE IF EXISTS Categories;
 
