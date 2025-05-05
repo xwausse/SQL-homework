@@ -237,30 +237,33 @@ CREATE TABLE Sales (
     QuantitySold INT,
     UnitPrice DECIMAL(10,2),
     SaleDate DATE,
-    Region VARCHAR(50)
+    Region VARCHAR(50),
+    CustomerID INT
 );
-INSERT INTO Sales (Product, Category, QuantitySold, UnitPrice, SaleDate, Region)
+
+INSERT INTO Sales (Product, Category, QuantitySold, UnitPrice, SaleDate, Region, CustomerID)
 VALUES
-('Laptop', 'Electronics', 10, 800.00, '2024-01-01', 'North'),
-('Smartphone', 'Electronics', 15, 500.00, '2024-01-02', 'North'),
-('Tablet', 'Electronics', 8, 300.00, '2024-01-03', 'East'),
-('Headphones', 'Electronics', 25, 100.00, '2024-01-04', 'West'),
-('TV', 'Electronics', 5, 1200.00, '2024-01-05', 'South'),
-('Refrigerator', 'Appliances', 3, 1500.00, '2024-01-06', 'South'),
-('Microwave', 'Appliances', 7, 200.00, '2024-01-07', 'East'),
-('Washing Machine', 'Appliances', 4, 1000.00, '2024-01-08', 'North'),
-('Oven', 'Appliances', 6, 700.00, '2024-01-09', 'West'),
-('Smartwatch', 'Electronics', 12, 250.00, '2024-01-10', 'East'),
-('Vacuum Cleaner', 'Appliances', 5, 400.00, '2024-01-11', 'South'),
-('Gaming Console', 'Electronics', 9, 450.00, '2024-01-12', 'North'),
-('Monitor', 'Electronics', 14, 300.00, '2024-01-13', 'West'),
-('Keyboard', 'Electronics', 20, 50.00, '2024-01-14', 'South'),
-('Mouse', 'Electronics', 30, 25.00, '2024-01-15', 'East'),
-('Blender', 'Appliances', 10, 150.00, '2024-01-16', 'North'),
-('Fan', 'Appliances', 12, 75.00, '2024-01-17', 'South'),
-('Heater', 'Appliances', 8, 120.00, '2024-01-18', 'East'),
-('Air Conditioner', 'Appliances', 2, 2000.00, '2024-01-19', 'West'),
-('Camera', 'Electronics', 7, 900.00, '2024-01-20', 'North');
+('Laptop', 'Electronics', 10, 800.00, '2024-01-01', 'North', 1),
+('Smartphone', 'Electronics', 15, 500.00, '2024-01-02', 'North', 2),
+('Tablet', 'Electronics', 8, 300.00, '2024-01-03', 'East', 3),
+('Headphones', 'Electronics', 25, 100.00, '2024-01-04', 'West', 4),
+('TV', 'Electronics', 5, 1200.00, '2024-01-05', 'South', 5),
+('Refrigerator', 'Appliances', 3, 1500.00, '2024-01-06', 'South', 6),
+('Microwave', 'Appliances', 7, 200.00, '2024-01-07', 'East', 7),
+('Washing Machine', 'Appliances', 4, 1000.00, '2024-01-08', 'North', 8),
+('Oven', 'Appliances', 6, 700.00, '2024-01-09', 'West', 9),
+('Smartwatch', 'Electronics', 12, 250.00, '2024-01-10', 'East', 10),
+('Vacuum Cleaner', 'Appliances', 5, 400.00, '2024-01-11', 'South', 1),
+('Gaming Console', 'Electronics', 9, 450.00, '2024-01-12', 'North', 2),
+('Monitor', 'Electronics', 14, 300.00, '2024-01-13', 'West', 3),
+('Keyboard', 'Electronics', 20, 50.00, '2024-01-14', 'South', 4),
+('Mouse', 'Electronics', 30, 25.00, '2024-01-15', 'East', 5),
+('Blender', 'Appliances', 10, 150.00, '2024-01-16', 'North', 6),
+('Fan', 'Appliances', 12, 75.00, '2024-01-17', 'South', 7),
+('Heater', 'Appliances', 8, 120.00, '2024-01-18', 'East', 8),
+('Air Conditioner', 'Appliances', 2, 2000.00, '2024-01-19', 'West', 9),
+('Camera', 'Electronics', 7, 900.00, '2024-01-20', 'North', 10);
+
 ```
 7. What is the total revenue generated from all sales?  
 8. What is the average unit price of products?  
@@ -268,10 +271,9 @@ VALUES
 10. What is the highest number of units sold in a single transaction?  
 11. How many products were sold in each category?  
 12. What is the total revenue for each region?  
-13. What is the total quantity sold per month?  
-14. Which product generated the highest total revenue?  
-15. Compute the running total of revenue ordered by sale date.  
-16. How much does each category contribute to total sales revenue?  
+13. Which product generated the highest total revenue?  
+14. Compute the running total of revenue ordered by sale date.  
+15. How much does each category contribute to total sales revenue?  
 
 ---
 
@@ -301,7 +303,7 @@ VALUES
 18. List customers who have not made any purchases  
 19. Compute total revenue generated from each customer  
 20. Find the customer who has contributed the most revenue  
-21. Calculate the total sales per customer per month  
+21. Calculate the total sales per customer
 
 ---
 
@@ -330,5 +332,4 @@ VALUES
 
 22. List all products that have been sold at least once  
 23. Find the most expensive product in the Products table  
-24. Show each sale with its corresponding cost price from the Products table  
-25. Find all products where the selling price is higher than the average selling price in their category  
+24. Find all products where the selling price is higher than the average selling price in their category  
