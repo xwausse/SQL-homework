@@ -166,7 +166,7 @@ INSERT INTO Row_Nums VALUES
 
 15. **Find customers who have purchased items from more than one product_category**
 16. **Find Customers with Above-Average Spending in Their Region**
-17. **Rank customers based on their total spending (total_amount) within each region. If multiple customers have the same spending, they should receive the same rank (dense ranking).**
+17. **Rank customers based on their total spending (total_amount) within each region. If multiple customers have the same spending, they should receive the same rank.**
 18. **Calculate the running total (cumulative_sales) of total_amount for each customer_id, ordered by order_date.**
 19. **Calculate the sales growth rate (growth_rate) for each month compared to the previous month.**
 20. **Identify customers whose total_amount is higher than their last order''s total_amount.(Table sales_data)**
@@ -242,37 +242,6 @@ INSERT INTO TheSumPuzzle VALUES
 ```
 ---
 
-24. **You have to write a query that will give us sum of tyze for each Z. Detailed logic is given below**
-## Return only 4 columns
-## Level, TyZe, Result, Results(the last one is for explanation)
-
-```sql
-CREATE TABLE testSuXVI (
-    Level TINYINT, TyZe TINYINT, Result CHAR(1)
-);
-INSERT INTO testSuXVI VALUES
-(0, 1 ,'X'), (1, 5 ,'X'), (2, 2 ,'X'), (3, 2 ,'Z'), (1, 8 ,'X'), (2, 6 ,'Z'),
-(1, 20 ,'X'), (2, 9 ,'X'), (3, 32 ,'X'), (4, 91 ,'Z'), (2, 21 ,'Z'), (3, 30 ,'Z');
-```
-
-**Expected Output**
-```
-| Level | TyZe | Result | Results |        Logic for Results  |  
-|-------|------|--------|---------|---------------------------|  
-|     0 |    1 |      X |       0 |                           |  
-|     1 |    5 |      X |       0 |                           |  
-|     2 |    2 |      X |       0 |                           |  
-|     3 |    2 |      Z |      10 |              10           |  (1+5+2+2)
-|     1 |    8 |      X |       0 |                           |  
-|     1 |    6 |      Z |      14 |              14           |  (8+6)
-|     1 |   20 |      X |       0 |                           |  
-|     2 |   9  |      X |       0 |                           |  
-|     3 |   32 |      X |       0 |                           |  
-|     4 |   91 |      Z |     152 |              152          |  (20+9+32+91)
-|     2 |   21 |      Z |      41 |              41           |  (21+20)
-|     3 |   30 |      Z |      59 |              59           |  (30+20+9)
-```
----
 
 25. **In this puzzle you need to generate row numbers for the given data. The condition is that the first row number for every partition should be even number.For more details please check the sample input and expected output.**
 
