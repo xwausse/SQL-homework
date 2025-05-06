@@ -20,7 +20,7 @@
 
 ## 🟢 Easy-Level Tasks (10)
 1. Write a query to select the top 5 employees from the Employees table.
-2. Use SELECT DISTINCT to select unique CategoryName values from the Products table.
+2. Use SELECT DISTINCT to select unique Category values from the Products table.
 3. Write a query that filters the Products table to show products with Price > 100.
 4. Write a query to select all Customers whose FirstName start with 'A' using the LIKE operator.
 5. Order the results of a Products table by Price in ascending order.
