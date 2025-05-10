@@ -1,7 +1,5 @@
 # Lesson 3: Importing and Exporting Data
 
-Here are 30 homework tasks for Lesson 3, categorized into easy, medium, and hard levels. These tasks cover:
-
 ✅ Importing Data (BULK INSERT, Excel, Text)
 ✅ Exporting Data (Excel, Text)
 ✅ Comments, Identity column, NULL/NOT NULL values
