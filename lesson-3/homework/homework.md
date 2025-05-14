@@ -23,26 +23,27 @@ ______________________________________
 5. Explain the difference between NULL and NOT NULL.
 6. Add a UNIQUE constraint to the ProductName column in the Products table.
 7. Write a comment in a SQL query explaining its purpose.
-8. Create a table Categories with a CategoryID as PRIMARY KEY and a CategoryName as UNIQUE.
-9. Explain the purpose of the IDENTITY column in SQL Server.
+8. Add CategoryID column to the Products table.
+9. Create a table Categories with a CategoryID as PRIMARY KEY and a CategoryName as UNIQUE.
+10. Explain the purpose of the IDENTITY column in SQL Server.
 
 ________________________________________
 
 ## 🟠 Medium-Level Tasks (10)
-10. Use BULK INSERT to import data from a text file into the Products table.
-11. Create a FOREIGN KEY in the Products table that references the Categories table.
-12. Explain the differences between PRIMARY KEY and UNIQUE KEY.
-13. Add a CHECK constraint to the Products table ensuring Price > 0.
-14. Modify the Products table to add a column Stock (INT, NOT NULL).
-15. Use the ISNULL function to replace NULL values in Price column with a 0.
-16. Describe the purpose and usage of FOREIGN KEY constraints in SQL Server.
+11. Use BULK INSERT to import data from a text file into the Products table.
+12. Create a FOREIGN KEY in the Products table that references the Categories table.
+13. Explain the differences between PRIMARY KEY and UNIQUE KEY.
+14. Add a CHECK constraint to the Products table ensuring Price > 0.
+15. Modify the Products table to add a column Stock (INT, NOT NULL).
+16. Use the ISNULL function to replace NULL values in Price column with a 0.
+17. Describe the purpose and usage of FOREIGN KEY constraints in SQL Server.
 
 ________________________________________
 
 ## 🔴 Hard-Level Tasks (10)
-17. Write a script to create a Customers table with a CHECK constraint ensuring Age >= 18.
-18. Create a table with an IDENTITY column starting at 100 and incrementing by 10.
-19. Write a query to create a composite PRIMARY KEY in a new table OrderDetails.
-20. Explain the use of COALESCE and ISNULL functions for handling NULL values.
-21. Create a table Employees with both PRIMARY KEY on EmpID and UNIQUE KEY on Email.
-22. Write a query to create a FOREIGN KEY with ON DELETE CASCADE and ON UPDATE CASCADE options.
+18. Write a script to create a Customers table with a CHECK constraint ensuring Age >= 18.
+19. Create a table with an IDENTITY column starting at 100 and incrementing by 10.
+20. Write a query to create a composite PRIMARY KEY in a new table OrderDetails.
+21. Explain the use of COALESCE and ISNULL functions for handling NULL values.
+22. Create a table Employees with both PRIMARY KEY on EmpID and UNIQUE KEY on Email.
+23. Write a query to create a FOREIGN KEY with ON DELETE CASCADE and ON UPDATE CASCADE options.
