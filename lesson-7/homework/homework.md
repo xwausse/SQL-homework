@@ -47,9 +47,9 @@ These homework tasks cover the following topics:
 20. Write a query that shows the average price for each product category, and then filter categories with an average price greater than 150.
 21. Write a query to calculate the total sales for each Customer, then filter the results to include only Customers with total sales over 1500.
 22. Write a query to find the total and average salary of employees in each department, and filter the output to include only departments with an average salary greater than 65000.
-23. Write a query to find total sales amount for the orders which costs more than $50 for each customer along with their least purchases.(least amount might be lower than $50).
-24. Write a query that calculates the total sales and counts unique products sold in each month of each year, and then filter the months with at least 2 products sold.(Orders)
-25. Write a query to find the MIN and MAX order quantity per Year. From orders table.
+23. Write a query to find total amount for the orders which weights more than $50 for each customer along with their least purchases.(least amount might be lower than 50, use tsql2012.sales.orders table,freight col, ask ur assistant to give the TSQL2012 database).
+25. Write a query that calculates the total sales and counts unique products sold in each month of each year, and then filter the months with at least 2 products sold.(Orders)
+26. Write a query to find the MIN and MAX order quantity per Year. From orders table.
 **Necessary tables:**
 ```sql
 DROP TABLE IF EXISTS Employees;
